@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://dailyfitnessedit.com/sitemap.xml
+Sitemap: https://truthbehindbeauty.com/sitemap.xml
 
 # Crawl delay (optional - adjust as needed)
 Crawl-delay: 1

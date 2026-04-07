@@ -1,4 +1,4 @@
-// Main JavaScript file for Daily Fitness Edit
+// Main JavaScript file for Truth Behind Beauty
 
 // Head Component - Insert favicon and stylesheets
 function insertHeadElements(pageType = 'root') {
@@ -91,7 +91,7 @@ function insertNavigation(pageType = 'root', currentPage = '') {
         <header class="site-header">
             <div class="logo">
                 <a href="${homePath}">
-                    <img src="${logoPath}" alt="Daily Fitness Edit Logo">
+                    <img src="${logoPath}" alt="Truth Behind Beauty Logo">
                 </a>
             </div>
             <div class="header-spacer"></div>
@@ -120,7 +120,7 @@ function insertFooter(pageType = 'root') {
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <p>&copy; 2026 Daily Fitness Edit. All rights reserved.</p>
+                        <p>&copy; 2026 Truth Behind Beauty. All rights reserved.</p>
                         <p>
                             <a href="${privacyPath}">Privacy Policy</a> | 
                             <a href="${termsPath}">Terms of Service</a>
