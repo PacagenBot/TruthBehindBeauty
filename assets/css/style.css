@@ -1,0 +1,335 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.search-icon {
+  display: none;
+}
+.site-header {
+  /* Grid makes centering dead simple and responsive */
+  display: grid;
+  grid-template-columns: auto 1fr auto; /* logo | spacer | hamburger */
+  align-items: center;
+  gap: clamp(0.5rem, 2vw, 1rem);
+
+  background: #202020;
+  padding: clamp(0.4rem, 2vw, 0.8rem) clamp(0.8rem, 3vw, 1.2rem);
+  /* Let content define height instead of hard-coding */
+  min-height: clamp(56px, 10vw, 88px);
+  box-sizing: border-box;
+}
+
+/* Icons scale slightly with viewport */
+.menu-icon,
+.search-icon {
+  font-size: clamp(1.1rem, 3.5vw, 1.6rem);
+  cursor: pointer;
+  background: none;
+  border: 0;
+  padding: 0;
+  line-height: 1;
+}
+
+/* Logo on the left */
+.logo {
+  justify-self: start;
+}
+
+/* Hamburger menu */
+.hamburger-menu {
+  justify-self: end;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.hamburger-bar {
+  display: block;
+  width: 24px;
+  height: 3px;
+  background-color: #fff;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.hamburger-menu.active .hamburger-bar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger-menu.active .hamburger-bar:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-menu.active .hamburger-bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Fluid logo height with a sensible min/max */
+.logo img {
+  height: clamp(36px, 12vw, 72px);
+  width: auto;
+  display: block;
+  /* Prevent the logo from colliding with icons on very narrow screens */
+  max-width: min(60vw, 420px);
+}
+
+body {
+  font-family: "Roboto", "Arial", sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f9f9f9;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Oswald", "Arial", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+main {
+  min-height: 700px;
+}
+
+img {
+  max-width: 100%;
+}
+
+.card-text {
+  font-family: "Oswald", "Arial", sans-serif;
+  font-size: clamp(0.9rem, 2vw, 1.05rem);
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 0.25rem;
+}
+
+.btn {
+  background-color: #4caf50 !important;
+  border: none !important;
+}
+
+.btn--secondary {
+  background-color: #6c757d !important;
+  border: none !important;
+  margin-top: 10px;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Header and navigation */
+header {
+  background-color: #202020;
+  color: white;
+  padding: 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav h1 {
+  font-size: 1.8rem;
+}
+
+#logo {
+  height: 40px;
+  width: auto;
+}
+
+nav a img {
+  height: 40px;
+  width: auto;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #a8c5e8;
+}
+
+nav a.active {
+  color: #a8c5e8;
+  font-weight: bold;
+}
+
+#logo {
+  width: 150px;
+  height: 95px;
+}
+
+/* Main content */
+main {
+}
+
+.hero {
+  text-align: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 4rem 2rem;
+  border-radius: 10px;
+  margin-bottom: 3rem;
+}
+
+.hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Grid layouts */
+.blog-grid,
+.advertorial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.blog-grid article,
+.advertorial-grid article {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.blog-grid article:hover,
+.advertorial-grid article:hover {
+  transform: translateY(-5px);
+}
+
+/* Sections */
+.featured-content,
+.advertorials,
+.quiz-section {
+  margin-bottom: 3rem;
+}
+
+.article-header {
+  border-radius: 5rem;
+  margin-bottom: 50px;
+  padding: 2rem;
+}
+
+.article-img {
+  width: 75%;
+  margin: 25px auto;
+}
+
+@media screen and (max-width: 768px) {
+  .article-img {
+    width: 100%;
+  }
+}
+section p {
+    margin-bottom: 2rem;
+}
+section h3 {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  border-bottom: 3px solid black;
+  padding-bottom: 0.5rem;
+}
+
+/* Quiz button */
+.quiz-button {
+  display: inline-block;
+  background-color: #28a745;
+  color: white;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.quiz-button:hover {
+  background-color: #218838;
+}
+
+/* Footer */
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 2rem 0;
+  margin-top: 3rem;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  nav ul {
+    gap: 1rem;
+  }
+
+  .hero h2 {
+    font-size: 2rem;
+  }
+
+  main {
+    padding: 0;
+  }
+}
+
+/* Optional: tighten spacing on very small screens */
+@media (max-width: 400px) {
+  .site-header {
+    gap: 0.4rem;
+  }
+}
+
+/* Optional: give icons larger hit targets on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .menu-icon,
+  .search-icon {
+    padding: 0.25rem;
+  }
+}
+
+/* Custom styles */
+.light-b-bg{
+    background-color: #a1e2e2;
+}
+
+.quote-card {
+    width: 700px;
+    max-width: 90%;
+    margin: 20px auto;
+    height: auto;
+    background-color: #c0d3c9;
+  }
