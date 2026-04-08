@@ -13,8 +13,8 @@ function insertHeadElements(pageType = 'root') {
     // Create the head elements
     const headElements = `
         <!-- Favicon -->
-        <link rel="icon" type="image/png" href="${assetPath}/images/DFE-logo.png">
-        <link rel="apple-touch-icon" sizes="180x180" href="${assetPath}/images/DFE-logo.png">
+        <link rel="icon" type="image/png" href="${assetPath}/images/TBB-icon.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="${assetPath}/images/TBB-icon.png">
         <link rel="manifest" href="${assetPath}/images/site.webmanifest">
 
         <!-- Additional Meta Tags -->
@@ -80,29 +80,50 @@ function loadStylesheets(assetPath) {
 }
 
 // Navigation Component - Insert navigation HTML
-function insertNavigation(pageType = 'root', currentPage = '') {
+function insertNavigation(pageType = 'root') {
     // Determine the correct paths based on page type
     const homePath = pageType === 'blog' ? '../index.html' : 'index.html';
-    const logoPath = pageType === 'blog' ? '../assets/images/DFE-logoH.png' : 'assets/images/DFE-logoH.png';
-    const blogPath = pageType === 'blog' ? 'index.html' : 'blog/index.html';
-    
+    const logoPath = pageType === 'blog' ? '../assets/images/TBB-logos.png' : 'assets/images/TBB-logos.png';
+
     // Create navigation HTML
     const navigationHTML = `
         <header class="site-header">
+            <div class="header-left"></div>
             <div class="logo">
                 <a href="${homePath}">
                     <img src="${logoPath}" alt="Truth Behind Beauty Logo">
                 </a>
             </div>
-            <div class="header-spacer"></div>
-            <button class="hamburger-menu" aria-label="Open menu" onclick="toggleMobileMenu()">
-                <span class="hamburger-bar"></span>
-                <span class="hamburger-bar"></span>
-                <span class="hamburger-bar"></span>
-            </button>
+            <div class="header-right">
+                <button class="hamburger-menu" aria-label="Open menu" onclick="toggleMobileMenu()">
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                </button>
+            </div>
         </header>
+        <nav class="sub-nav">
+            <ul class="sub-nav__list">
+                <li><a href="#">Hot Takes</a></li>
+                <li><a href="#">Spotted</a></li>
+                <li><a href="#">Reviews</a></li>
+                <li><a href="#">Routines</a></li>
+            </ul>
+        </nav>
+        <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+            <button class="mobile-menu-close" onclick="toggleMobileMenu()">Close</button>
+            <nav class="mobile-menu-nav">
+                <ul>
+                    <li><a href="#">Hot Takes</a></li>
+                    <li><a href="#">Spotted</a></li>
+                    <li><a href="#">Reviews</a></li>
+                    <li><a href="#">Routines</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="mobile-menu-dim" id="mobileMenuDim" onclick="toggleMobileMenu()"></div>
     `;
-    
+
     // Insert navigation at the beginning of body
     document.body.insertAdjacentHTML('afterbegin', navigationHTML);
 }
@@ -169,7 +190,12 @@ function createImageComponent({ src, alt, caption }) {
 // Hamburger menu toggle
 function toggleMobileMenu() {
     const hamburger = document.querySelector('.hamburger-menu');
+    const overlay = document.getElementById('mobileMenuOverlay');
+    const dim = document.getElementById('mobileMenuDim');
     hamburger.classList.toggle('active');
+    overlay.classList.toggle('active');
+    dim.classList.toggle('active');
+    document.body.style.overflow = overlay.classList.contains('active') ? 'hidden' : '';
 }
 
 // Load components immediately when script loads (before DOM ready)
@@ -178,14 +204,6 @@ function toggleMobileMenu() {
     const isInSubdir = window.location.pathname.includes('/blog/') || window.location.pathname.includes('/pages/');
     const pageType = isInSubdir ? 'blog' : 'root';
     
-    // Determine current page for active state
-    let currentPage = '';
-    if (window.location.pathname.includes('/blog/') || window.location.pathname.includes('/pages/')) {
-        currentPage = 'blog';
-    } else if (window.location.pathname.includes('quiz.html')) {
-        currentPage = 'quiz';
-    }
-    
     // Insert head elements immediately
     insertHeadElements(pageType);
     
@@ -193,7 +211,7 @@ function toggleMobileMenu() {
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', function() {
             if (!document.querySelector('nav')) {
-                insertNavigation(pageType, currentPage);
+                insertNavigation(pageType);
             }
             if (!document.querySelector('footer')) {
                 insertFooter(pageType);
@@ -202,7 +220,7 @@ function toggleMobileMenu() {
     } else {
         // DOM already loaded
         if (!document.querySelector('nav')) {
-            insertNavigation(pageType, currentPage);
+            insertNavigation(pageType);
         }
         if (!document.querySelector('footer')) {
             insertFooter(pageType);

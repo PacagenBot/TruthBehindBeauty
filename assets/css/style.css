@@ -1,45 +1,61 @@
 /* Reset and base styles */
-* {
+@font-face {
+  font-family: "HolidayFree";
+  src: url("../images/HolidayFree.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+*{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-.search-icon {
-  display: none;
-}
 .site-header {
-  /* Grid makes centering dead simple and responsive */
   display: grid;
-  grid-template-columns: auto 1fr auto; /* logo | spacer | hamburger */
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  background: #fff;
+  padding: 0.2rem clamp(0.8rem, 3vw, 1.2rem);
+  min-height: clamp(40px, 6vw, 60px);
+  box-sizing: border-box;
+  border-bottom: 1px solid #000;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* Desktop: logo centered */
+.logo {
+  justify-self: center;
+}
+
+/* Right-side icon group */
+.header-right {
+  justify-self: end;
+  display: flex;
   align-items: center;
   gap: clamp(0.5rem, 2vw, 1rem);
-
-  background: #202020;
-  padding: clamp(0.4rem, 2vw, 0.8rem) clamp(0.8rem, 3vw, 1.2rem);
-  /* Let content define height instead of hard-coding */
-  min-height: clamp(56px, 10vw, 88px);
-  box-sizing: border-box;
 }
 
-/* Icons scale slightly with viewport */
-.menu-icon,
-.search-icon {
-  font-size: clamp(1.1rem, 3.5vw, 1.6rem);
-  cursor: pointer;
+/* Search button */
+.search-btn {
   background: none;
-  border: 0;
-  padding: 0;
-  line-height: 1;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  color: #000;
+  display: flex;
+  align-items: center;
 }
 
-/* Logo on the left */
-.logo {
-  justify-self: start;
+.search-btn svg {
+  width: clamp(18px, 4vw, 22px);
+  height: clamp(18px, 4vw, 22px);
 }
 
 /* Hamburger menu */
 .hamburger-menu {
-  justify-self: end;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -50,13 +66,46 @@
   padding: 6px;
 }
 
+/* Mobile: logo left, icons right */
+@media (max-width: 768px) {
+  .site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .header-left {
+    display: none;
+  }
+}
+
+/* 700px–350px: shrink icons by ~30% */
+@media (max-width: 700px) and (min-width: 350px) {
+  .search-btn svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .hamburger-bar {
+    width: 17px;
+    height: 2px;
+  }
+
+  .hamburger-menu {
+    gap: 3px;
+    padding: 4px;
+  }
+
+  .search-btn {
+    padding: 4px;
+  }
+}
+
 .hamburger-bar {
   display: block;
   width: 24px;
   height: 3px;
-  background-color: #fff;
-  border-radius: 2px;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  background-color: #000;
 }
 
 .hamburger-menu.active .hamburger-bar:nth-child(1) {
@@ -73,11 +122,60 @@
 
 /* Fluid logo height with a sensible min/max */
 .logo img {
-  height: clamp(36px, 12vw, 72px);
+  height: clamp(54px, 11.7vw, 78px);
   width: auto;
   display: block;
-  /* Prevent the logo from colliding with icons on very narrow screens */
-  max-width: min(60vw, 420px);
+}
+
+/* Secondary keyword nav bar */
+.sub-nav {
+  background: #fff;
+  border-bottom: 1px solid #000;
+  position: sticky;
+  top: calc(clamp(54px, 11.7vw, 78px) + 0.4rem);
+  z-index: 99;
+  width: 100%;
+  box-sizing: border-box;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sub-nav__list {
+  list-style: none;
+  margin: 0;
+  padding: 0.6rem 1rem;
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.sub-nav__list a {
+  text-decoration: none;
+  color: #000;
+  font-family: "Oswald", "Arial", sans-serif;
+  font-size: clamp(0.75rem, 1.8vw, 0.9rem);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: opacity 0.2s ease;
+}
+
+.sub-nav__list a:hover {
+  opacity: 0.55;
+}
+
+@media (max-width: 1500px) and (min-width: 1000px) {
+  .sub-nav__list {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 355px) and (min-width: 350px) {
+  .sub-nav__list a {
+    font-size: 10px;
+  }
 }
 
 body {
@@ -129,9 +227,6 @@ img {
 /* Header and navigation */
 header {
   background-color: #202020;
-  color: white;
-  padding: 1rem;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 nav {
@@ -184,9 +279,6 @@ nav a.active {
   height: 95px;
 }
 
-/* Main content */
-main {
-}
 
 .hero {
   text-align: center;
@@ -254,7 +346,7 @@ section p {
 section h3 {
   margin-bottom: 1rem;
   margin-top: 1rem;
-  border-bottom: 3px solid black;
+  border-bottom: 3px solid #aa1313;
   padding-bottom: 0.5rem;
 }
 
@@ -306,17 +398,95 @@ footer {
   }
 }
 
-/* Optional: tighten spacing on very small screens */
-@media (max-width: 400px) {
-  .site-header {
-    gap: 0.4rem;
-  }
+/* Mobile menu side panel */
+.mobile-menu-overlay {
+  display: block;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: min(420px, 80vw);
+  height: 100%;
+  background: #fff;
+  z-index: 300;
+  transition: right 0.3s ease;
+  overflow-y: auto;
+  padding: 2rem 0;
+  box-shadow: -4px 0 20px rgba(0,0,0,0.15);
+}
+
+.mobile-menu-overlay.active {
+  right: 0;
+}
+
+.mobile-menu-dim {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 299;
+}
+
+.mobile-menu-dim.active {
+  display: block;
+}
+
+.mobile-menu-close {
+  display: block;
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  font-family: "Oswald", "Arial", sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  color: #000;
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
+  padding: 0 2rem;
+}
+
+.mobile-menu-nav {
+  width: 100%;
+}
+
+.mobile-menu-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid #ddd;
+  display: block !important;
+  flex-direction: unset !important;
+  width: 100%;
+}
+
+.mobile-menu-nav li {
+  padding: 1.2rem 0;
+  border-bottom: 1px solid #ddd;
+  display: block !important;
+  width: 100%;
+  flex: unset !important;
+  text-align: center;
+}
+
+.mobile-menu-nav a {
+  text-decoration: none;
+  color: #000;
+  font-family: "Oswald", "Arial", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  transition: color 0.2s ease;
+}
+
+.mobile-menu-nav a:hover {
+  color: #aa1313;
 }
 
 /* Optional: give icons larger hit targets on touch devices */
 @media (hover: none) and (pointer: coarse) {
-  .menu-icon,
-  .search-icon {
+  .search-btn,
+  .hamburger-menu {
     padding: 0.25rem;
   }
 }
@@ -326,8 +496,11 @@ footer {
     background-color: #a1e2e2;
 }
 
-.quote-card {
-    width: 700px;
+.section-divider {
+  display: none !important;
+}
+
+.quote-card {    width: 700px;
     max-width: 90%;
     margin: 20px auto;
     height: auto;

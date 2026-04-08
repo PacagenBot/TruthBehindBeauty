@@ -47,10 +47,70 @@
 
 
         .card-img-top {
-        height: 300px;
+        aspect-ratio: 16/9;
         width: 100%;
         object-fit: cover;
         display: block;
+        }
+
+        main img:not(.no-grayscale) {
+          filter: grayscale(100%);
+          transition: filter 0.3s ease;
+        }
+
+        main img:not(.no-grayscale):hover,
+        main img:not(.no-grayscale):active,
+        main img:not(.no-grayscale).is-color {
+          filter: grayscale(0%);
+        }
+
+        @media (max-width: 991px) {
+          .tbb-truth-heading { font-size: 1.6rem; }
+          .tbb-tracking-text { font-size: 1.4rem !important; }
+          .tbb-list-title { font-size: 1rem; }
+          .tbb-list li { font-size: 0.7rem; }
+        }
+          }
+        }
+
+        .tbb-truth-wrapper {
+          position: relative;
+        }
+        .tbb-truth-heading {
+          font-family: 'Oswald', 'Arial', sans-serif;
+          font-size: 2rem;
+          font-weight: 700;
+          text-transform: uppercase;
+          line-height: 1.1;
+          margin-bottom: 1rem;
+        }
+        .tbb-list-title {
+          font-family: 'Oswald', 'Arial', sans-serif;
+          font-weight: 600;
+          text-transform: uppercase;
+          font-size: 1.2rem;
+          letter-spacing: 0.05em;
+          color: #aa1313;
+          margin-bottom: 0.5rem;
+        }
+        .tbb-list {
+          list-style: none;
+          padding-left: 0;
+          margin: 0;
+        }
+        .tbb-list li {
+          font-family: 'Times New Roman', Times, serif;
+          font-size: 1rem;
+          padding: 0.1rem 0;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+        }
+        .tbb-list li::before {
+          content: ">";
+          color: #aa1313;
+          font-weight: 700;
+          flex-shrink: 0;
         }
         .card {
             gap: 10px;
@@ -75,8 +135,46 @@
 <body>
     <main>
         <!-- Hero Section -->
-        <section style="background-image: url('assets/images/hero-image-2.jpg'); background-size: cover; background-position: center; min-height: 400px; display: flex; align-items: center; justify-content: center;">
-            <h1 style="font-family: 'Oswald', 'Arial', sans-serif; color: white; font-size: clamp(2rem, 6vw, 4rem); font-weight: 700; text-align: center; padding: 0 1rem;">Thrive Through the Power of Movement</h1>
+        <section style="background-image: url('assets/images/tbb-heroimage.png'); background-size: cover; background-position: top; height: 36.36vw;">
+        </section>
+
+        <!-- Truth Section -->
+        <section class="container-fluid" style="padding: clamp(2rem, 5vw, 4rem) clamp(4rem, 10vw, 10rem);">
+            <div class="row g-5 align-items-center">
+                <!-- TBB-truth: col-6 on mobile, col-4 on desktop -->
+                <div class="col-6 col-lg-5 order-2 order-lg-1">
+                    <div class="tbb-truth-wrapper">
+                        <img src="assets/images/TBB-truth.png" alt="Truth Behind Beauty" class="no-grayscale tbb-truth-img" style="width: 100%; display: block; object-fit: cover;">
+                    </div>
+                </div>
+                <!-- TBB-truth2: col-6 on mobile only, hidden on desktop -->
+                <div class="col-6 d-lg-none order-3">
+                    <img src="assets/images/TBB-truth2.png" alt="Truth Behind Beauty 2" class="no-grayscale" style="width: 100%; display: block; object-fit: cover;">
+                </div>
+                <!-- Copy: col-12 on mobile, col-8 on desktop -->
+                <div class="col-12 col-lg-6 order-1 order-lg-2">
+                    <h2 class="tbb-truth-heading">We Are Calling Out <span style="color:#aa1313; font-family:'HolidayFree','Arial',sans-serif; text-transform:none;">beauty bullshit</span></h2>
+                    <p class="tbb-tracking-text" style="font-family:'Oswald','Arial',sans-serif; font-size:1.6rem; color:#444; margin-bottom:1.5rem;">We're tracking what brands say vs what actually happens.</p>
+                    <div class="row g-3">
+                        <div class="col-6">
+                            <p class="tbb-list-title">We're exposing:</p>
+                            <ul class="tbb-list">
+                                <li>Overhyped products</li>
+                                <li>Misleading claims</li>
+                                <li>Paid "honest" reviews</li>
+                            </ul>
+                        </div>
+                        <div class="col-6">
+                            <p class="tbb-list-title">We're watching:</p>
+                            <ul class="tbb-list">
+                                <li>Viral trends</li>
+                                <li>Influencer marketing</li>
+                                <li>Industry narratives</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <div class="container">
@@ -85,7 +183,7 @@
             <section class="mx-auto my-5">
                 <div>
                   <h2 style="font-size: clamp(1.3rem, 3.5vw, 1.8rem); font-weight: 700; margin-bottom: 0.5rem;">Latest Articles</h2>
-                  <div style="width: 60px; height: 3px; background-color: #e8833a;"></div>
+                  <div style="width: 60px; height: 3px; background-color: #aa1313;"></div>
                 </div>
 
                 <!-- Featured Articles Layout -->                <div class="row mt-4 g-3">
@@ -110,9 +208,9 @@
                             <!-- Sidebar Article 1 -->
                             <article style="position: relative;">
                                 <a href="pages/7-exercises-that-actually-work.html">
-                                    <img src="assets/images/7-easiest.png" alt="7 Easiest and Most Effective Exercises" class="img-fluid rounded-3 mb-2" style="width: 100%; height: 200px; object-fit: cover;">
+                                    <img src="assets/images/7-easiest.png" alt="7 Easiest and Most Effective Exercises" class="img-fluid rounded-3 mb-2" style="width: 100%; aspect-ratio: 17/10; object-fit: cover;">
                                 </a>
-                                <div class="cat-tag text-white" style="background-color: #e8833a;">Fitness</div>
+                                <div class="cat-tag text-white" style="background-color: #aa1313;">Fitness</div>
                                 <h4 style="font-size: clamp(0.9rem, 2vw, 1.05rem); font-weight: 600; line-height: 1.3; margin-bottom: 0.25rem;">
                                     <a href="pages/7-exercises-that-actually-work.html" class="text-decoration-none text-dark">
                                         7 Easiest and Most Effective Exercises That Actually Work — According to Trainers
@@ -123,7 +221,7 @@
                             <!-- Sidebar Article 2 -->
                             <article style="position: relative;">
                                 <a href="pages/how-gym-changes-your-body-and-mind.html">
-                                    <img src="assets/images/gym-change-your-mind.png" alt="How Going to the Gym Actually Changes Your Body and Mind" class="img-fluid rounded-3 mb-2" style="width: 100%; height: 200px; object-fit: cover;">
+                                    <img src="assets/images/gym-change-your-mind.png" alt="How Going to the Gym Actually Changes Your Body and Mind" class="img-fluid rounded-3 mb-2" style="width: 100%; aspect-ratio: 17/10; object-fit: cover;">
                                 </a>
                                 <div class="cat-tag text-white" style="background-color: #d89d82;">Health</div>
                                 <h4 style="font-size: clamp(0.9rem, 2vw, 1.05rem); font-weight: 600; line-height: 1.3; margin-bottom: 0.25rem;">
@@ -164,7 +262,7 @@
                         <a href="#">
                             <img src="assets/images/gym-girls.jpg" class="card-img-top" alt="5 Morning Stretches That Will Transform Your Day">
                         </a>
-                        <div class="cat-tag text-white" style="background-color: #e8833a;">Fitness</div>
+                        <div class="cat-tag text-white" style="background-color: #aa1313;">Fitness</div>
                       <div class="card-body">
                         <a href="#" class="text-decoration-none text-dark">
                             <p class="card-text">
@@ -181,7 +279,7 @@
                         <a href="#">
                             <img src="assets/images/happy-young-woman.jpg" class="card-img-top" alt="The New Rules of Muscle Building">
                         </a>
-                      <div class="cat-tag text-white" style="background-color: #4db6e8;">Lifestyle</div>
+                      <div class="cat-tag text-white" style="background-color: #c57777;">Lifestyle</div>
                       <div class="card-body">
                         <a href="#" class="text-decoration-none text-dark">
                             <p class="card-text">
@@ -198,7 +296,7 @@
                         <a href="pages/dust-mite-allergy-bedding.html">
                             <img src="assets/images/3month-hero.png" class="card-img-top" alt="My 3-Month Gym Journey">
                         </a>
-                      <div class="cat-tag text-white" style="background-color: #e8833a;">Fitness</div>
+                      <div class="cat-tag text-white" style="background-color: #aa1313;">Fitness</div>
                       <div class="card-body">
                         <a href="pages/dust-mite-allergy-bedding.html" class="text-decoration-none text-dark">
                             <p class="card-text">
@@ -264,5 +362,12 @@
               </section>
             </div>
     </main>
+    <script>
+        document.querySelectorAll('main img').forEach(function(img) {
+            img.addEventListener('click', function() {
+                this.classList.toggle('is-color');
+            });
+        });
+    </script>
 </body>
 </html>
