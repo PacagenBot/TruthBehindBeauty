@@ -506,3 +506,14 @@ footer {
     height: auto;
     background-color: #c0d3c9;
   }
+
+/* Article page width */
+.w-60 {
+  width: 60% !important;
+}
+
+@media (max-width: 576px) {
+  .w-60 {
+    width: 90% !important;
+  }
+}
