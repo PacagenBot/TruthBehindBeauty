@@ -131,28 +131,59 @@ function insertNavigation(pageType = 'root') {
 
 // Footer Component - Insert footer HTML
 function insertFooter(pageType = 'root') {
-    // Determine the correct paths based on page type
     const privacyPath = pageType === 'blog' ? '../privacy-policy.html' : 'privacy-policy.html';
     const termsPath = pageType === 'blog' ? '../terms-of-service.html' : 'terms-of-service.html';
-    
-    // Create footer HTML
+    const homePath = pageType === 'blog' ? '../index.html' : 'index.html';
+
     const footerHTML = `
-        <footer>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <p>&copy; 2026 Truth Behind Beauty. All rights reserved.</p>
-                        <p>
-                            <a href="${privacyPath}">Privacy Policy</a> | 
-                            <a href="${termsPath}">Terms of Service</a>
-                        </p>
+        <footer class="tbb-footer">
+            <div class="tbb-footer-main">
+                <div class="row g-0 justify-content-lg-center">
+                    <!-- Keep in touch -->
+                    <div class="col-12 col-lg-3 tbb-footer-col tbb-footer-keep-touch order-4 order-lg-1">
+                        <p class="tbb-footer-kit">Keep in touch</p>
+                        <div class="tbb-footer-social-icons">
+                            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="tbb-footer-social-link" aria-label="Instagram">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                    <circle cx="12" cy="12" r="4"/>
+                                    <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/>
+                                </svg>
+                            </a>
+                            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="tbb-footer-social-link" aria-label="Facebook">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Nav links -->
+                    <div class="col-12 col-lg-3 tbb-footer-col tbb-footer-nav-col order-3 order-lg-2">
+                        <ul class="tbb-footer-nav">
+                            <li><a href="#">HOT TAKES</a></li>
+                            <li><a href="#">SPOTTED</a></li>
+                            <li><a href="#">REVIEWS</a></li>
+                            <li><a href="#">ROUTINES</a></li>
+                            <li><a href="${homePath}">HOME</a></li>
+                        </ul>
+                    </div>
+                    <!-- Newsletter -->
+                    <div class="col-12 col-lg-4 tbb-footer-col tbb-footer-newsletter-col order-1 order-lg-3">
+                        <p class="tbb-footer-newsletter-heading"><em>Subscribe To Our</em> <strong>NEWSLETTER</strong></p>
+                        <form class="tbb-footer-form" onsubmit="return false;">
+                            <input type="email" placeholder="someone@gmail.com" aria-label="Email address">
+                            <button type="submit" aria-label="Subscribe">&#8594;</button>
+                        </form>
+                        <p class="tbb-footer-disclaimer">By clicking signing up, you agree to receive emails from Truth Behind Beauty and accept our web terms of use and privacy and cookie policy.</p>
                     </div>
                 </div>
             </div>
+            <div class="tbb-footer-bottom">
+                <p>&copy; 2026 Truth Behind Beauty. All rights reserved. | <a href="${termsPath}">Terms of Service</a> and <a href="${privacyPath}">Privacy Policy</a>.</p>
+            </div>
         </footer>
     `;
-    
-    // Insert footer at the end of body
+
     document.body.insertAdjacentHTML('beforeend', footerHTML);
 }
 
