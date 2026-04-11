@@ -28,40 +28,22 @@
           position: absolute;
           top: 0.75rem;
           left: 0.75rem;
-          background-color: var(--bs-success, #198754); /* fallback if Bootstrap vars missing */
           color: white;
+          font-family: 'Oswald', 'Arial', sans-serif;
           font-weight: 600;
-          border-radius: 0.75rem;
-          padding: 0.25rem 0.75rem;
-          font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+          border-radius: 999px;
+          padding: 0.2rem 0.65rem;
+          font-size: 0.72rem;
+          letter-spacing: 0.04em;
           z-index: 2;
-          box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-          transition: transform 0.2s ease, box-shadow 0.2s ease;
+          white-space: nowrap;
         }
-
-        /* Optional: add a bit of motion when hovering */
-        .card:hover .cat-tag {
-          transform: translateY(-2px);
-          box-shadow: 0 4px 8px rgba(0,0,0,0.25);
-        }
-
 
         .card-img-top {
         aspect-ratio: 16/9;
         width: 100%;
         object-fit: cover;
         display: block;
-        }
-
-        main img:not(.no-grayscale) {
-          filter: grayscale(100%);
-          transition: filter 0.3s ease;
-        }
-
-        main img:not(.no-grayscale):hover,
-        main img:not(.no-grayscale):active,
-        main img:not(.no-grayscale).is-color {
-          filter: grayscale(0%);
         }
 
         @media (max-width: 991px) {
@@ -193,7 +175,7 @@
                             <a href="pages/5-solutions-brain-fog-think-clearly.html">
                                 <img src="assets/images/ClinicalProven.png" alt="We Tested 5 Clinically Proven Vitamin C Serums" class="img-fluid rounded-3 mb-3" style="width: 100%; height: auto;">
                             </a>
-                            <div class="cat-tag text-white" style="background-color: #c62828;">Editor's Pick</div>
+                            <div class="cat-tag text-white" style="background-color: #1a5276;">Reviews</div>
                             <h3 style="font-size: clamp(1.2rem, 3vw, 1.8rem); font-weight: 700; line-height: 1.3; margin-bottom: 0.75rem;">
                                 <a href="pages/5-solutions-brain-fog-think-clearly.html" class="text-decoration-none text-dark">
                                     We Tested 5 "Clinically Proven" Vitamin C Serums — One Is 95% Water, One Charges $140 For a $12 Formula
@@ -207,27 +189,19 @@
                         <div class="d-flex flex-column gap-4">
                             <!-- Sidebar Article 1 -->
                             <article style="position: relative;">
-                                <a href="pages/7-exercises-that-actually-work.html">
-                                    <img src="assets/images/7-easiest.png" alt="7 Easiest and Most Effective Exercises" class="img-fluid rounded-3 mb-2" style="width: 100%; aspect-ratio: 17/10; object-fit: cover;">
-                                </a>
-                                <div class="cat-tag text-white" style="background-color: #aa1313;">Fitness</div>
+                                <img src="assets/images/tbb-hairoil.png" alt="Viral Hair Oils Tested" class="img-fluid rounded-3 mb-2 no-grayscale" style="width: 100%; aspect-ratio: 17/10; object-fit: cover;">
+                                <div class="cat-tag text-white" style="background-color: #333;">Spotted</div>
                                 <h4 style="font-size: clamp(0.9rem, 2vw, 1.05rem); font-weight: 600; line-height: 1.3; margin-bottom: 0.25rem;">
-                                    <a href="pages/7-exercises-that-actually-work.html" class="text-decoration-none text-dark">
-                                        7 Easiest and Most Effective Exercises That Actually Work — According to Trainers
-                                    </a>
+                                    We Tested 3 Viral Hair Oils — Most Are 90% Silicone With a Pretty Label
                                 </h4>
                             </article>
 
                             <!-- Sidebar Article 2 -->
                             <article style="position: relative;">
-                                <a href="pages/how-gym-changes-your-body-and-mind.html">
-                                    <img src="assets/images/gym-change-your-mind.png" alt="How Going to the Gym Actually Changes Your Body and Mind" class="img-fluid rounded-3 mb-2" style="width: 100%; aspect-ratio: 17/10; object-fit: cover;">
-                                </a>
-                                <div class="cat-tag text-white" style="background-color: #d89d82;">Health</div>
+                                <img src="assets/images/tbb-foundation.png" alt="Foundation Claims vs Reality" class="img-fluid rounded-3 mb-2 no-grayscale" style="width: 100%; aspect-ratio: 17/10; object-fit: cover;">
+                                <div class="cat-tag text-white" style="background-color: #c62828;">Hot Takes</div>
                                 <h4 style="font-size: clamp(0.9rem, 2vw, 1.05rem); font-weight: 600; line-height: 1.3; margin-bottom: 0.25rem;">
-                                    <a href="pages/how-gym-changes-your-body-and-mind.html" class="text-decoration-none text-dark">
-                                        How Going to the Gym Actually Changes Your Body and Mind
-                                    </a>
+                                    "Long-Lasting" Foundation Claims vs. Reality: We Wore 5 Formulas for 12 Hours
                                 </h4>
                             </article>
                         </div>
@@ -276,50 +250,42 @@
                         <p class="tbb-community-source">Viral Trends We're Watching &rarr;</p>
                     </div>
                 </div>
+                <p class="tbb-trending-hint d-lg-none" style="color:rgba(255,255,255,0.7);">scroll for more &#8594;</p>
             </section>
-
-            <!-- Trending Now Section -->
             <section class="tbb-trending-section">
                 <div class="tbb-trending-badge-wrap">
                     <img src="assets/images/trendingnow.png" alt="Trending Now" class="tbb-trending-badge no-grayscale">
                 </div>
                 <div class="tbb-trending-inner">
                     <div class="tbb-trending-scroll">
-                        <a href="pages/5-solutions-brain-fog-think-clearly.html" class="tbb-trending-card">
-                            <img src="assets/images/ClinicalProven.png" alt="Vitamin C Serums Tested">
+                        <div class="tbb-trending-card">
+                            <img src="assets/images/tbb-dermatologist.png" alt="Hot Takes">
                             <div class="tbb-trending-card-text">
-                                <span class="tbb-trending-tag" style="background-color:#c62828">Editor's Pick</span>
-                                <p>We Tested 5 "Clinically Proven" Serums — One Is 95% Water, One Charges $140 For a $12 Formula</p>
+                                <span class="tbb-trending-tag" style="background-color:#c62828">Hot Takes</span>
+                                <p>'Dermatologist-Approved' Means Nothing — Here's the Loophole Brands Are Exploiting</p>
                             </div>
-                        </a>
-                        <a href="pages/7-exercises-that-actually-work.html" class="tbb-trending-card">
-                            <img src="assets/images/7-easiest.png" alt="7 Exercises">
+                        </div>
+                        <div class="tbb-trending-card">
+                            <img src="assets/images/tbb-influencer.png" alt="Spotted">
                             <div class="tbb-trending-card-text">
-                                <span class="tbb-trending-tag" style="background-color:#aa1313">Fitness</span>
-                                <p>7 Brutally Simple Exercises That Actually Work — Trainers Won't Tell You This</p>
+                                <span class="tbb-trending-tag" style="background-color:#333">Spotted</span>
+                                <p>We Spotted 9 Influencers Posting the Same Serum Caption. Not One Said #Ad.</p>
                             </div>
-                        </a>
-                        <a href="pages/5-things-help-me-get-my-strength-back.html" class="tbb-trending-card">
-                            <img src="assets/images/TPB-33-1.png" alt="Strength">
+                        </div>
+                        <div class="tbb-trending-card">
+                            <img src="assets/images/ClinicalProven.png" alt="Reviews">
                             <div class="tbb-trending-card-text">
-                                <span class="tbb-trending-tag" style="background-color:#c62828">Editor's Pick</span>
-                                <p>My Shoulder Press Collapsed — These 5 Things Brought My Strength Back</p>
+                                <span class="tbb-trending-tag" style="background-color:#1a5276">Reviews</span>
+                                <p>We Tested 5 "Clinically Proven" Vitamin C Serums — One Is 95% Water</p>
                             </div>
-                        </a>
-                        <a href="pages/what-i-eat-3-food-recommendations.html" class="tbb-trending-card">
-                            <img src="assets/images/food-hero.png" alt="Food">
+                        </div>
+                        <div class="tbb-trending-card">
+                            <img src="assets/images/tbb-3step.png" alt="Routines">
                             <div class="tbb-trending-card-text">
-                                <span class="tbb-trending-tag" style="background-color:#d89d82">Health</span>
-                                <p>What I Actually Eat: 3 Foods That Quietly Changed My Energy Levels</p>
+                                <span class="tbb-trending-tag" style="background-color:#6e5c2e">Routines</span>
+                                <p>The 3-Step Skincare Routine Dermatologists Actually Use — Not What They Sell You</p>
                             </div>
-                        </a>
-                        <a href="pages/how-gym-changes-your-body-and-mind.html" class="tbb-trending-card">
-                            <img src="assets/images/gym-change-your-mind.png" alt="Gym">
-                            <div class="tbb-trending-card-text">
-                                <span class="tbb-trending-tag" style="background-color:#d89d82">Health</span>
-                                <p>How Going to the Gym Is Rewiring Your Brain — Not Just Your Body</p>
-                            </div>
-                        </a>
+                        </div>
                     </div>
                     <p class="tbb-trending-hint d-lg-none">scroll for more &#8594;</p>
                 </div>
@@ -331,123 +297,43 @@
                     <h2 style="font-family:'Oswald','Arial',sans-serif; font-size:clamp(1.3rem,3.5vw,1.8rem); font-weight:700; text-transform:uppercase; margin-bottom:0.5rem;">More Articles</h2>
                     <div style="width:60px; height:3px; background-color:#aa1313;"></div>
                 </div>
-                <div class="row row-cols-2 g-3">
+                <div class="row row-cols-1 row-cols-md-3 g-3">
 
-                  <!-- Slot 1 -->
+                  <!-- Skincare -->
                   <div class="col">
                     <div class="card h-100 border-0">
-                        <a href="pages/4-products-changed-everything.html">
-                            <img src="assets/images/4-products-hero.png" class="card-img-top" alt="I'm A Busy Woman Who Wants To Stay Healthy — These 4 Products Changed My Fitness Game">
-                        </a>
-                      <div class="cat-tag text-white" style="background-color: #d89d82;">Health</div>
+                        <img src="assets/images/tbb-Moisturizer.png" class="card-img-top no-grayscale" alt="Skincare" style="aspect-ratio: 85/54; object-fit: cover;">
+                        <div class="cat-tag text-white" style="background-color: #6e5c2e;">Routines</div>
                       <div class="card-body">
-                        <a href="pages/4-products-changed-everything.html" class="text-decoration-none text-dark">
-                            <p class="card-text">
-                                I'm A Busy Woman Who Wants To Stay Healthy — These 4 Products Changed My Fitness Game
-                            </p>
-                        </a>
+                        <p class="card-text">
+                            Your Moisturizer Might Be Causing Breakouts — We Break Down 4 Common Formula Culprits
+                        </p>
                       </div>
                     </div>
                   </div>
 
-                  <!-- Slot 2 -->
+                  <!-- Hair -->
                   <div class="col">
                     <div class="card h-100 border-0">
-                        <a href="#">
-                            <img src="assets/images/gym-girls.jpg" class="card-img-top" alt="5 Morning Stretches That Will Transform Your Day">
-                        </a>
-                        <div class="cat-tag text-white" style="background-color: #aa1313;">Fitness</div>
+                        <img src="assets/images/tbb-shampoo.png" class="card-img-top no-grayscale" alt="Hair Care" style="aspect-ratio: 85/54; object-fit: cover;">
+                        <div class="cat-tag text-white" style="background-color: #1a5276;">Reviews</div>
                       <div class="card-body">
-                        <a href="#" class="text-decoration-none text-dark">
-                            <p class="card-text">
-                              5 Morning Stretches That Will Transform Your Day
-                            </p>
-                        </a>
+                        <p class="card-text">
+                            The "Strengthening" Shampoo Ingredients That Are Actually Drying Your Hair Out
+                        </p>
                       </div>
                     </div>
                   </div>
 
-                  <!-- Slot 3 -->
+                  <!-- Makeup -->
                   <div class="col">
                     <div class="card h-100 border-0">
-                        <a href="#">
-                            <img src="assets/images/happy-young-woman.jpg" class="card-img-top" alt="The New Rules of Muscle Building">
-                        </a>
-                      <div class="cat-tag text-white" style="background-color: #c57777;">Lifestyle</div>
+                        <img src="assets/images/tbb-spf.png" class="card-img-top no-grayscale" alt="Makeup" style="aspect-ratio: 85/54; object-fit: cover;">
+                        <div class="cat-tag text-white" style="background-color: #c62828;">Hot Takes</div>
                       <div class="card-body">
-                        <a href="#" class="text-decoration-none text-dark">
-                            <p class="card-text">
-                              The New Rules of Muscle Building
-                            </p>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Slot 4 -->
-                  <div class="col">
-                    <div class="card h-100 border-0">
-                        <a href="pages/dust-mite-allergy-bedding.html">
-                            <img src="assets/images/3month-hero.png" class="card-img-top" alt="My 3-Month Gym Journey">
-                        </a>
-                      <div class="cat-tag text-white" style="background-color: #aa1313;">Fitness</div>
-                      <div class="card-body">
-                        <a href="pages/dust-mite-allergy-bedding.html" class="text-decoration-none text-dark">
-                            <p class="card-text">
-                              My 3-Month Gym Journey: How Showing Up Every Day Changed Everything
-                            </p>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Slot 5 -->
-                  <div class="col">
-                    <div class="card h-100 border-0">
-                        <a href="pages/what-i-eat-3-food-recommendations.html">
-                            <img src="assets/images/food-hero.png" class="card-img-top" alt="What I Eat: 3 Food Recommendations That Changed My Energy and Health">
-                        </a>
-                      <div class="cat-tag text-white" style="background-color: #d89d82;">Health</div>
-                      <div class="card-body">
-                        <a href="pages/what-i-eat-3-food-recommendations.html" class="text-decoration-none text-dark">
-                            <p class="card-text">
-                              What I Eat: 3 Food Recommendations That Changed My Energy and Health
-                            </p>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Slot 6 -->
-                  <div class="col">
-                    <div class="card h-100 border-0">
-                        <a href="#">
-                            <img src="assets/images/young-smiling-woman.jpg" class="card-img-top" alt="These Are The Exercises Every Woman Needs In Her 30s, 40s, And 60s">
-                        </a>
-                      <div class="cat-tag text-white" style="background-color: #d89d82;">Health</div>
-                      <div class="card-body">
-                        <a href="#" class="text-decoration-none text-dark">
-                            <p class="card-text">
-                              These Are The Exercises Every Woman Needs In Her 30s, 40s, And 60s — And The Benefits Go Beyond Muscle
-                            </p>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Slot 7 -->
-                  <div class="col">
-                    <div class="card h-100 border-0">
-                        <a href="pages/5-things-help-me-get-my-strength-back.html">
-                            <img src="assets/images/TPB-33-1.png" class="card-img-top" alt="My Shoulder Press Dropped From 33s to 22s — These 5 Things Helped Me Get My Strength Back">
-                        </a>
-                      <div class="cat-tag text-white" style="background-color: #c62828;">Editor's Pick</div>
-                      <div class="card-body">
-                        <a href="pages/5-things-help-me-get-my-strength-back.html" class="text-decoration-none text-dark">
-                            <p class="card-text">
-                              My Shoulder Press Dropped From 33s to 22s — These 5 Things Helped Me Get My Strength Back
-                            </p>
-                        </a>
+                        <p class="card-text">
+                            SPF in Foundation Doesn't Protect Your Skin the Way Brands Are Telling You It Does
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -457,12 +343,5 @@
             </div>
 
     </main>
-    <script>
-        document.querySelectorAll('main img').forEach(function(img) {
-            img.addEventListener('click', function() {
-                this.classList.toggle('is-color');
-            });
-        });
-    </script>
 </body>
 </html>
