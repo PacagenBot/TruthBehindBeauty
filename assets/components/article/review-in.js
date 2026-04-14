@@ -16,6 +16,7 @@
             '.review-in-text {',
             '    font-weight: bold;',
             '    font-size: 1rem;',
+            
             '    line-height: 1.65;',
             '    margin: 0 0 8px;',
             '    font-family: "Times New Roman", Times, serif;',
