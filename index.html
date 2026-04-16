@@ -21,6 +21,8 @@
     
     <!-- Load main JavaScript -->
     <script src="assets/js/main.js" defer></script>
+    <script src="assets/components/ads/ad-white.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
     <style>
         .w-60 { width: 60% !important; }
 
@@ -110,6 +112,70 @@
             .w-60 {
                 width: 100% !important;
             }
+        }
+
+        /* Ad White */
+        .ad-white-section {
+          display: block;
+          background: #fff;
+          border: 1px solid #e8e8e8;
+          overflow: hidden;
+          position: relative;
+          text-decoration: none;
+          color: inherit;
+          margin: 2rem auto;
+          width: 70%;
+        }
+        .ad-white-section .row {
+          min-height: 180px;
+        }
+        .ad-white-section .ad-white-img {
+          display: block;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+        .ad-white-content {
+          padding: 2.5rem 3rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          gap: 1rem;
+        }
+        .ad-white-tagline {
+          font-family: 'Playfair Display', serif;
+          font-size: clamp(1rem, 2.5vw, 1.4rem);
+          font-weight: 600;
+          line-height: 1.3;
+          color: #222;
+          margin: 0;
+        }
+        .ad-white-cta {
+          display: inline-block;
+          background: #aa1313;
+          color: #fff;
+          font-family: 'DM Sans', sans-serif;
+          font-weight: 600;
+          font-size: 0.85rem;
+          letter-spacing: 0.05em;
+          text-transform: uppercase;
+          padding: 0.45rem 1.2rem;
+          border-radius: 2px;
+        }
+        .ad-white-section .ad-label {
+          position: absolute;
+          bottom: 0.35rem;
+          right: 0.5rem;
+          font-size: 0.62rem;
+          color: #aaa;
+          font-family: Arial, sans-serif;
+        }
+        @media (max-width: 576px) {
+          .ad-white-section { width: 100%; }
+          .ad-white-section .row { min-height: unset; flex-direction: column; }
+          .ad-white-section .col-7,
+          .ad-white-section .col-5 { width: 100%; max-width: 100%; flex: 0 0 100%; }
+          .ad-white-content { padding: 1rem 1.25rem; }
         }
 
     </style>
@@ -252,6 +318,24 @@
                 </div>
                 <p class="tbb-trending-hint d-lg-none" style="color:rgba(255,255,255,0.7);">scroll for more &#8594;</p>
             </section>
+
+            <!-- Ad White -->
+            <div id="ad-white-placeholder"></div>
+            <script>
+              document.addEventListener('DOMContentLoaded', function() {
+                var el = document.getElementById('ad-white-placeholder');
+                if (el && typeof createAdWhite === 'function') {
+                  el.innerHTML = createAdWhite({
+                    image: 'warby-parker.png',
+                    tagline: 'Try 5 frames at home, free.',
+                    ctaText: 'Shop Now',
+                    ctaUrl: 'https://www.warbyparker.com',
+                    pageType: 'root'
+                  });
+                }
+              });
+            </script>
+
             <section class="tbb-trending-section">
                 <div class="tbb-trending-badge-wrap">
                     <img src="assets/images/trendingnow.png" alt="Trending Now" class="tbb-trending-badge no-grayscale">
