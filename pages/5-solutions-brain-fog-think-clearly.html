@@ -693,7 +693,8 @@
       <!-- You Might Also Like -->
       <div style="border-top: 2px solid #eee; margin-top: 3rem; padding-top: 2rem;">
         <h2 style="font-family:'Oswald','Arial',sans-serif; font-size:2rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:1.5rem; color:#111;">You Might Also Like</h2>
-        <div style="display:grid; grid-template-columns: repeat(3,1fr); gap:1.5rem;">
+        <style>.blog-rec-inline{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}@media(max-width:768px){.blog-rec-inline{grid-template-columns:1fr;}}</style>
+        <div class="blog-rec-inline">
 
           <!-- Article 1 -->
           <div style="position:relative;">

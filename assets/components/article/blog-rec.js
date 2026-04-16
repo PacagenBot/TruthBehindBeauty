@@ -51,7 +51,7 @@
             .blog-rec-item:hover .blog-rec-title {
                 text-decoration: underline;
             }
-            @media (max-width: 576px) {
+            @media (max-width: 768px) {
                 .blog-rec-grid {
                     grid-template-columns: 1fr;
                 }
