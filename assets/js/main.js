@@ -84,6 +84,10 @@ function insertNavigation(pageType = 'root') {
     // Determine the correct paths based on page type
     const homePath = pageType === 'blog' ? '../index.html' : 'index.html';
     const logoPath = pageType === 'blog' ? '../assets/images/TBB-logos.png' : 'assets/images/TBB-logos.png';
+    const hotTakesPath = pageType === 'blog' ? 'hot-takes.html' : 'pages/hot-takes.html';
+    const spottedPath  = pageType === 'blog' ? 'spotted.html'   : 'pages/spotted.html';
+    const reviewsPath  = pageType === 'blog' ? 'reviews.html'   : 'pages/reviews.html';
+    const routinesPath = pageType === 'blog' ? 'routines.html'  : 'pages/routines.html';
 
     // Create navigation HTML
     const navigationHTML = `
@@ -104,20 +108,20 @@ function insertNavigation(pageType = 'root') {
         </header>
         <nav class="sub-nav">
             <ul class="sub-nav__list">
-                <li><a href="#">Hot Takes</a></li>
-                <li><a href="#">Spotted</a></li>
-                <li><a href="#">Reviews</a></li>
-                <li><a href="#">Routines</a></li>
+                <li><a href="${hotTakesPath}">Hot Takes</a></li>
+                <li><a href="${spottedPath}">Spotted</a></li>
+                <li><a href="${reviewsPath}">Reviews</a></li>
+                <li><a href="${routinesPath}">Routines</a></li>
             </ul>
         </nav>
         <div class="mobile-menu-overlay" id="mobileMenuOverlay">
             <button class="mobile-menu-close" onclick="toggleMobileMenu()">Close</button>
             <nav class="mobile-menu-nav">
                 <ul>
-                    <li><a href="#">Hot Takes</a></li>
-                    <li><a href="#">Spotted</a></li>
-                    <li><a href="#">Reviews</a></li>
-                    <li><a href="#">Routines</a></li>
+                    <li><a href="${hotTakesPath}">Hot Takes</a></li>
+                    <li><a href="${spottedPath}">Spotted</a></li>
+                    <li><a href="${reviewsPath}">Reviews</a></li>
+                    <li><a href="${routinesPath}">Routines</a></li>
                 </ul>
             </nav>
         </div>
@@ -134,6 +138,10 @@ function insertFooter(pageType = 'root') {
     const privacyPath = pageType === 'blog' ? '../privacy-policy.html' : 'privacy-policy.html';
     const termsPath = pageType === 'blog' ? '../terms-of-service.html' : 'terms-of-service.html';
     const homePath = pageType === 'blog' ? '../index.html' : 'index.html';
+    const hotTakesPath = pageType === 'blog' ? 'hot-takes.html' : 'pages/hot-takes.html';
+    const spottedPath  = pageType === 'blog' ? 'spotted.html'   : 'pages/spotted.html';
+    const reviewsPath  = pageType === 'blog' ? 'reviews.html'   : 'pages/reviews.html';
+    const routinesPath = pageType === 'blog' ? 'routines.html'  : 'pages/routines.html';
 
     const footerHTML = `
         <footer class="tbb-footer">
@@ -160,10 +168,10 @@ function insertFooter(pageType = 'root') {
                     <!-- Nav links -->
                     <div class="col-12 col-lg-3 tbb-footer-col tbb-footer-nav-col order-3 order-lg-2">
                         <ul class="tbb-footer-nav">
-                            <li><a href="#">HOT TAKES</a></li>
-                            <li><a href="#">SPOTTED</a></li>
-                            <li><a href="#">REVIEWS</a></li>
-                            <li><a href="#">ROUTINES</a></li>
+                            <li><a href="${hotTakesPath}">HOT TAKES</a></li>
+                            <li><a href="${spottedPath}">SPOTTED</a></li>
+                            <li><a href="${reviewsPath}">REVIEWS</a></li>
+                            <li><a href="${routinesPath}">ROUTINES</a></li>
                             <li><a href="${homePath}">HOME</a></li>
                         </ul>
                     </div>

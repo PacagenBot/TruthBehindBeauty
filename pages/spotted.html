@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Truth Behind Beauty — Spotted. We catch beauty brands in the act — misleading ads, undisclosed sponsorships, and influencer tactics you need to know about." />
+  <title>Spotted | Truth Behind Beauty</title>
+
+  <style>
+    body { visibility: hidden; opacity: 0; transition: opacity 0.3s ease; }
+    .no-js body { visibility: visible; opacity: 1; }
+
+    .category-hero {
+      background-color: #333;
+      padding: 3rem 1.5rem 2.5rem;
+      text-align: center;
+      color: #fff;
+    }
+    .category-hero .category-label {
+      font-family: 'Oswald', 'Arial', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.8;
+      margin-bottom: 0.5rem;
+    }
+    .category-hero h1 {
+      font-family: 'Oswald', 'Arial', sans-serif;
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin: 0 0 0.75rem;
+    }
+    .category-hero p {
+      font-family: Georgia, serif;
+      font-size: clamp(0.95rem, 2vw, 1.1rem);
+      opacity: 0.9;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .article-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    @media (max-width: 768px) {
+      .article-grid { grid-template-columns: 1fr; }
+    }
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .article-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .article-card {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .article-card-img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      border-radius: 6px;
+      margin-bottom: 0.75rem;
+    }
+    .article-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .article-card .tag {
+      display: inline-block;
+      background: #333;
+      color: #fff;
+      font-family: 'Oswald', 'Arial', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.5rem;
+    }
+    .article-card h2 {
+      font-family: 'Oswald', 'Arial', sans-serif;
+      font-size: clamp(0.95rem, 2vw, 1.1rem);
+      font-weight: 600;
+      line-height: 1.35;
+      margin: 0;
+      color: #111;
+    }
+    .article-card:hover h2 { text-decoration: underline; }
+  </style>
+
+  <script>document.documentElement.className += ' js';</script>
+  <script src="../assets/js/main.js" defer></script>
+  <script src="../assets/components/article/newsletter.js" defer></script>
+</head>
+<body>
+  <div class="category-hero">
+    <p class="category-label">Category</p>
+    <h1>Spotted</h1>
+    <p>We catch beauty brands in the act — misleading ads, undisclosed sponsorships, and influencer tactics you need to know about.</p>
+  </div>
+
+  <div class="container my-5">
+    <div class="article-grid">
+
+      <!-- Article 1 -->
+      <a class="article-card" href="#">
+        <div class="article-card-img"><img src="../assets/images/tbb-influencer.png" alt="Influencer Serum Caption"></div>
+        <span class="tag">Spotted</span>
+        <h2>We Spotted 9 Influencers Posting the Same Serum Caption. Not One Said #Ad.</h2>
+      </a>
+
+      <!-- Article 2 -->
+      <a class="article-card" href="#">
+        <div class="article-card-img"><img src="../assets/images/tbb-hairoil.png" alt="Viral Hair Oils"></div>
+        <span class="tag">Spotted</span>
+        <h2>We Tested 3 Viral Hair Oils — Most Are 90% Silicone With a Pretty Label</h2>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- Community Section -->
+  <section class="tbb-community-section">
+    <h2 class="tbb-community-heading">What we're talking about today</h2>
+    <div class="tbb-community-grid">
+      <div class="tbb-community-card">
+        <div class="tbb-community-avatar-wrap">
+          <img src="../assets/images/review_1.png" class="tbb-community-avatar no-grayscale" alt="jessica_r">
+        </div>
+        <p class="tbb-community-name">jessica_r</p>
+        <p class="tbb-community-quote">"Every 'clean beauty' brand I've tried still has ingredients I can't pronounce. The label is marketing — not a standard."</p>
+        <p class="tbb-community-source">Overhyped Products &rarr;</p>
+      </div>
+      <div class="tbb-community-card">
+        <div class="tbb-community-avatar-wrap">
+          <img src="../assets/images/review_2.jpg" class="tbb-community-avatar no-grayscale" alt="maya.b">
+        </div>
+        <p class="tbb-community-name">maya.b</p>
+        <p class="tbb-community-quote">"An influencer said a serum 'changed her skin in 7 days.' Same influencer, 3 different brands, same caption. We see you."</p>
+        <p class="tbb-community-source">Paid "Honest" Reviews &rarr;</p>
+      </div>
+      <div class="tbb-community-card">
+        <div class="tbb-community-avatar-wrap">
+          <img src="../assets/images/review_3.jpg" class="tbb-community-avatar no-grayscale" alt="claire_v">
+        </div>
+        <p class="tbb-community-name">claire_v</p>
+        <p class="tbb-community-quote">"I spent $300 on a 'dermatologist-approved' routine that broke me out. The derm was paid. The approval was fake."</p>
+        <p class="tbb-community-source">Misleading Claims &rarr;</p>
+      </div>
+      <div class="tbb-community-card">
+        <div class="tbb-community-avatar-wrap">
+          <img src="../assets/images/review_4.jpg" class="tbb-community-avatar no-grayscale" alt="taylor_k">
+        </div>
+        <p class="tbb-community-name">taylor_k</p>
+        <p class="tbb-community-quote">"The 'viral' face mask trend destroyed my skin barrier. Nobody on TikTok mentioned the risk — TBB did."</p>
+        <p class="tbb-community-source">Viral Trends We're Watching &rarr;</p>
+      </div>
+    </div>
+    <p class="tbb-trending-hint d-lg-none" style="color:rgba(255,255,255,0.7);">scroll for more &#8594;</p>
+  </section>
+
+  <div class="container">
+    <div id="newsletter-placeholder"></div>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (typeof insertNewsletter === 'function') {
+        insertNewsletter('#newsletter-placeholder', {
+          tagline: 'We expose what brands hide. Get the real story every week.',
+          pageType: 'blog'
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>
