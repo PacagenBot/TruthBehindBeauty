@@ -142,12 +142,12 @@
     .ad-section {
       display: block; position: relative; background-size: cover;
       background-position: center; background-repeat: no-repeat;
-      border-radius: 8px; padding: 32px 24px; margin: 32px 0;
+      border-radius: 0px; padding: 32px 24px; margin: 32px 0;
       color: white; text-decoration: none; overflow: hidden; min-height: 220px;
     }
     .ad-section::before {
       content: ''; position: absolute; inset: 0;
-      background: rgba(0,0,0,0.45); border-radius: 8px;
+      background: rgba(0,0,0,0.45); border-radius: 0px;
     }
     .ad-section > * { position: relative; z-index: 1; }
     .ad-logo { font-size: 0.85rem; font-weight: bold; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
@@ -202,11 +202,17 @@
     }
     .stat-box .stat-number { font-size: 2rem; font-weight: 800; color: #c62828; }
     .stat-box .stat-label { font-size: 0.8rem; color: #555; margin-top: 4px; }
+    .ad-side-wrap { position: fixed; top: 1.5rem; width: 160px; }
+    .ad-side-link { display: block; position: relative; text-decoration: none; }
+    .ad-side-img { width: 100%; display: block; }
+    .ad-side-link .ad-label { position: absolute; bottom: 0.35rem; right: 0.5rem; font-size: 0.62rem; color: #aaa; font-family: Arial, sans-serif; }
+    @media (max-width: 768px) { .ad-side-wrap { display: none; } }
   </style>
 
   <script>document.documentElement.className += ' js';</script>
   <script src="../assets/js/main.js" defer></script>
   <script src="../assets/components/ads/ad.js" defer></script>
+  <script src="../assets/components/ads/ad-side.js" defer></script>
   <script src="../assets/components/article/review-write.js" defer></script>
   <script src="https://static.runconverge.com/pixels/M2PCqt.js" async></script>
   <script>
@@ -248,9 +254,9 @@
         }(document, 'script', 'facebook-jssdk'));</script>
         <div class="col-md-6 d-flex align-items-center gap-2">
           <span class="fw-semibold">Share:</span>
-          <a href="https://www.facebook.com/sharer/sharer.php?u=pages/5-solutions-brain-fog-think-clearly.html" target="_blank" class="text-decoration-none fs-5 text-black"><i class="bi bi-facebook"></i></a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=pages/vitamin-c-serums-clinically-proven.html" target="_blank" class="text-decoration-none fs-5 text-black"><i class="bi bi-facebook"></i></a>
           <a href="https://twitter.com/intent/tweet?text=We+Tested+5+Vitamin+C+Serums+%E2%80%94+The+Results+Are+Shocking+%7C+Truth+Behind+Beauty" target="_blank" class="text-decoration-none fs-5 text-black"><i class="bi bi-twitter"></i></a>
-          <a href="https://pinterest.com/pin/create/button/?url=pages/5-solutions-brain-fog-think-clearly.html&media=assets/images/brain-fog-hero.png" target="_blank" class="text-decoration-none fs-5 text-black"><i class="bi bi-pinterest"></i></a>
+          <a href="https://pinterest.com/pin/create/button/?url=pages/vitamin-c-serums-clinically-proven.html&media=assets/images/brain-fog-hero.png" target="_blank" class="text-decoration-none fs-5 text-black"><i class="bi bi-pinterest"></i></a>
         </div>
         <div class="col-md-6 text-md-end mt-2 mt-md-0 text-muted">
           Published Apr 3, 2026 &nbsp;·&nbsp; 12-week independent ingredient audit
@@ -815,6 +821,28 @@
       if (parts.length === 2) return parts.pop().split(';').shift();
       return '';
     }
+  </script>
+
+  <!-- Desktop Prada side ad -->
+  <div id="ad-side-placeholder" class="ad-side-wrap"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var sideEl = document.getElementById('ad-side-placeholder');
+      if (sideEl && typeof createAdSide === 'function') {
+        sideEl.innerHTML = createAdSide({ ctaUrl: 'https://www.prada.com', pageType: 'blog', mode: 'desktop', image: 'prada_vertical.png' });
+      }
+      function positionSideAd() {
+        var section = document.querySelector('.w-60');
+        var ad = document.getElementById('ad-side-placeholder');
+        if (!section || !ad || window.innerWidth <= 768) return;
+        var rect = section.getBoundingClientRect();
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        ad.style.left = (rect.right + window.scrollX + 16) + 'px';
+        ad.style.top = (rect.top + scrollTop + 16) + 'px';
+      }
+      positionSideAd();
+      window.addEventListener('resize', positionSideAd);
+    });
   </script>
 </body>
 </html>
