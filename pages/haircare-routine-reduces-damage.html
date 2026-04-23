@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+  <meta name="description" content="The haircare routine that actually reduces damage — not just adds shine. Step-by-step breakdown of what works and why." />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="The Haircare Routine That Actually Reduces Damage (Not Just Shine)" />
+  <meta property="og:image" content="/assets/images/tbb-shampoo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <title>Truth Behind Beauty | The Haircare Routine That Actually Reduces Damage</title>
+
+  <style>
+    body { visibility: hidden; opacity: 0; transition: opacity 0.3s ease; font-family: Georgia, serif !important; }
+    .no-js body { visibility: visible; opacity: 1; }
+    .section-divider { height: 2px; background-color: #ccc; margin: 10px auto; width: 80%; }
+    .category-badge {
+      display: inline-block; background-color: #6e5c2e; color: white;
+      font-family: 'Oswald', 'Arial', sans-serif; font-size: 0.72rem; font-weight: 600;
+      padding: 0.2rem 0.65rem; border-radius: 999px; letter-spacing: 0.04em; margin-bottom: 10px;
+    }
+    .blog-contents p { margin-bottom: 1.1rem; line-height: 1.8; }
+    .blog-title-section { display: flex; justify-content: center; padding: 20px 0; }
+    .blog-title { font-size: 2rem; font-weight: bold; margin: 0; text-align: center; line-height: 1.25; }
+    .author-section { display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 1rem; color: #555; }
+    .author-image { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
+    @media (max-width: 576px) { .w-60 { width: 90% !important; } }
+    .image-row { margin-bottom: 2rem; }
+    .image-row img { width: 100%; height: auto; display: block; border-radius: 4px; }
+
+    /* Step cards */
+    .step-card {
+      border-left: 4px solid #aa1313;
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0;
+      background: #fafafa;
+      border-radius: 0 6px 6px 0;
+    }
+    .step-number {
+      font-family: 'Oswald', Arial, sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #aa1313;
+      margin-bottom: 0.25rem;
+    }
+    .step-title {
+      font-family: 'Oswald', Arial, sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #111;
+      margin: 0 0 0.75rem;
+    }
+    .step-card p { margin-bottom: 0.6rem; line-height: 1.75; }
+    .step-why {
+      font-family: Arial, sans-serif;
+      font-size: 0.82rem;
+      color: #666;
+      border-top: 1px solid #e0e0e0;
+      margin-top: 0.75rem;
+      padding-top: 0.75rem;
+    }
+    .step-why strong { color: #444; }
+
+    .blog-rec-inline { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+    @media (max-width: 768px) { .blog-rec-inline { grid-template-columns: 1fr; } }
+    .disclaimer-box {
+      background-color: #f8f8f8; border-radius: 6px; padding: 16px 20px;
+      font-size: 0.82rem; color: #666; font-family: Arial, sans-serif; margin-top: 2rem;
+    }
+    .ad-section {
+      display: block; position: relative; background-size: cover;
+      background-position: center; background-repeat: no-repeat;
+      border-radius: 0px; padding: 32px 24px; margin: 32px 0;
+      color: white; text-decoration: none; overflow: hidden; min-height: 220px;
+    }
+    .ad-section::before {
+      content: ''; position: absolute; inset: 0;
+      background: rgba(0,0,0,0.45); border-radius: 0px;
+    }
+    .ad-section > * { position: relative; z-index: 1; }
+    .ad-logo { font-size: 0.85rem; font-weight: bold; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
+    .ad-headline { font-size: 1.4rem; font-weight: 700; margin-bottom: 8px; line-height: 1.3; }
+    .ad-body { font-size: 0.9rem; opacity: 0.9; margin-bottom: 0; }
+    .ad-cta-wrapper { margin-top: 16px; }
+    .ad-cta { display: inline-block; background-color: #aa1313; color: white; font-weight: bold; padding: 10px 22px; border-radius: 4px; font-size: 0.9rem; letter-spacing: 0.03em; }
+    .ad-label { position: absolute; bottom: 0.35rem; right: 0.5rem; font-size: 0.62rem; color: rgba(255,255,255,0.6); font-family: Arial, sans-serif; }
+
+    .ad-side-wrap { position: fixed; top: 1.5rem; width: 160px; }
+    .ad-side-link { display: block; position: relative; text-decoration: none; }
+    .ad-side-img { width: 100%; display: block; }
+    .ad-side-link .ad-label { position: absolute; bottom: 0.35rem; right: 0.5rem; font-size: 0.62rem; color: #aaa; font-family: Arial, sans-serif; }
+    @media (max-width: 768px) {
+      .ad-side-wrap { display: none; }
+      .ad-side-mobile-wrap { display: block; width: 100%; margin: 1rem 0; }
+      .ad-side-mobile-wrap .ad-side-link { display: block; }
+      .ad-side-mobile-wrap .ad-side-img { width: 100%; display: block; }
+    }
+    @media (min-width: 769px) { .ad-side-mobile-wrap { display: none; } }
+
+    .ad-white-section {
+      display: block; background: #fff; border: 1px solid #e8e8e8;
+      overflow: hidden; position: relative; text-decoration: none;
+      color: inherit; margin: 2rem auto; width: 70%;
+    }
+    .ad-white-section .row { min-height: 180px; align-items: stretch !important; }
+    .ad-white-section .col-7 { align-self: stretch; }
+    .ad-white-section .ad-white-img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .ad-white-content { padding: 2.5rem 3rem; display: flex; flex-direction: column; justify-content: center; gap: 0.5rem; }
+    .ad-white-tagline { font-family: 'Proxima Nova', 'Montserrat', Arial, sans-serif; font-size: clamp(1rem, 2.5vw, 1.4rem); font-weight: 600; line-height: 1.3; color: #222; margin: 0; }
+    .ad-white-cta { display: inline-block; background: #aa1313; color: #fff; font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.85rem; letter-spacing: 0.05em; text-transform: uppercase; padding: 0.45rem 1.2rem; border-radius: 2px; }
+    .ad-white-section .ad-label { position: absolute; bottom: 0.35rem; right: 0.5rem; font-size: 0.62rem; color: #aaa; font-family: Arial, sans-serif; }
+    @media (max-width: 576px) {
+      .ad-white-section { width: 100%; }
+      .ad-white-section .row { min-height: unset; flex-direction: column; }
+      .ad-white-section .col-7, .ad-white-section .col-5 { width: 100%; max-width: 100%; flex: 0 0 100%; }
+      .ad-white-content { padding: 1rem 1.25rem; }
+    }
+  </style>
+
+  <script>document.documentElement.className += ' js';</script>
+  <script src="../assets/js/main.js" defer></script>
+  <script src="../assets/components/article/review-in.js" defer></script>
+  <script src="../assets/components/article/review-write.js" defer></script>
+  <script src="../assets/components/article/newsletter.js" defer></script>
+  <script src="../assets/components/ads/ad-white.js" defer></script>
+  <script src="../assets/components/ads/ad-side.js" defer></script>
+  <script src="../assets/components/ads/ad.js" defer></script>
+</head>
+
+<body>
+  <section class="w-60 mx-auto my-4">
+
+    <div class="text-center">
+      <span class="category-badge">Routines</span>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <div class="blog-title-section">
+      <h2 class="blog-title">The Haircare Routine That Actually Reduces Damage (Not Just Shine)</h2>
+    </div>
+
+    <div class="author-section">
+      <span>By Charlotte William</span>
+      <img class="author-image" src="../assets/images/charlotte_author.png" alt="Charlotte William" />
+    </div>
+
+    <div class="container py-2">
+      <div class="row align-items-center">
+        <div class="col-md-6 d-flex align-items-center gap-2">
+          <span class="fw-semibold">Share:</span>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=pages/haircare-routine-reduces-damage.html" target="_blank" class="text-decoration-none fs-5 text-black"><i class="bi bi-facebook"></i></a>
+          <a href="https://twitter.com/intent/tweet?text=The+Haircare+Routine+That+Actually+Reduces+Damage+%7C+Truth+Behind+Beauty" target="_blank" class="text-decoration-none fs-5 text-black"><i class="bi bi-twitter"></i></a>
+        </div>
+        <div class="col-md-6 text-md-end mt-2 mt-md-0 text-muted">
+          Published Apr 22, 2026 &nbsp;·&nbsp; 8-step routine breakdown
+        </div>
+      </div>
+    </div>
+
+    <div class="blog-contents mt-4">
+
+      <div class="image-row">
+        <img src="../assets/images/tbb-haircare-routine.png" alt="Haircare routine that reduces damage">
+      </div>
+
+      <p>Most haircare content is about shine. Glossy finishes, glass-hair aesthetics, mirror-smooth ends. Shine is easy to fake — a silicone coating will do it in seconds. Actual damage reduction is a different conversation, and almost nobody is having it honestly.</p>
+
+      <p>After testing dozens of products and reading through the research on hair structure, here's the routine that holds up — not because it looks good on camera, but because it addresses the actual mechanisms of hair damage: friction, protein loss, moisture imbalance, and heat stress.</p>
+
+      <div id="main-quote"></div>
+
+      <!-- STEP 1 -->
+      <div class="image-row" style="margin-bottom:1.5rem;">
+        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=900&q=80" alt="Clarifying shampoo hair wash" style="width:100%; border-radius:6px; max-height:340px; object-fit:cover;">
+        <p style="font-size:0.75rem; color:#999; font-family:Arial,sans-serif; margin-top:0.4rem;">Clarifying removes weeks of product buildup before any treatment can work.</p>
+      </div>
+      <div class="step-card">
+        <p class="step-number">Step 1</p>
+        <h3 class="step-title">Clarify — Once a Week</h3>
+        <p>Before anything else works, your hair has to be clean. Not just shampoo-clean — clarified. Most people have weeks of silicone, mineral oil, and product buildup sitting on their strands. That buildup blocks moisture, makes hair feel heavy, and causes the "my hair stopped responding to products" problem.</p>
+        <p>Use a clarifying shampoo once a week, or every two weeks if your hair is very dry. Not every wash. Just enough to reset.</p>
+        <p class="step-why"><strong>Why it matters:</strong> Buildup from silicone-heavy products (like most viral hair oils) creates a barrier that prevents moisture and protein treatments from penetrating the hair shaft. You can't treat hair you can't reach.</p>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="step-card">
+        <p class="step-number">Step 2</p>
+        <h3 class="step-title">Shampoo the Scalp — Not the Lengths</h3>
+        <p>Apply shampoo only to your scalp and roots. Work it in with your fingertips — not your nails — using small circular motions. When you rinse, the suds running down your lengths are enough to clean them without stripping.</p>
+        <p>Scrubbing shampoo through your mid-lengths and ends is one of the most common causes of mechanical damage. The cuticle is already open when wet. Friction tears it.</p>
+        <p class="step-why"><strong>Why it matters:</strong> The scalp produces oil. The ends don't. Shampooing the full length strips the ends of what little moisture they have, leading to dryness and breakage over time.</p>
+      </div>
+
+      <!-- Mobile side ad -->
+      <div class="ad-side-mobile-wrap">
+        <div id="ad-side-placeholder-mobile"></div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="step-card">
+        <p class="step-number">Step 3</p>
+        <h3 class="step-title">Condition Mid-Lengths to Ends Only</h3>
+        <p>Apply conditioner from your ears down. Never on the scalp — it weighs roots down and can clog follicles. Use a wide-tooth comb to distribute it evenly while it's in, then leave it for at least two minutes before rinsing.</p>
+        <p>Cold or cool water for the final rinse. It closes the cuticle, which is what actually creates shine — not a silicone coating.</p>
+        <p class="step-why"><strong>Why it matters:</strong> Conditioner works by temporarily filling gaps in the cuticle with moisturizing agents. It needs time and even distribution to do that. A 10-second rinse-through does almost nothing.</p>
+      </div>
+
+      <!-- Ad La Mer -->
+      <div id="ad-lamer-mid-placeholder"></div>
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          var el = document.getElementById('ad-lamer-mid-placeholder');
+          if (el && typeof createAdWhite === 'function') {
+            el.innerHTML = createAdWhite({
+              image: 'lamer.png',
+              tagline: 'Where the sea meets the skin. The legendary Crème de la Mer.',
+              ctaText: 'Shop La Mer',
+              ctaUrl: 'https://www.cremedelamer.com',
+              pageType: 'blog'
+            });
+          }
+        });
+      </script>
+
+      <!-- STEP 4 -->
+      <div class="step-card">
+        <p class="step-number">Step 4</p>
+        <h3 class="step-title">Weekly Treatment — Protein or Moisture, Not Both</h3>
+        <p>Once a week, add either a protein treatment or a deep moisture mask — not both at the same time. Hair needs a balance of protein and moisture. Too much protein makes hair brittle and snappy. Too much moisture makes it limp and weak.</p>
+        <p>If your hair feels mushy, stretchy, or won't hold a style: you need protein. If it feels dry, rough, or snaps without stretching: you need moisture. Alternate based on what your hair is telling you.</p>
+        <p class="step-why"><strong>Why it matters:</strong> Hair is roughly 95% keratin protein. Chemical processing, heat, and UV exposure degrade that protein structure. Targeted treatments address the actual structural damage — not just the surface appearance.</p>
+      </div>
+
+
+      <!-- STEP 5 -->
+      <div class="step-card">
+        <p class="step-number">Step 5</p>
+        <h3 class="step-title">Dry Gently — Microfiber or a Cotton T-Shirt</h3>
+        <p>Put down the regular towel. Terry cloth is too rough for wet hair — the looped fibers catch on the cuticle and cause frizz and breakage. Squeeze water out gently with a microfiber towel or an old cotton t-shirt. No rubbing.</p>
+        <p>Wet hair is at its most vulnerable. The hydrogen bonds that give hair its structure are temporarily broken when wet, making it elastic and easy to damage.</p>
+        <p class="step-why"><strong>Why it matters:</strong> Mechanical damage from rough drying is cumulative. It doesn't show up immediately — it shows up six months later as split ends and breakage that seem to come from nowhere.</p>
+      </div>
+
+      <!-- STEP 6 -->
+      <div class="image-row" style="margin-bottom:1.5rem;">
+        <img src="https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?w=900&q=80" alt="Applying leave-in conditioner to damp hair" style="width:100%; border-radius:6px; max-height:340px; object-fit:cover;">
+        <p style="font-size:0.75rem; color:#999; font-family:Arial,sans-serif; margin-top:0.4rem;">The damp-hair window is when your strands can actually absorb moisture — not after they've dried.</p>
+      </div>
+      <div class="step-card">
+        <p class="step-number">Step 6</p>
+        <h3 class="step-title">Leave-In While Hair Is Still Damp</h3>
+        <p>Apply a leave-in conditioner or detangling spray while your hair is still about 70% wet. This is the window when your hair can actually absorb moisture — once it's dry, the cuticle closes and most products just sit on the surface.</p>
+        <p>Work it through with your fingers or a wide-tooth comb, starting from the ends and working up. Never brush wet hair from root to tip.</p>
+        <p class="step-why"><strong>Why it matters:</strong> Leave-ins seal in the moisture from your wash routine and provide slip for detangling — which is another major source of mechanical damage if done dry or without product.</p>
+      </div>
+
+      <!-- STEP 7 -->
+      <div class="step-card">
+        <p class="step-number">Step 7</p>
+        <h3 class="step-title">Heat Protectant Before Any Heat Tool — Every Time</h3>
+        <p>If you're using a blow dryer, flat iron, or curling wand: heat protectant is not optional. Apply it to damp hair before blow drying, or to dry hair before direct heat tools. Make sure it's fully dry before the iron touches it — wet hair under a flat iron causes steam damage inside the shaft.</p>
+        <p>Look for ingredients like hydrolyzed wheat protein, dimethicone (here it's actually useful), or cyclopentasiloxane in a heat protectant — these form a barrier that slows heat transfer to the cortex.</p>
+        <p class="step-why"><strong>Why it matters:</strong> Heat above 230°C (446°F) permanently alters the keratin structure of hair. Most flat irons go that high. A heat protectant doesn't make heat safe — it reduces the damage. The lower your heat setting, the less damage regardless of protectant.</p>
+      </div>
+
+      <!-- STEP 8 -->
+      <div class="image-row" style="margin-bottom:1.5rem;">
+        <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=900&q=80" alt="Applying argan oil to hair ends" style="width:100%; border-radius:6px; max-height:340px; object-fit:cover;">
+        <p style="font-size:0.75rem; color:#999; font-family:Arial,sans-serif; margin-top:0.4rem;">Real oils like argan and jojoba can partially penetrate the hair shaft. Silicones only coat it.</p>
+      </div>
+      <div class="step-card">
+        <p class="step-number">Step 8</p>
+        <h3 class="step-title">Finish with a Lightweight Oil — Silicone-Free</h3>
+        <p>Once your hair is styled and dry, a small amount of a real oil — argan, jojoba, squalane, or marula — applied to the ends seals the cuticle and adds genuine nourishment. These oils can partially penetrate the hair shaft. Silicones cannot.</p>
+        <p>The key word is small. One or two drops for fine hair. Three to four for thick or coarse hair. Emulsify it between your palms first, then smooth over the ends only.</p>
+        <p class="step-why"><strong>Why it matters:</strong> This is where most viral hair oils fail — they're silicone-dominant, which means they coat rather than nourish. A real oil at this step actually does what the marketing on those products promises.</p>
+      </div>
+
+      <h2 style="font-family:'Oswald',Arial,sans-serif; font-size:1.4rem; font-weight:700; text-transform:uppercase; margin: 2.5rem 0 1rem;">What This Routine Is Actually Doing</h2>
+
+      <p>Every step above targets a specific damage mechanism: buildup removal, friction reduction, protein-moisture balance, cuticle protection, and heat management. None of it is complicated. Most of it is free or cheap. The expensive part of haircare is usually the marketing — not the chemistry.</p>
+
+      <p>The products that dominate social media are optimized for immediate visual results: shine, smoothness, that glass-hair look on camera. Those results are real. They're just temporary, surface-level, and in some cases actively working against your hair's long-term condition.</p>
+
+      <p>Damage reduction is slower and less photogenic. But it's the only thing that actually changes what your hair looks like in a year.</p>
+
+      <div class="disclaimer-box">
+        <strong>Note:</strong> Hair type, porosity, and chemical processing history all affect how this routine should be adjusted. This is a general framework — not a one-size prescription. If you have highly porous, chemically treated, or textured hair, the protein/moisture balance step in particular will need more attention.
+      </div>
+
+      <!-- Ad La Mer -->
+      <div id="ad-lamer-placeholder"></div>
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          var el = document.getElementById('ad-lamer-placeholder');
+          if (el && typeof createAdWhite === 'function') {
+            el.innerHTML = createAdWhite({
+              image: 'lamer.png',
+              tagline: 'Where the sea meets the skin. The legendary Crème de la Mer.',
+              ctaText: 'Shop La Mer',
+              ctaUrl: 'https://www.cremedelamer.com',
+              pageType: 'blog'
+            });
+          }
+        });
+      </script>
+
+      <!-- You Might Also Like -->
+      <div style="border-top: 2px solid #eee; margin-top: 3rem; padding-top: 2rem;">
+        <h2 style="font-family:'Oswald','Arial',sans-serif; font-size:2rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:1.5rem; color:#111;">You Might Also Like</h2>
+        <div class="blog-rec-inline">
+          <div style="position:relative;">
+            <a href="viral-hair-oils-tested.html" style="text-decoration:none; color:inherit;">
+              <img src="../assets/images/tbb-hairoil.png" alt="Viral Hair Oils Tested" style="width:100%; aspect-ratio:85/54; object-fit:cover; border-radius:6px; display:block;">
+              <span style="position:absolute; top:0.6rem; left:0.6rem; background:#c62828; color:#fff; font-family:'Oswald','Arial',sans-serif; font-size:0.72rem; font-weight:600; padding:0.2rem 0.65rem; border-radius:999px;">Hot Takes</span>
+              <p style="font-family:'Oswald','Arial',sans-serif; font-size:0.92rem; font-weight:600; line-height:1.35; margin-top:0.65rem; color:#111;">We Tested 3 Viral Hair Oils — Most Are 90% Silicone With a Pretty Label</p>
+            </a>
+          </div>
+          <div style="position:relative;">
+            <img src="../assets/images/tbb-shampoo.png" alt="Strengthening Shampoo" style="width:100%; aspect-ratio:85/54; object-fit:cover; border-radius:6px; display:block;">
+            <span style="position:absolute; top:0.6rem; left:0.6rem; background:#1a5276; color:#fff; font-family:'Oswald','Arial',sans-serif; font-size:0.72rem; font-weight:600; padding:0.2rem 0.65rem; border-radius:999px;">Reviews</span>
+            <p style="font-family:'Oswald','Arial',sans-serif; font-size:0.92rem; font-weight:600; line-height:1.35; margin-top:0.65rem; color:#111;">The "Strengthening" Shampoo Ingredients That Are Actually Drying Your Hair Out</p>
+          </div>
+          <div style="position:relative;">
+            <img src="../assets/images/tbb-dermatologist.png" alt="Dermatologist Approved" style="width:100%; aspect-ratio:85/54; object-fit:cover; border-radius:6px; display:block;">
+            <span style="position:absolute; top:0.6rem; left:0.6rem; background:#c62828; color:#fff; font-family:'Oswald','Arial',sans-serif; font-size:0.72rem; font-weight:600; padding:0.2rem 0.65rem; border-radius:999px;">Hot Takes</span>
+            <p style="font-family:'Oswald','Arial',sans-serif; font-size:0.92rem; font-weight:600; line-height:1.35; margin-top:0.65rem; color:#111;">'Dermatologist-Approved' Means Nothing — Here's the Loophole Brands Are Exploiting</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Comments -->
+      <div id="comments-section"></div>
+
+      <!-- Newsletter -->
+      <div id="newsletter-placeholder"></div>
+
+    </div>
+  </section>
+
+  <!-- Desktop side ad -->
+  <div id="ad-side-placeholder" class="ad-side-wrap"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+      var reviews = [
+        { id: 'main-quote', review: 'Shine is easy to fake. A silicone coating will do it in seconds. Actual damage reduction is a different conversation — and almost nobody is having it honestly.', name: 'Charlotte William', title: 'TBB' }
+      ];
+      reviews.forEach(function (r) {
+        var el = document.getElementById(r.id);
+        if (el && typeof createReviewIn === 'function') {
+          el.innerHTML = createReviewIn({ review: r.review, name: r.name, title: r.title });
+        }
+      });
+
+      if (typeof insertReviewWrite === 'function') {
+        insertReviewWrite('#comments-section', {
+          storageKey: 'tbb-haircare-routine',
+          comments: [
+            { name: 'Nadia R.', initial: 'N', color: '#6e5c2e', date: 'Apr 22, 2026', text: 'The protein vs moisture point is something I wish I had known years ago. I was over-conditioning and wondering why my hair felt like wet noodles.' },
+            { name: 'TBB Editorial', initial: 'T', isTBB: true, date: 'Apr 22, 2026', text: 'The stretch test is the easiest way to check: wet a strand and pull gently. If it stretches a lot before breaking, you need protein. If it snaps immediately with no stretch, you need moisture.' },
+            { name: 'Camille T.', initial: 'C', color: '#1a5276', date: 'Apr 22, 2026', text: 'Switching to a microfiber towel was genuinely the single biggest change I made. My frizz dropped by about 70% and I thought it was a new product doing it.' },
+            { name: 'Jess M.', initial: 'J', color: '#2e7d32', date: 'Apr 22, 2026', text: 'The clarifying step is underrated. I thought my hair was just "naturally dull" until I clarified for the first time. It was just buried under product buildup.' }
+          ]
+        });
+      }
+
+      if (typeof insertNewsletter === 'function') {
+        insertNewsletter('#newsletter-placeholder', {
+          tagline: 'We expose what brands hide. Get the real story every week.',
+          pageType: 'blog'
+        });
+      }
+
+      var sideEl = document.getElementById('ad-side-placeholder');
+      var sideMobileEl = document.getElementById('ad-side-placeholder-mobile');
+      if (typeof createAdSide === 'function') {
+        if (sideEl) sideEl.innerHTML = createAdSide({ ctaUrl: 'https://www.veronicabeard.com', pageType: 'blog', mode: 'desktop', image: 'veronica_vertical.png' });
+        if (sideMobileEl) sideMobileEl.innerHTML = createAdSide({ ctaUrl: 'https://www.veronicabeard.com', pageType: 'blog', mode: 'mobile', image: 'veronica_horizontal.png' });
+      }
+
+      function positionSideAd() {
+        var section = document.querySelector('.w-60');
+        var ad = document.getElementById('ad-side-placeholder');
+        if (!section || !ad || window.innerWidth <= 768) return;
+        var rect = section.getBoundingClientRect();
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        ad.style.left = (rect.right + window.scrollX + 16) + 'px';
+        ad.style.top = (rect.top + scrollTop + 16) + 'px';
+      }
+      positionSideAd();
+      window.addEventListener('resize', positionSideAd);
+    });
+  </script>
+</body>
+</html>

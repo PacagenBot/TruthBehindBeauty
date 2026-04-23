@@ -709,27 +709,27 @@ footer.tbb-footer {
 
 .tbb-trending-inner {
   padding: 7rem clamp(1rem, 4vw, 3rem) 1.5rem;
+  position: relative;
+}
+
+/* Carousel wrapper */
+.tbb-trending-carousel {
+  position: relative;
+  overflow: hidden;
 }
 
 .tbb-trending-scroll {
   display: flex;
   gap: 1.5rem;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-}
-
-.tbb-trending-scroll::-webkit-scrollbar {
-  display: none;
+  transition: transform 0.4s ease;
+  will-change: transform;
 }
 
 .tbb-trending-card {
   display: flex;
+  flex-direction: column;
   gap: 0.75rem;
-  align-items: flex-start;
-  flex: 0 0 calc(25% - 1.2rem);
-  scroll-snap-align: start;
+  flex: 0 0 calc(25% - 1.125rem);
   text-decoration: none;
   color: #000;
   transition: opacity 0.2s ease;
@@ -740,14 +740,10 @@ footer.tbb-footer {
 }
 
 .tbb-trending-card > img {
-  width: 110px;
-  height: 110px;
+  width: 100%;
+  aspect-ratio: 16 / 10;
   object-fit: cover;
-  flex-shrink: 0;
   border-radius: 4px;
-  aspect-ratio: 1 / 1;
-  filter: none !important;
-}
   filter: none !important;
 }
 
@@ -779,6 +775,32 @@ footer.tbb-footer {
   margin: 0;
 }
 
+/* Carousel controls */
+.tbb-carousel-controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.tbb-carousel-btn {
+  background: #111;
+  color: #fff;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.tbb-carousel-btn:hover { background: #aa1313; }
+.tbb-carousel-btn:disabled { background: #ccc; cursor: default; }
+
 .tbb-trending-hint {
   font-family: 'Oswald', 'Arial', sans-serif;
   font-size: 0.75rem;
@@ -791,17 +813,23 @@ footer.tbb-footer {
 }
 
 @media (max-width: 991px) {
-  .tbb-trending-card {
-    flex: 0 0 40vw;
-    flex-direction: column;
-    gap: 0.5rem;
+  .tbb-trending-scroll {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    transition: none;
   }
-
+  .tbb-trending-scroll::-webkit-scrollbar { display: none; }
+  .tbb-carousel-controls { display: none; }
+  .tbb-trending-card {
+    flex: 0 0 calc(50% - 0.75rem);
+    scroll-snap-align: start;
+  }
   .tbb-trending-card > img {
     width: 100%;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 16 / 10;
     height: auto;
-    border-radius: 4px;
   }
 }
 
