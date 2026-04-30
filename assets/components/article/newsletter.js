@@ -19,7 +19,7 @@
                 background: #fff;
             }
             .tbb-newsletter-brand {
-                font-family: 'Oswald', Arial, sans-serif;
+                font-family: 'Oswald', Buvera;
                 font-size: clamp(1rem, 2vw, 1.2rem);
                 font-weight: 700;
                 text-transform: uppercase;
@@ -54,7 +54,7 @@
                 border-radius: 2px 0 0 2px;
                 padding: 0.5rem 0.9rem;
                 font-size: 0.85rem;
-                font-family: Arial, sans-serif;
+                font-family: Buvera;
                 outline: none;
                 width: 200px;
             }
@@ -65,7 +65,7 @@
                 border: 1px solid #111;
                 border-radius: 0 2px 2px 0;
                 padding: 0.5rem 1rem;
-                font-family: 'Oswald', Arial, sans-serif;
+                font-family: 'Oswald', Buvera;
                 font-size: 0.78rem;
                 font-weight: 600;
                 letter-spacing: 0.06em;

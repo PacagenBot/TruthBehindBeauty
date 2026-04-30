@@ -24,6 +24,92 @@
     <script src="assets/components/ads/ad-white.js" defer></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
     <style>
+/* Buvera font family */
+@font-face {
+  font-family: "Buvera";
+  src: url("assets/buvera-sans-serif-family-2026-04-07-06-16-02-utc/Web-TT/Buvera-Regular.woff2") format("woff2"),
+       url("assets/buvera-sans-serif-family-2026-04-07-06-16-02-utc/Web-TT/Buvera-Regular.woff") format("woff"),
+       url("assets/buvera-sans-serif-family-2026-04-07-06-16-02-utc/Web-TT/Buvera-Regular.ttf") format("truetype");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Buvera";
+  src: url("assets/buvera-sans-serif-family-2026-04-07-06-16-02-utc/Web-TT/Buvera-RegularItalic.woff2") format("woff2"),
+       url("assets/buvera-sans-serif-family-2026-04-07-06-16-02-utc/Web-TT/Buvera-RegularItalic.woff") format("woff"),
+       url("assets/buvera-sans-serif-family-2026-04-07-06-16-02-utc/Web-TT/Buvera-RegularItalic.ttf") format("truetype");
+  font-weight: 400; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: "Buvera";
+  src: url("assets/buvera-sans-serif-family-2026-04-07-06-16-02-utc/Web-TT/Buvera-Medium.woff2") format("woff2"),
+       url("assets/buvera-sans-serif-family-2026-04-07-06-16-02-utc/Web-TT/Buvera-Medium.woff") format("woff"),
+       url("assets/buvera-sans-serif-family-2026-04-07-06-16-02-utc/Web-TT/Buvera-Medium.ttf") format("truetype");
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Buvera";
+  src: url("assets/buvera-sans-serif-family-2026-04-07-06-16-02-utc/Web-TT/Buvera-MediumItalic.woff2") format("woff2"),
+       url("assets/buvera-sans-serif-family-2026-04-07-06-16-02-utc/Web-TT/Buvera-MediumItalic.woff") format("woff"),
+       url("assets/buvera-sans-serif-family-2026-04-07-06-16-02-utc/Web-TT/Buvera-MediumItalic.ttf") format("truetype");
+  font-weight: 500; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: "Buvera";
+  src: url("assets/buvera-sans-serif-family-2026-04-07-06-16-02-utc/Web-TT/Buvera-SemiBold.woff2") format("woff2"),
+       url("assets/buvera-sans-serif-family-2026-04-07-06-16-02-utc/Web-TT/Buvera-SemiBold.woff") format("woff"),
+       url("assets/buvera-sans-serif-family-2026-04-07-06-16-02-utc/Web-TT/Buvera-SemiBold.ttf") format("truetype");
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Buvera";
+  src: url("assets/buvera-sans-serif-family-2026-04-07-06-16-02-utc/Web-TT/Buvera-SemiBoldItalic.woff2") format("woff2"),
+       url("assets/buvera-sans-serif-family-2026-04-07-06-16-02-utc/Web-TT/Buvera-SemiBoldItalic.woff") format("woff"),
+       url("assets/buvera-sans-serif-family-2026-04-07-06-16-02-utc/Web-TT/Buvera-SemiBoldItalic.ttf") format("truetype");
+  font-weight: 600; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: "Buvera";
+  src: url("assets/buvera-sans-serif-family-2026-04-07-06-16-02-utc/Web-TT/Buvera-Bold.woff2") format("woff2"),
+       url("assets/buvera-sans-serif-family-2026-04-07-06-16-02-utc/Web-TT/Buvera-Bold.woff") format("woff"),
+       url("assets/buvera-sans-serif-family-2026-04-07-06-16-02-utc/Web-TT/Buvera-Bold.ttf") format("truetype");
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Buvera";
+  src: url("assets/buvera-sans-serif-family-2026-04-07-06-16-02-utc/Web-TT/Buvera-BoldItalic.woff2") format("woff2"),
+       url("assets/buvera-sans-serif-family-2026-04-07-06-16-02-utc/Web-TT/Buvera-BoldItalic.woff") format("woff"),
+       url("assets/buvera-sans-serif-family-2026-04-07-06-16-02-utc/Web-TT/Buvera-BoldItalic.ttf") format("truetype");
+  font-weight: 700; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: "Buvera";
+  src: url("assets/buvera-sans-serif-family-2026-04-07-06-16-02-utc/Web-TT/Buvera-ExtraBold.woff2") format("woff2"),
+       url("assets/buvera-sans-serif-family-2026-04-07-06-16-02-utc/Web-TT/Buvera-ExtraBold.woff") format("woff"),
+       url("assets/buvera-sans-serif-family-2026-04-07-06-16-02-utc/Web-TT/Buvera-ExtraBold.ttf") format("truetype");
+  font-weight: 800; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Buvera";
+  src: url("assets/buvera-sans-serif-family-2026-04-07-06-16-02-utc/Web-TT/Buvera-ExtraBoldItalic.woff2") format("woff2"),
+       url("assets/buvera-sans-serif-family-2026-04-07-06-16-02-utc/Web-TT/Buvera-ExtraBoldItalic.woff") format("woff"),
+       url("assets/buvera-sans-serif-family-2026-04-07-06-16-02-utc/Web-TT/Buvera-ExtraBoldItalic.ttf") format("truetype");
+  font-weight: 800; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: "Buvera";
+  src: url("assets/buvera-sans-serif-family-2026-04-07-06-16-02-utc/Web-TT/Buvera-Black.woff2") format("woff2"),
+       url("assets/buvera-sans-serif-family-2026-04-07-06-16-02-utc/Web-TT/Buvera-Black.woff") format("woff"),
+       url("assets/buvera-sans-serif-family-2026-04-07-06-16-02-utc/Web-TT/Buvera-Black.ttf") format("truetype");
+  font-weight: 900; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Buvera";
+  src: url("assets/buvera-sans-serif-family-2026-04-07-06-16-02-utc/Web-TT/Buvera-BlackItalic.woff2") format("woff2"),
+       url("assets/buvera-sans-serif-family-2026-04-07-06-16-02-utc/Web-TT/Buvera-BlackItalic.woff") format("woff"),
+       url("assets/buvera-sans-serif-family-2026-04-07-06-16-02-utc/Web-TT/Buvera-BlackItalic.ttf") format("truetype");
+  font-weight: 900; font-style: italic; font-display: swap;
+}
+
         .w-60 { width: 60% !important; }
 
         .cat-tag {
@@ -168,7 +254,7 @@
           right: 0.5rem;
           font-size: 0.62rem;
           color: #aaa;
-          font-family: Arial, sans-serif;
+          font-family: Buvera;
         }
         @media (max-width: 576px) {
           .ad-white-section { width: 100%; }
