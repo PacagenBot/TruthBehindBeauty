@@ -203,6 +203,8 @@
       <div id="main-quote"></div>
 
       <h2 class="section-heading">Why "Dermatologist-Approved" Is So Misleading</h2>
+      <div class="image-row" style="margin-bottom:1.5rem;"><img src="https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/9e/2c/7f/6b/18/v1_E10/E1080RC0.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=08ef9015dd2803da23f5703ada11bb635317304941ce890d9de55627ceb32b08" alt="Dermatologist examining skin" style="width:100%; border-radius:6px; max-height:320px; object-fit:cover;"><p style="font-size:0.75rem; color:#999; font-family:Buvera; margin-top:0.4rem;">'Dermatologist-approved' can legally mean one paid consultation. There is no required number of dermatologists, no mandated study, no independent review.</p></div>
+      
 
       <h3 class="sub-heading">There is no standard definition</h3>
 
@@ -302,6 +304,8 @@
       </script>
 
       <h2 class="section-heading">The Loophole Brands Are Exploiting</h2>
+      <div class="image-row" style="margin-bottom:1.5rem;"><img src="https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/9c/46/28/52/86/v1_E10/E10ARUMQ.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=3b9833d68ecb857a46fcc19528a5730452a55e1b9bad13f3e692852a42a23c6c" alt="Cosmetic product labeling" style="width:100%; border-radius:6px; max-height:320px; object-fit:cover;"><p style="font-size:0.75rem; color:#999; font-family:Buvera; margin-top:0.4rem;">The FDA does not pre-approve cosmetic labeling. Brands only need to defend what a phrase could technically mean — not what consumers assume it means.</p></div>
+      
 
       <p>Here's the real issue.</p>
       <p>The FDA requires cosmetic claims to be truthful and not misleading, but it does not pre-approve cosmetic labeling before products hit the market.</p>
@@ -379,7 +383,7 @@
           <div style="position:relative;">
             <a href="beauty-clinical-trials-scrutiny.html" style="text-decoration:none; color:inherit;">
               <img src="../assets/images/tbb-Clinical-Trials.png" alt="Beauty Clinical Trials" style="width:100%; aspect-ratio:85/54; object-fit:cover; border-radius:6px; display:block;">
-              <span style="position:absolute; top:0.6rem; left:0.6rem; background:#c62828; color:#fff; font-family:'Oswald',Buvera; font-size:0.72rem; font-weight:600; padding:0.2rem 0.65rem; border-radius:999px;">Spotted</span>
+              <span style="position:absolute; top:0.6rem; left:0.6rem; background:#333; color:#fff; font-family:'Oswald',Buvera; font-size:0.72rem; font-weight:600; padding:0.2rem 0.65rem; border-radius:999px;">Spotted</span>
               <p style="font-family:'Oswald',Buvera; font-size:0.92rem; font-weight:600; line-height:1.35; margin-top:0.65rem; color:#111;">Most "Clinical Trials" in Beauty Wouldn't Pass Basic Scientific Scrutiny — But Some Do</p>
             </a>
           </div>
@@ -409,7 +413,7 @@
     document.addEventListener('DOMContentLoaded', function () {
 
       var reviews = [
-        { id: 'main-quote', review: '"Dermatologist-approved" is not a regulated claim. There is no required number of dermatologists, no mandated study, no independent review panel. A brand can use the phrase after a single paid consultation — and the consumer has no way to know the difference.', name: 'TBB Editorial', title: 'TBB' }
+        { id: 'main-quote', review: 'Dermatologist-approved is not a regulated claim. There is no required number of dermatologists, no mandated study, no independent review panel. A brand can use the phrase after a single paid consultation — and the consumer has no way to know the difference.', name: 'TBB Editorial', title: 'TBB' }
       ];
       reviews.forEach(function (r) {
         var el = document.getElementById(r.id);
@@ -453,9 +457,9 @@
         if (spaceRight >= adWidth + gap) {
           ad.style.left = (rect.right + gap) + 'px';
           ad.style.right = 'auto';
+          ad.style.display = '';
         } else {
-          ad.style.left = 'auto';
-          ad.style.right = gap + 'px';
+          ad.style.display = 'none';
         }
         ad.style.top = Math.max(rect.top, gap) + 'px';
       }

@@ -240,6 +240,8 @@
 
       <p>Here are five documented techniques, with real examples of how they're used.</p>
 
+      
+      <div class="image-row" style="margin-bottom:1.5rem;"><img src="https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/d3/d1/4b/a7/8d/v1_E10/E1082NOC.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=2031d2975e09d2961b986a82d6e9b872ce73783a2febc737b3388538b94d43cf" alt="Before and after beauty photo comparison" style="width:100%; border-radius:6px; max-height:320px; object-fit:cover;"><p style="font-size:0.75rem; color:#999; font-family:Buvera; margin-top:0.4rem;">Before-and-after photos are not regulated as advertising in most markets — brands can use lighting, angles, and editing freely.</p></div>
       <div id="main-quote"></div>
 
       <!-- EXAMPLE 1 -->
@@ -320,6 +322,8 @@
       </div>
 
       <h2 class="section-heading">The Regulation Gap</h2>
+      <div class="image-row" style="margin-bottom:1.5rem;"><img src="https://cdn.thewirecutter.com/wp-content/media/2026/01/BEST-RING-LIGHTS-9721-3x2-1.jpg?auto=webp&quality=75&crop=4:3,smart&width=1024" alt="Studio lighting setup for photography" style="width:100%; border-radius:6px; max-height:320px; object-fit:cover;"><p style="font-size:0.75rem; color:#999; font-family:Buvera; margin-top:0.4rem;">Professional lighting rigs can make the same skin look dramatically different in seconds — no product required.</p></div>
+      
 
       <p>In the US, the FTC requires that before-and-after photos represent "typical results" — but enforcement is reactive, not proactive. Brands are not required to submit their advertising for review before publishing it. Complaints must be filed, investigated, and adjudicated before any action is taken. By then, the campaign has run its course.</p>
 
@@ -338,7 +342,7 @@
           <div style="position:relative;">
             <a href="tiktok-unbiased-review-script.html" style="text-decoration:none; color:inherit;">
               <img src="../assets/images/tbb-tiktok.png" alt="TikTok Script" style="width:100%; aspect-ratio:85/54; object-fit:cover; border-radius:6px; display:block;">
-              <span style="position:absolute; top:0.6rem; left:0.6rem; background:#1a5276; color:#fff; font-family:'Oswald','Arial',sans-serif; font-size:0.72rem; font-weight:600; padding:0.2rem 0.65rem; border-radius:999px;">Reviews</span>
+              <span style="position:absolute; top:0.6rem; left:0.6rem; background:#333; color:#fff; font-family:'Oswald','Arial',sans-serif; font-size:0.72rem; font-weight:600; padding:0.2rem 0.65rem; border-radius:999px;">Spotted</span>
               <p style="font-family:'Oswald','Arial',sans-serif; font-size:0.92rem; font-weight:600; line-height:1.35; margin-top:0.65rem; color:#111;">We Found 14 TikToks Using the Exact Same "Unbiased Review" Script</p>
             </a>
           </div>
@@ -421,9 +425,9 @@
         if (spaceRight >= adWidth + gap) {
           ad.style.left = (rect.right + gap) + 'px';
           ad.style.right = 'auto';
+          ad.style.display = '';
         } else {
-          ad.style.left = 'auto';
-          ad.style.right = gap + 'px';
+          ad.style.display = 'none';
         }
         ad.style.top = Math.max(rect.top, gap) + 'px';
       }

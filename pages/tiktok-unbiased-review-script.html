@@ -398,9 +398,9 @@
         if (spaceRight >= adWidth + gap) {
           ad.style.left = (rect.right + gap) + 'px';
           ad.style.right = 'auto';
+          ad.style.display = '';
         } else {
-          ad.style.left = 'auto';
-          ad.style.right = gap + 'px';
+          ad.style.display = 'none';
         }
         ad.style.top = Math.max(rect.top, gap) + 'px';
       }
