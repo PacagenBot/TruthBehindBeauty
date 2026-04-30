@@ -315,29 +315,33 @@
         <strong>Sources:</strong> Patel DP et al., "A Review of the Use of Biotin for Hair Loss," <em>Skin Appendage Disorders</em>, 2017. FDA Safety Communication on Biotin Interference with Lab Tests, 2017. This article is for informational purposes only and does not constitute medical advice. Consult a dermatologist or physician for hair loss concerns.
       </div>
 
-      <!-- You Might Also Like -->
+            <!-- You Might Also Like -->
       <div style="border-top: 2px solid #eee; margin-top: 3rem; padding-top: 2rem;">
-        <h2 style="font-family:'Oswald','Arial',sans-serif; font-size:2rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:1.5rem; color:#111;">You Might Also Like</h2>
+        <h2 style="font-family:'Oswald',Buvera; font-size:2rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:1.5rem; color:#111;">You Might Also Like</h2>
         <div class="blog-rec-inline">
           <div style="position:relative;">
             <a href="haircare-routine-reduces-damage.html" style="text-decoration:none; color:inherit;">
               <img src="../assets/images/tbb-haircare-routine.png" alt="Haircare Routine" style="width:100%; aspect-ratio:85/54; object-fit:cover; border-radius:6px; display:block;">
-              <span style="position:absolute; top:0.6rem; left:0.6rem; background:#6e5c2e; color:#fff; font-family:'Oswald','Arial',sans-serif; font-size:0.72rem; font-weight:600; padding:0.2rem 0.65rem; border-radius:999px;">Routines</span>
-              <p style="font-family:'Oswald','Arial',sans-serif; font-size:0.92rem; font-weight:600; line-height:1.35; margin-top:0.65rem; color:#111;">The Haircare Routine That Actually Reduces Damage (Not Just Shine)</p>
+              <span style="position:absolute; top:0.6rem; left:0.6rem; background:#6e5c2e; color:#fff; font-family:'Oswald',Buvera; font-size:0.72rem; font-weight:600; padding:0.2rem 0.65rem; border-radius:999px;">Routines</span>
+              <p style="font-family:'Oswald',Buvera; font-size:0.92rem; font-weight:600; line-height:1.35; margin-top:0.65rem; color:#111;">The Haircare Routine That Actually Reduces Damage (Not Just Shine)</p>
             </a>
           </div>
           <div style="position:relative;">
             <a href="viral-hair-oils-tested.html" style="text-decoration:none; color:inherit;">
               <img src="../assets/images/tbb-hairoil.png" alt="Viral Hair Oils" style="width:100%; aspect-ratio:85/54; object-fit:cover; border-radius:6px; display:block;">
-              <span style="position:absolute; top:0.6rem; left:0.6rem; background:#c62828; color:#fff; font-family:'Oswald','Arial',sans-serif; font-size:0.72rem; font-weight:600; padding:0.2rem 0.65rem; border-radius:999px;">Hot Takes</span>
-              <p style="font-family:'Oswald','Arial',sans-serif; font-size:0.92rem; font-weight:600; line-height:1.35; margin-top:0.65rem; color:#111;">The Hair Oils Everyone's Buying Are 90% Silicone — Here's What the Labels Actually Say</p>
+              <span style="position:absolute; top:0.6rem; left:0.6rem; background:#1a5276; color:#fff; font-family:'Oswald',Buvera; font-size:0.72rem; font-weight:600; padding:0.2rem 0.65rem; border-radius:999px;">Reviews</span>
+              <p style="font-family:'Oswald',Buvera; font-size:0.92rem; font-weight:600; line-height:1.35; margin-top:0.65rem; color:#111;">We Tested 3 Viral Hair Oils — Most Are 90% Silicone With a Pretty Label</p>
             </a>
           </div>
           <div style="position:relative;">
-            <img src="../assets/images/tbb-shampoo.png" alt="Strengthening Shampoo" style="width:100%; aspect-ratio:85/54; object-fit:cover; border-radius:6px; display:block;">
-            <span style="position:absolute; top:0.6rem; left:0.6rem; background:#1a5276; color:#fff; font-family:'Oswald','Arial',sans-serif; font-size:0.72rem; font-weight:600; padding:0.2rem 0.65rem; border-radius:999px;">Reviews</span>
-            <p style="font-family:'Oswald','Arial',sans-serif; font-size:0.92rem; font-weight:600; line-height:1.35; margin-top:0.65rem; color:#111;">The "Strengthening" Shampoo Ingredients That Are Actually Drying Your Hair Out</p>
+            <a href="dandruff-vs-sensitive-scalp.html" style="text-decoration:none; color:inherit;">
+              <img src="../assets/images/dandruff.png" alt="Dandruff vs Sensitive Scalp" style="width:100%; aspect-ratio:85/54; object-fit:cover; border-radius:6px; display:block;">
+              <span style="position:absolute; top:0.6rem; left:0.6rem; background:#6e5c2e; color:#fff; font-family:'Oswald',Buvera; font-size:0.72rem; font-weight:600; padding:0.2rem 0.65rem; border-radius:999px;">Routines</span>
+              <p style="font-family:'Oswald',Buvera; font-size:0.92rem; font-weight:600; line-height:1.35; margin-top:0.65rem; color:#111;">Your "Dandruff" Might Actually Be a Sensitive Scalp Problem</p>
+            </a>
           </div>
+        </div>
+      </div>
         </div>
       </div>
 
@@ -403,9 +407,9 @@
         if (spaceRight >= adWidth + gap) {
           ad.style.left = (rect.right + gap) + 'px';
           ad.style.right = 'auto';
+          ad.style.display = '';
         } else {
-          ad.style.left = 'auto';
-          ad.style.right = gap + 'px';
+          ad.style.display = 'none';
         }
         ad.style.top = Math.max(rect.top, gap) + 'px';
       }

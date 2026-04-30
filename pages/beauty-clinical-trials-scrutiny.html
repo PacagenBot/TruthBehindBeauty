@@ -240,6 +240,8 @@
       <div id="main-quote"></div>
 
       <h2 class="section-heading">What Makes a Clinical Trial Actually Valid</h2>
+      <div class="image-row" style="margin-bottom:1.5rem;"><img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=900&q=80" alt="Scientific laboratory research" style="width:100%; border-radius:6px; max-height:320px; object-fit:cover;"><p style="font-size:0.75rem; color:#999; font-family:Buvera; margin-top:0.4rem;">Gold-standard clinical trials require randomisation, blinding, and independent peer review — criteria most beauty studies never meet.</p></div>
+      
 
       <p>In medicine, a gold-standard clinical trial is randomized, double-blind, placebo-controlled, and conducted on a large enough sample to produce statistically significant results. It's published in a peer-reviewed journal, meaning independent scientists have reviewed the methodology before it goes public. The researchers have no financial stake in the outcome.</p>
 
@@ -251,6 +253,8 @@
       </div>
 
       <h2 class="section-heading">The Red Flags — Studies That Fail Scrutiny</h2>
+      <div class="image-row" style="margin-bottom:1.5rem;"><img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=900&q=80" alt="Small study sample size" style="width:100%; border-radius:6px; max-height:320px; object-fit:cover;"><p style="font-size:0.75rem; color:#999; font-family:Buvera; margin-top:0.4rem;">A study of 22 women cannot reliably detect whether an effect is real or random variation.</p></div>
+      
 
       <div class="trial-card">
         <p class="trial-label">Red Flag 1</p>
@@ -294,6 +298,8 @@
       </div>
 
       <h2 class="section-heading">The Studies That Actually Hold Up</h2>
+      <div class="image-row" style="margin-bottom:1.5rem;"><img src="../assets/images/sunscreen.png" alt="Sunscreen SPF protection" style="width:100%; border-radius:6px; max-height:320px; object-fit:cover;"><p style="font-size:0.75rem; color:#999; font-family:Buvera; margin-top:0.4rem;">The 2013 sunscreen RCT — 900 participants, four years, randomised — is the standard the rest of the industry rarely reaches.</p></div>
+      
 
       <div class="trial-card">
         <p class="trial-label">Passes Scrutiny</p>
@@ -426,9 +432,9 @@
         if (spaceRight >= adWidth + gap) {
           ad.style.left = (rect.right + gap) + 'px';
           ad.style.right = 'auto';
+          ad.style.display = '';
         } else {
-          ad.style.left = 'auto';
-          ad.style.right = gap + 'px';
+          ad.style.display = 'none';
         }
         ad.style.top = Math.max(rect.top, gap) + 'px';
       }
