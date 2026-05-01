@@ -300,12 +300,13 @@
 }
 
 html {
-  overflow-x: hidden;
+  overflow-x: hidden !important;
+  overflow-y: auto;
 }
 
 body {
   max-width: 100%;
-  overflow-x: hidden;
+  overflow-x: hidden !important;
 }
 
 body {
