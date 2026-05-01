@@ -300,11 +300,12 @@
 }
 
 html {
-  overflow-x: clip;
+  overflow-x: hidden;
 }
 
 body {
   max-width: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -1084,12 +1085,20 @@ footer.tbb-footer {
   display: none !important;
 }
 
-.quote-card {    width: 700px;
+.quote-card {
+    width: 700px;
     max-width: 90%;
     margin: 20px auto;
     height: auto;
     background-color: #c0d3c9;
   }
+
+@media (max-width: 768px) {
+  .quote-card {
+    width: 100%;
+    max-width: 100%;
+  }
+}
 
 .tbb-truth-section {
   padding-bottom: 1rem !important;
@@ -1146,5 +1155,19 @@ footer.tbb-footer {
 @media (max-width: 576px) {
   .w-60 {
     width: 90% !important;
+  }
+}
+
+/* Scrollable tables on mobile */
+@media (max-width: 768px) {
+  .data-table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .data-table td,
+  .data-table th {
+    min-width: 100px;
   }
 }

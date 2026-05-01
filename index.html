@@ -139,7 +139,7 @@
           .tbb-tracking-text { font-size: 1.4rem !important; }
           .tbb-list-title { font-size: 1rem; }
           .tbb-list li { font-size: 0.7rem; }
-          .tbb-watching-mobile { padding-left: 1.25rem; }
+          .tbb-watching-mobile { margin-left: 0.5rem; }
         }
 
         .tbb-truth-wrapper {
@@ -291,19 +291,21 @@
                     </ul>
                 </div>
 
-                <!-- Mobile only: We're watching (left of TBB-truth2.png) -->
-                <div class="col-6 d-lg-none order-3">
-                    <p class="tbb-list-title">We're watching:</p>
-                    <ul class="tbb-list">
-                        <li>Viral trends</li>
-                        <li>Influencer marketing</li>
-                        <li>Industry narratives</li>
-                    </ul>
-                </div>
-
-                <!-- TBB-truth2.png: right on mobile only -->
-                <div class="col-6 d-lg-none order-4">
-                    <img src="assets/images/TBB-truth2.png" alt="Truth Behind Beauty 2" class="no-grayscale tbb-truth2-img" style="width: 100%; display: block; object-fit: cover;">
+                <!-- Mobile only: We're watching + TBB-truth2.png side by side -->
+                <div class="col-12 d-lg-none order-3">
+                    <div class="d-flex align-items-center">
+                        <div class="tbb-watching-mobile" style="flex: 0 0 50%; max-width: 50%;">
+                            <p class="tbb-list-title">We're watching:</p>
+                            <ul class="tbb-list">
+                                <li>Viral trends</li>
+                                <li>Influencer marketing</li>
+                                <li>Industry narratives</li>
+                            </ul>
+                        </div>
+                        <div style="flex: 0 0 50%; max-width: 50%;">
+                            <img src="assets/images/TBB-truth2.png" alt="Truth Behind Beauty 2" class="no-grayscale tbb-truth2-img" style="width: 100%; display: block; object-fit: cover;">
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Desktop only: full copy block -->
