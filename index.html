@@ -139,8 +139,7 @@
           .tbb-tracking-text { font-size: 1.4rem !important; }
           .tbb-list-title { font-size: 1rem; }
           .tbb-list li { font-size: 0.7rem; }
-        }
-          }
+          .tbb-watching-mobile { padding-left: 1.25rem; }
         }
 
         .tbb-truth-wrapper {
@@ -275,18 +274,40 @@
         <!-- Truth Section -->
         <section class="container-fluid tbb-truth-section" style="padding: clamp(2rem, 5vw, 4rem) clamp(4rem, 10vw, 10rem);">
             <div class="row g-5 align-items-center">
-                <!-- TBB-truth: col-6 on mobile, col-4 on desktop -->
-                <div class="col-6 col-lg-5 order-2 order-lg-1">
+                <!-- TBB-truth.png: left on both mobile and desktop -->
+                <div class="col-6 col-lg-5 order-1 order-lg-1">
                     <div class="tbb-truth-wrapper">
                         <img src="assets/images/TBB-truth.png" alt="Truth Behind Beauty" class="no-grayscale tbb-truth-img" style="width: 100%; display: block; object-fit: cover;">
                     </div>
                 </div>
-                <!-- TBB-truth2: col-6 on mobile only, hidden on desktop -->
+
+                <!-- Mobile only: We're exposing (right of TBB-truth.png) -->
+                <div class="col-6 d-lg-none order-2">
+                    <p class="tbb-list-title">We're exposing:</p>
+                    <ul class="tbb-list">
+                        <li>Overhyped products</li>
+                        <li>Misleading claims</li>
+                        <li>Paid "honest" reviews</li>
+                    </ul>
+                </div>
+
+                <!-- Mobile only: We're watching (left of TBB-truth2.png) -->
                 <div class="col-6 d-lg-none order-3">
+                    <p class="tbb-list-title">We're watching:</p>
+                    <ul class="tbb-list">
+                        <li>Viral trends</li>
+                        <li>Influencer marketing</li>
+                        <li>Industry narratives</li>
+                    </ul>
+                </div>
+
+                <!-- TBB-truth2.png: right on mobile only -->
+                <div class="col-6 d-lg-none order-4">
                     <img src="assets/images/TBB-truth2.png" alt="Truth Behind Beauty 2" class="no-grayscale tbb-truth2-img" style="width: 100%; display: block; object-fit: cover;">
                 </div>
-                <!-- Copy: col-12 on mobile, col-8 on desktop -->
-                <div class="col-12 col-lg-6 order-1 order-lg-2 tbb-truth-copy">
+
+                <!-- Desktop only: full copy block -->
+                <div class="col-lg-6 d-none d-lg-block order-lg-2 tbb-truth-copy">
                     <h2 class="tbb-truth-heading">We Are Calling Out <span style="color:#aa1313; font-family:'HolidayFree','Arial',sans-serif; text-transform:none;">beauty bullshit</span></h2>
                     <p class="tbb-tracking-text" style="font-family:'Oswald','Arial',sans-serif; font-size:1.6rem; color:#444; margin-bottom:1.5rem;">We're tracking what brands say vs what actually happens.</p>
                     <div class="row g-3">
@@ -406,7 +427,7 @@
                         <p class="tbb-community-source">Viral Trends We're Watching &rarr;</p>
                     </div>
                 </div>
-                <p class="tbb-trending-hint d-lg-none" style="color:rgba(255,255,255,0.7);">scroll for more &#8594;</p>
+                <p class="tbb-community-scroll-hint">swipe for more &#8594;</p>
             </section>
 
             <!-- Ad White -->
@@ -475,7 +496,6 @@
                       <button class="tbb-carousel-btn" id="tbbPrev" aria-label="Previous">&#8592;</button>
                       <button class="tbb-carousel-btn" id="tbbNext" aria-label="Next">&#8594;</button>
                     </div>
-                    <p class="tbb-trending-hint d-lg-none">scroll for more &#8594;</p>
                 </div>
             </section>
 
@@ -544,36 +564,27 @@
         var next = document.getElementById('tbbNext');
         if (!scroll || !prev || !next) return;
 
-        var current = 0;
-
-        function getVisible() {
-          return window.innerWidth >= 992 ? 4 : 1;
+        function cardWidth() {
+          var first = scroll.children[0];
+          return first ? first.offsetWidth + 24 : 0;
         }
 
-        function getTotal() {
-          return scroll.children.length;
-        }
-
-        function update() {
-          var visible = getVisible();
-          var total = getTotal();
-          var cardW = scroll.children[0] ? scroll.children[0].offsetWidth + 24 : 0;
-          scroll.style.transform = 'translateX(-' + (current * cardW) + 'px)';
-          prev.disabled = current === 0;
-          next.disabled = current >= total - visible;
+        function updateButtons() {
+          prev.disabled = scroll.scrollLeft <= 0;
+          next.disabled = scroll.scrollLeft >= scroll.scrollWidth - scroll.offsetWidth - 2;
         }
 
         prev.addEventListener('click', function() {
-          if (current > 0) { current--; update(); }
+          scroll.scrollBy({ left: -cardWidth(), behavior: 'smooth' });
         });
 
         next.addEventListener('click', function() {
-          var visible = getVisible();
-          if (current < getTotal() - visible) { current++; update(); }
+          scroll.scrollBy({ left: cardWidth(), behavior: 'smooth' });
         });
 
-        window.addEventListener('resize', function() { current = 0; update(); });
-        update();
+        scroll.addEventListener('scroll', updateButtons, { passive: true });
+        window.addEventListener('resize', updateButtons);
+        updateButtons();
       })();
     </script>
 </body>
