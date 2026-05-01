@@ -91,29 +91,31 @@ function insertNavigation(pageType = 'root') {
 
     // Create navigation HTML
     const navigationHTML = `
-        <header class="site-header">
-            <div class="header-left"></div>
-            <div class="logo">
-                <a href="${homePath}">
-                    <img src="${logoPath}" alt="Truth Behind Beauty Logo">
-                </a>
-            </div>
-            <div class="header-right">
-                <button class="hamburger-menu" aria-label="Open menu" onclick="toggleMobileMenu()">
-                    <span class="hamburger-bar"></span>
-                    <span class="hamburger-bar"></span>
-                    <span class="hamburger-bar"></span>
-                </button>
-            </div>
-        </header>
-        <nav class="sub-nav">
-            <ul class="sub-nav__list">
-                <li><a href="${hotTakesPath}">Hot Takes</a></li>
-                <li><a href="${spottedPath}">Spotted</a></li>
-                <li><a href="${reviewsPath}">Reviews</a></li>
-                <li><a href="${routinesPath}">Routines</a></li>
-            </ul>
-        </nav>
+        <div class="site-header-wrap">
+          <header class="site-header">
+              <div class="header-left"></div>
+              <div class="logo">
+                  <a href="${homePath}">
+                      <img src="${logoPath}" alt="Truth Behind Beauty Logo">
+                  </a>
+              </div>
+              <div class="header-right">
+                  <button class="hamburger-menu" aria-label="Open menu" onclick="toggleMobileMenu()">
+                      <span class="hamburger-bar"></span>
+                      <span class="hamburger-bar"></span>
+                      <span class="hamburger-bar"></span>
+                  </button>
+              </div>
+          </header>
+          <nav class="sub-nav">
+              <ul class="sub-nav__list">
+                  <li><a href="${hotTakesPath}">Hot Takes</a></li>
+                  <li><a href="${spottedPath}">Spotted</a></li>
+                  <li><a href="${reviewsPath}">Reviews</a></li>
+                  <li><a href="${routinesPath}">Routines</a></li>
+              </ul>
+          </nav>
+        </div>
         <div class="mobile-menu-overlay" id="mobileMenuOverlay">
             <button class="mobile-menu-close" onclick="toggleMobileMenu()">Close</button>
             <nav class="mobile-menu-nav">
@@ -130,6 +132,18 @@ function insertNavigation(pageType = 'root') {
 
     // Insert navigation at the beginning of body
     document.body.insertAdjacentHTML('afterbegin', navigationHTML);
+
+    // Keep body padding-top in sync with the combined header height
+    const wrap = document.querySelector('.site-header-wrap');
+    function syncPadding() {
+        document.body.style.paddingTop = wrap.offsetHeight + 'px';
+    }
+    syncPadding();
+    if (window.ResizeObserver) {
+        new ResizeObserver(syncPadding).observe(wrap);
+    } else {
+        window.addEventListener('resize', syncPadding);
+    }
 }
 
 
