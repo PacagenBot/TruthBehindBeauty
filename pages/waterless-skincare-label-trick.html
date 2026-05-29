@@ -257,7 +257,7 @@
   <div id="ad-side-placeholder" class="ad-side-wrap"></div>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      var reviews = [{ id:'main-quote', review:'"Waterless beauty can be smart formulation. It can also be regular watery skincare wearing a sustainability costume."', name:'Rachel Cho', title:'Beauty Marketing Strategist' }];
+      var reviews = [{ id:'main-quote', review:'Waterless beauty can be smart formulation. It can also be regular watery skincare wearing a sustainability costume.', name:'Rachel Cho', title:'Beauty Marketing Strategist' }];
       reviews.forEach(function(r) { var el=document.getElementById(r.id); if(el && typeof createReviewIn==='function') el.innerHTML=createReviewIn({review:r.review,name:r.name,title:r.title}); });
       if (typeof insertReviewWrite === 'function') {
         insertReviewWrite('#comments-section', {
