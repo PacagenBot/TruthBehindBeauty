@@ -2,30 +2,26 @@
 
 // Head Component - Insert favicon and stylesheets
 function insertHeadElements(pageType = 'root') {
-    // Check if head elements already exist to prevent duplicates
-    if (document.querySelector('link[rel="icon"]')) {
-        return; // Already inserted
-    }
-    
     // Determine the correct path based on page type
     const assetPath = pageType === 'blog' ? '../assets' : 'assets';
-    
-    // Create the head elements
-    const headElements = `
+
+    // Only inject favicon tags if not already present in the HTML
+    if (!document.querySelector('link[rel="icon"]')) {
+        const headElements = `
         <!-- Favicon -->
-        <link rel="icon" type="image/png" href="${assetPath}/images/TBB-icon.png">
-        <link rel="apple-touch-icon" sizes="180x180" href="${assetPath}/images/TBB-icon.png">
-        <link rel="manifest" href="${assetPath}/images/site.webmanifest">
+        <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="manifest" href="/site.webmanifest">
 
         <!-- Additional Meta Tags -->
         <meta name="theme-color" content="#202020">
         <meta name="msapplication-TileColor" content="#202020">
     `;
-    
-    // Insert the elements into the head
-    document.head.insertAdjacentHTML('beforeend', headElements);
-    
-    // Load stylesheets with proper loading detection
+        document.head.insertAdjacentHTML('beforeend', headElements);
+    }
+
+    // Always load stylesheets to reveal the page
     loadStylesheets(assetPath);
 }
 
