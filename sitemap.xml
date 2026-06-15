@@ -61,8 +61,14 @@
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://truthbehindbeauty.com/a-fathers-journey.html</loc>                       
+        <loc>https://truthbehindbeauty.com/a-fathers-journey.html</loc>
         <lastmod>2025-10-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://truthbehindbeauty.com/pages/clay-masks-blackhead-assistants.html</loc>
+        <lastmod>2026-06-15</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
