@@ -4,18 +4,10 @@ Allow: /
 # Sitemap location
 Sitemap: https://truthbehindbeauty.com/sitemap.xml
 
-# Crawl delay (optional - adjust as needed)
+# Crawl delay (honored by some crawlers; Google ignores it)
 Crawl-delay: 1
 
-# Disallow common directories that shouldn't be indexed
+# Block non-public directories only
 Disallow: /admin/
 Disallow: /private/
 Disallow: /temp/
-Disallow: *.pdf$
-Disallow: /assets/js/
-Disallow: /assets/css/
-
-# Allow important pages
-Allow: /blog/
-Allow: /*.html
-Allow: /index.html
