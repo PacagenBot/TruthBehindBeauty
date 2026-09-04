@@ -21,8 +21,12 @@
 
         const defaultImage = mode === 'mobile' ? 'prada_horizontal.png' : 'prada_vertical.png';
         const imagePath = resolveImagePath(image || defaultImage, pageType);
+        const isClickable = ctaUrl && ctaUrl !== '#';
+        const wrapperTag = isClickable ? 'a' : 'div';
+        const hrefAttr = isClickable ? `href="${ctaUrl}" target="_blank" rel="noopener"` : '';
+        const wrapperClass = isClickable ? 'ad-side-link' : 'ad-side-link ad-side-static';
 
-        return `<a href="${ctaUrl}" class="ad-side-link" target="_blank" rel="noopener"><img src="${imagePath}" alt="Ad" class="ad-side-img"><span class="ad-label">Ad</span></a>`;
+        return `<${wrapperTag} ${hrefAttr} class="${wrapperClass}"><img src="${imagePath}" alt="Ad" class="ad-side-img"><span class="ad-label">Ad</span></${wrapperTag}>`;
     }
 
     window.createAdSide = createAdSide;

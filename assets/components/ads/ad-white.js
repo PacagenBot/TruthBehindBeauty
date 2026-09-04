@@ -5,6 +5,23 @@
 (function() {
     'use strict';
 
+    if (!document.getElementById('ad-white-styles')) {
+        var style = document.createElement('style');
+        style.id = 'ad-white-styles';
+        style.textContent = [
+            '.ad-white-section{display:block;background:#fff;border:1px solid #e8e8e8;overflow:hidden;position:relative;text-decoration:none;color:inherit;margin:2rem auto;width:70%}',
+            '.ad-white-section .row{min-height:180px;align-items:stretch!important}',
+            '.ad-white-section .col-7{align-self:stretch}',
+            '.ad-white-section .ad-white-img{display:block;width:100%;height:100%;object-fit:cover}',
+            '.ad-white-content{padding:2.5rem 3rem;display:flex;flex-direction:column;justify-content:center;gap:0.5rem}',
+            '.ad-white-tagline{font-family:"Proxima Nova","Montserrat",Buvera,sans-serif;font-size:clamp(1rem,2.5vw,1.4rem);font-weight:600;line-height:1.3;color:#222;margin:0}',
+            '.ad-white-cta{display:inline-block;background:#aa1313;color:#fff;font-family:"DM Sans",Buvera,sans-serif;font-weight:600;font-size:0.85rem;letter-spacing:0.05em;text-transform:uppercase;padding:0.45rem 1.2rem;border-radius:2px}',
+            '.ad-white-section .ad-label{position:absolute;bottom:0.35rem;right:0.5rem;font-size:0.62rem;color:#aaa;font-family:Buvera,sans-serif}',
+            '@media(max-width:576px){.ad-white-section{width:100%}.ad-white-section .row{min-height:unset;flex-direction:column}.ad-white-section .col-7,.ad-white-section .col-5{width:100%;max-width:100%;flex:0 0 100%}.ad-white-content{padding:1rem 1.25rem}}'
+        ].join('\n');
+        document.head.appendChild(style);
+    }
+
     function resolveImagePath(image, pageType) {
         const assetPath = pageType === 'blog' ? '../assets' : 'assets';
         return image.startsWith('http') || image.startsWith('/')
