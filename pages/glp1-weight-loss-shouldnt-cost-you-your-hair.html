@@ -169,8 +169,6 @@ body{visibility:hidden;opacity:0;transition:opacity 0.3s ease;font-family:Georgi
       <p>If you’ve been losing weight quickly, you may have started noticing things like a thinner ponytail, more hair in the shower drain, or hair that just doesn’t look as thick as it used to. This type of shedding has a name — <em>telogen effluvium</em>: a temporary shedding phase that can follow any significant change to the body — rapid weight loss, childbirth, extreme stress, etc. The nutrient shifts that come with eating less can play a part too.</p>
       <p>The good news is that GLP-1 hair thinning doesn’t have to be a part of your GLP-1 journey. This kind of shedding is usually temporary, but hair recovery takes time. So if you’re reading this, it’s likely that the time to act on it is now — <strong>here are 6 hair serums you should be using in 2026.</strong></p>
 
-      <div class="ad-side-mobile-wrap"><div id="ad-side-placeholder-mobile"></div></div>
-
       <!-- ── 1. EDITOR'S PICK: RE:YOU ── -->
       <article class="product-pick" id="reyou">
         <div class="product-pick-info">
@@ -248,6 +246,8 @@ body{visibility:hidden;opacity:0;transition:opacity 0.3s ease;font-family:Georgi
       <p>Something to note if you’re already shedding from rapid weight loss is the initial “dread shed” that typically occurs when users first start using minoxidil. It’s expected but can make the first few weeks difficult for users who start using it because of hair shedding in the first place. Olivia Harper from TBB described her own emotional experience:</p>
 
       <div id="rogaine-quote"></div>
+
+      <div class="ad-side-mobile-wrap"><div id="ad-side-placeholder-mobile"></div></div>
 
       <!-- ── 3. THE ORDINARY ── -->
       <article class="product-pick" id="the-ordinary">
@@ -484,7 +484,6 @@ body{visibility:hidden;opacity:0;transition:opacity 0.3s ease;font-family:Georgi
         image: 'lamer.png',
         tagline: 'Where the sea meets the skin. The legendary Cr&egrave;me de la Mer.',
         ctaText: 'Shop La Mer',
-        ctaUrl: 'https://www.cremedelamer.com',
         pageType: 'blog'
       });
     }
@@ -499,8 +498,8 @@ body{visibility:hidden;opacity:0;transition:opacity 0.3s ease;font-family:Georgi
     var sideEl = document.getElementById('ad-side-placeholder');
     var sideMobileEl = document.getElementById('ad-side-placeholder-mobile');
     if (typeof createAdSide === 'function') {
-      if (sideEl) sideEl.innerHTML = createAdSide({ ctaUrl: 'https://www.veronicabeard.com', pageType: 'blog', mode: 'desktop', image: 'veronica_vertical.png' });
-      if (sideMobileEl) sideMobileEl.innerHTML = createAdSide({ ctaUrl: 'https://www.veronicabeard.com', pageType: 'blog', mode: 'mobile', image: 'veronica_horizontal.png' });
+      if (sideEl) sideEl.innerHTML = createAdSide({ pageType: 'blog', mode: 'desktop', image: 'veronica_vertical.png' });
+      if (sideMobileEl) sideMobileEl.innerHTML = createAdSide({ pageType: 'blog', mode: 'mobile', image: 'veronica_horizontal.png' });
     }
 
     function positionSideAd() {
