@@ -70,7 +70,7 @@ body{visibility:hidden;opacity:0;transition:opacity 0.3s ease;font-family:Georgi
 .image-row{margin-bottom:2rem}
 .image-row img{width:100%;height:auto;display:block}
 .section-heading{font-family:Georgia,serif;font-size:1.55rem;font-weight:700;margin:2.5rem 0 1rem;color:#111;text-transform:none;letter-spacing:0}
-.ad-side-wrap{position:fixed;top:1.5rem;width:160px;z-index:2;overflow:hidden}
+.ad-white-section,.ad-side-link{cursor:default;pointer-events:none}
 .ad-side-link{display:block;position:relative;text-decoration:none}
 .ad-side-img{width:100%;display:block}
 .ad-label{position:absolute;bottom:0.35rem;right:0.5rem;font-size:0.62rem;color:rgba(255,255,255,0.6);font-family:Buvera}
@@ -423,7 +423,6 @@ section .product-media-copy h3{font-family:Georgia,serif;font-size:1.15rem;font-
         image: 'revive-horizontal.png',
         tagline: 'Give New Life To Skin',
         ctaText: 'Shop R&eacute;Vive',
-        ctaUrl: 'https://www.reviveskincare.com/',
         pageType: 'blog'
       });
     }
@@ -438,8 +437,8 @@ section .product-media-copy h3{font-family:Georgia,serif;font-size:1.15rem;font-
     var sideEl = document.getElementById('ad-side-placeholder');
     var sideMobileEl = document.getElementById('ad-side-placeholder-mobile');
     if (typeof createAdSide === 'function') {
-      if (sideEl) sideEl.innerHTML = createAdSide({ pageType: 'blog', mode: 'desktop', image: 'laprairie-vertical.png', ctaUrl: 'https://www.laprairie.com/' });
-      if (sideMobileEl) sideMobileEl.innerHTML = createAdSide({ pageType: 'blog', mode: 'mobile', image: 'laprairie-horizontal.png', ctaUrl: 'https://www.laprairie.com/' });
+      if (sideEl) sideEl.innerHTML = createAdSide({ pageType: 'blog', mode: 'desktop', image: 'laprairie-vertical.png' });
+      if (sideMobileEl) sideMobileEl.innerHTML = createAdSide({ pageType: 'blog', mode: 'mobile', image: 'laprairie-horizontal.png' });
     }
 
     function positionSideAd() {
