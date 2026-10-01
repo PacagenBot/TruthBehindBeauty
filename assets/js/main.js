@@ -1,7 +1,28 @@
 // Main JavaScript file for Truth Behind Beauty
 
+const GOOGLE_TAG_ID = 'AW-18234380755';
+
+function insertGoogleTag() {
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ window.dataLayer.push(arguments); }
+    window.gtag = window.gtag || gtag;
+
+    if (document.querySelector('script[src*="googletagmanager.com/gtag/js"]')) {
+        return;
+    }
+
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${GOOGLE_TAG_ID}`;
+    document.head.appendChild(script);
+    window.gtag('js', new Date());
+    window.gtag('config', GOOGLE_TAG_ID);
+}
+
 // Head Component - Insert favicon and stylesheets
 function insertHeadElements(pageType = 'root') {
+    insertGoogleTag();
+
     // Determine the correct path based on page type
     const assetPath = pageType === 'blog' ? '../assets' : 'assets';
 
