@@ -400,13 +400,9 @@
         width: 160px;
       }
       @media (max-width: 768px) {
-        .ad-side-wrap {
-          display: none;
-        }
+        .ad-side-wrap,
         .ad-side-mobile-wrap {
-          display: block;
-          width: 100%;
-          margin: 1rem 0;
+          display: none !important;
         }
       }
       @media (min-width: 769px) {
@@ -1088,7 +1084,10 @@
         function positionSideAd() {
           var section = document.querySelector(".w-60");
           var ad = document.getElementById("ad-side-placeholder");
-          if (!section || !ad || window.innerWidth <= 768) return;
+          if (!section || !ad || window.innerWidth <= 768) {
+            if (ad && window.innerWidth <= 768) ad.style.display = "none";
+            return;
+          }
           var rect = section.getBoundingClientRect();
           var gap = 16;
           var adWidth = ad.offsetWidth || 160;
