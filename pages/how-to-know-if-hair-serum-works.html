@@ -334,7 +334,7 @@ html{scroll-behavior:smooth}
         <p class="tldr"><span class="tldr-label">TBB TLDR</span>Borrowed ingredients, and a formulation missing efficacy claims and proof. Relatively inexpensive, but likely not worth trying something with this little information or evidence behind it.</p>
       </article>
 
-      <div id="ad-lamer-placeholder"></div>
+      <div id="ad-pacagen-placeholder"></div>
 
       <!-- Vegamour -->
       <article class="serum-card" id="vegamour">
@@ -531,14 +531,17 @@ html{scroll-behavior:smooth}
       });
     }
 
-    var lamerEl = document.getElementById('ad-lamer-placeholder');
-    if (lamerEl && typeof createAdWhite === 'function') {
-      lamerEl.innerHTML = createAdWhite({
-        image: 'lamer.png',
-        tagline: 'Where the sea meets the skin. The legendary Cr&egrave;me de la Mer.',
-        ctaText: 'Shop La Mer',
+    var pacagenEl = document.getElementById('ad-pacagen-placeholder');
+    if (pacagenEl && typeof createAdWhite === 'function') {
+      pacagenEl.innerHTML = createAdWhite({
+        image: 'adv-pacagen-cat.png',
+        tagline: 'Neutralize up to 98% cat allergens',
+        ctaText: 'Shop Pacagen',
+        ctaUrl: 'javascript:void(0)',
         pageType: 'blog'
       });
+      var pacagenAd = pacagenEl.querySelector('a');
+      if (pacagenAd) pacagenAd.setAttribute('onclick', "f('https://pacagen.com/en-us/products/cat-allergen-reducing-supplement')");
     }
 
     if (typeof insertNewsletter === 'function') {
