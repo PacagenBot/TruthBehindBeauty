@@ -61,6 +61,27 @@ whop.track("page");
         return url + (url.indexOf('?') !== -1 ? '&' : '?') + params.join('&') + hash;
     }
 
+    function matchOutbound(url) {
+        var host = '';
+        try { host = new URL(url, window.location.href).hostname; } catch (x) { return null; }
+        for (var i = 0; i < OUTBOUND_EVENTS.length; i++) {
+            var d = OUTBOUND_EVENTS[i].domain;
+            if (host === d || host.endsWith('.' + d)) return OUTBOUND_EVENTS[i];
+        }
+        return null;
+    }
+
+    function handleOwnedClick(url) {
+        var match = matchOutbound(url);
+        var finalUrl = appendCvgParams(url);
+        if (match) {
+            safeTrack({ method: 'track', eventName: match.eventName, properties: { outbound_url: url } });
+        }
+        setTimeout(function () { window.location.href = finalUrl; }, 200);
+        return false;
+    }
+    window.f = handleOwnedClick;
+
     // 1. Outbound click tracking
     document.addEventListener('click', function(e) {
         var link = e.target.closest('a[href]');
