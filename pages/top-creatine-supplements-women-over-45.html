@@ -62,7 +62,7 @@ body{visibility:hidden;opacity:0;transition:opacity 0.3s ease;font-family:Georgi
 .blog-contents p a{font-weight:700}
 .blog-contents a:hover{color:#991f1f}
 .blog-title-section{display:flex;justify-content:center;padding:20px 0 8px}
-.blog-title{font-family:'Oswald',Buvera,sans-serif;font-size:clamp(1.65rem,4vw,2.35rem);font-weight:500;margin:0;text-align:center;line-height:1.25;text-transform:none!important;letter-spacing:0;color:#111;max-width:820px}
+.blog-title{font-family:'Oswald',Buvera,sans-serif;font-size:clamp(1.65rem,4vw,2.35rem);font-weight:500;margin:0;text-align:center;line-height:1.25;text-transform:uppercase;letter-spacing:0.01em;color:#111;max-width:820px}
 .blog-dek{font-family:Georgia,serif;font-size:1rem;color:#222;text-align:center;max-width:640px;margin:0.5rem auto 1.25rem;line-height:1.6}
 .author-section{display:flex;align-items:center;justify-content:center;gap:10px;font-size:1rem;color:#555}
 .author-image{width:32px;height:32px;border-radius:50%;object-fit:cover}
@@ -70,6 +70,13 @@ body{visibility:hidden;opacity:0;transition:opacity 0.3s ease;font-family:Georgi
 .image-row{margin-bottom:2rem;text-align:center}
 .image-row img{width:100%;max-width:640px;height:auto;display:inline-block}
 .sponsored-tag{display:inline-block;background:#eee;color:#222;font-family:Buvera,sans-serif;font-size:0.68rem;padding:0.15rem 0.45rem;border-radius:3px;white-space:nowrap}
+@media(max-width:767px){
+  .article-meta{align-items:center}
+  .article-meta>.col-md-6:first-child{width:auto;max-width:none;flex:0 1 auto}
+  .article-meta>.col-md-6:last-child{display:contents!important}
+  .article-meta .sponsored-tag{margin-left:auto}
+  .article-meta .published-line{flex:1 0 100%;margin-top:0.35rem}
+}
 .blog-contents .disclosure-top{font-style:italic;font-size:0.62rem;line-height:1.5;color:#555;max-width:640px;margin:-1.4rem auto 1.75rem}
 .disclosure-bottom{margin:2.5rem 0 1.5rem}
 .blog-contents .disclosure-bottom p{font-style:italic;font-size:0.78rem;line-height:1.6;color:#666;margin-bottom:0.5rem}
@@ -101,10 +108,16 @@ body{visibility:hidden;opacity:0;transition:opacity 0.3s ease;font-family:Georgi
 
 @media(max-width:700px){
   .product-pick{grid-template-columns:1fr;grid-template-areas:"info" "media" "pros" "cons"}
-  .product-pick-info{flex-direction:row;align-items:flex-end;justify-content:space-between;gap:0.75rem 1rem;border-right:none;padding:1rem 1rem 1.1rem}
-  .product-pick-info > div:first-child{flex:1;min-width:0}
-  .product-pick-title{font-size:clamp(1.15rem,5vw,1.45rem);margin-top:0.55rem}
-  .product-pick-buy{width:auto;flex-shrink:0;align-self:flex-end;margin-top:0;padding:0.7rem 1.35rem;white-space:nowrap}
+  .product-pick-info{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;align-content:start;justify-content:stretch;column-gap:0.75rem;row-gap:0.15rem;border-right:none;padding:1rem}
+  .product-pick-info > div:first-child{display:contents}
+  .product-pick-badges{grid-column:1 / -1;grid-row:1;flex-wrap:nowrap;margin:0 0 2px}
+  .product-pick-badge{white-space:nowrap;font-size:0.62rem;letter-spacing:0.04em;padding:0.32rem 0.5rem}
+  .product-pick-title{grid-column:1;grid-row:1;min-width:0;margin:0;align-self:center;font-size:clamp(1.15rem,5vw,1.45rem)}
+  .product-pick-badges ~ .product-pick-title{grid-row:2}
+  .blog-contents .product-pick-sub{grid-column:1;grid-row:2;margin:0;align-self:start}
+  .product-pick-badges ~ .product-pick-sub{grid-row:3}
+  .product-pick-buy{grid-column:2;grid-row:1;position:static;width:auto;justify-self:end;align-self:center;margin:0;padding:0.7rem 1.35rem;white-space:nowrap}
+  .product-pick-info:has(.product-pick-badges) .product-pick-buy{grid-row:2}
   .product-pick-col.pros{border-right:none;border-bottom:1px solid #111}
 }
   </style>
@@ -143,7 +156,7 @@ body{visibility:hidden;opacity:0;transition:opacity 0.3s ease;font-family:Georgi
     </div>
 
     <div class="container py-2">
-      <div class="row align-items-center">
+      <div class="row align-items-center article-meta">
         <div class="col-md-6 d-flex align-items-center gap-2">
           <span class="fw-semibold">Share:</span>
           <a href="https://www.facebook.com/sharer/sharer.php?u=https://truthbehindbeauty.com/pages/top-creatine-supplements-women-over-45.html" target="_blank" class="text-decoration-none fs-5 text-black"><i class="bi bi-facebook"></i></a>
@@ -151,7 +164,7 @@ body{visibility:hidden;opacity:0;transition:opacity 0.3s ease;font-family:Georgi
         </div>
         <div class="col-md-6 d-flex flex-column align-items-start align-items-md-end gap-1 mt-2 mt-md-0 text-muted">
           <span class="sponsored-tag">Sponsored</span>
-          <span>Published Oct 1, 2026 &nbsp;·&nbsp; 7 min read</span>
+          <span class="published-line">Published Oct 1, 2026 &nbsp;·&nbsp; 7 min read</span>
         </div>
       </div>
     </div>
@@ -179,7 +192,7 @@ body{visibility:hidden;opacity:0;transition:opacity 0.3s ease;font-family:Georgi
             <h2 class="product-pick-title">WILDTYPE Triple Power Build</h2>
             <p class="product-pick-sub">Berry Hibiscus Creatine Tea</p>
           </div>
-          <a class="product-pick-buy" href="https://drinkwildtype.com/products/triple-power-build?utm_source=tbb&utm_medium=review" target="_blank" rel="noopener noreferrer">Buy Now</a>
+          <a class="product-pick-buy" href="https://drinkwildtype.com/products/triple-power-build?utm_source=tbb&utm_medium=review&utm_campaign=top-creatine" target="_blank" rel="noopener noreferrer">Buy Now</a>
         </div>
         <div class="product-pick-media">
           <img src="../assets/images/top-creatine-lp-product1.png" alt="Wildtype Triple Power Build berry hibiscus creatine tea canister">
@@ -207,7 +220,7 @@ body{visibility:hidden;opacity:0;transition:opacity 0.3s ease;font-family:Georgi
         </div>
       </article>
 
-      <p>Here’s my history with creatine powders: I’d buy a tub, use it for about ten days, and then leave it in the pantry. It wasn’t that it didn’t work. I know it works, it’s one of the most studied supplements out there. It was that a spoonful of gritty white powder in my morning coffee started to feel like a chore. So when I tried the <a href="https://drinkwildtype.com/products/triple-power-build?utm_source=tbb&utm_medium=review" target="_blank" rel="noopener noreferrer">Wildtype</a> product, my first question was about whether I’d actually want to drink it.</p>
+      <p>Here’s my history with creatine powders: I’d buy a tub, use it for about ten days, and then leave it in the pantry. It wasn’t that it didn’t work. I know it works, it’s one of the most studied supplements out there. It was that a spoonful of gritty white powder in my morning coffee started to feel like a chore. So when I tried the <a href="https://drinkwildtype.com/products/triple-power-build?utm_source=tbb&utm_medium=review&utm_campaign=top-creatine" target="_blank" rel="noopener noreferrer">Wildtype</a> product, my first question was about whether I’d actually want to drink it.</p>
       <p>I did.</p>
       <p>It’s a berry hibiscus tea, a balance of tart and sweet and I like it best over ice. Two scoops go into a glass of water, and because there’s a small electrolyte blend in there, it reads more like a post-workout drink than a supplement. It’s the first creatine I’ve reached for because I wanted it, not because I was supposed to.</p>
 
