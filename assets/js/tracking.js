@@ -42,9 +42,304 @@ whop.track("page");
         return '';
     }
 
+    // ---------------------------------------------------------------------
+    // Centralized attribution utility (window.TBBTracking)
+    //
+    // Main-site domains are the partner domains already configured in
+    // OUTBOUND_EVENTS above (pacagen.com, getreyou.com, drinkwildtype.com,
+    // plus their subdomains). Only links to those hosts are rewritten.
+    //
+    // path_source semantics are UNCHANGED from the original implementation:
+    // getPathSource() derives it from the page slug, e.g.
+    // /pages/face-mists-worth-the-hype.html -> "face-mists-worth-the-hype".
+    // What is new is persistence: the slug (or an explicit path_source
+    // arriving on the landing URL) is captured once, stored with the Meta
+    // parameters for 30 days, and reused on later WL pages instead of being
+    // recomputed from every subsequent page.
+    // ---------------------------------------------------------------------
+    var TRACKING_PARAM_KEYS = ['tw_source', 'tw_adid', 'cvg_source', 'cvg_adid', 'cvg_cid', 'path_source', 'fbclid'];
+    var ATTRIBUTION_ID_KEYS = ['fbclid', 'tw_adid', 'cvg_adid', 'cvg_cid'];
+    var ATTRIBUTION_STORAGE_KEY = 'tbb_attribution_v1';
+    var ATTRIBUTION_TTL_MS = 30 * 24 * 60 * 60 * 1000;
+    var memoryAttribution = null;
+
+    // Page slug used as the path_source value on partner CTAs, e.g.
+    // /pages/face-mists-worth-the-hype.html -> "face-mists-worth-the-hype".
+    function getPathSource() {
+        var segments = (window.location.pathname || '').split('/').filter(function (s) { return s; });
+        var slug = segments.length ? segments[segments.length - 1] : 'index';
+        slug = slug.replace(/\.html?$/i, '');
+        return slug || 'index';
+    }
+
+    // Partner domains whose CTAs get tracking params: Pacagen, RE:YOU, WildType.
+    function isPartnerUrl(url) {
+        if (!url || typeof url !== 'string') return false;
+        var host = '';
+        try { host = new URL(url, window.location.href).hostname; } catch (x) { return false; }
+        if (!host) return false;
+        for (var i = 0; i < OUTBOUND_EVENTS.length; i++) {
+            var d = OUTBOUND_EVENTS[i].domain;
+            if (host === d || host.endsWith('.' + d)) return true;
+        }
+        return false;
+    }
+
+    // Valid = present, non-empty, and not an unresolved Meta macro such as
+    // "{{ad.id}}" (also rejected in its percent-encoded form, which
+    // URLSearchParams decodes back to braces before we see it).
+    function isValidTrackingValue(value) {
+        if (typeof value !== 'string') return false;
+        var v = value.trim();
+        if (!v) return false;
+        if (v.indexOf('{{') !== -1 || v.indexOf('}}') !== -1 || v.indexOf('{') !== -1 || v.indexOf('}') !== -1) return false;
+        var lower = v.toLowerCase();
+        if (lower === 'null' || lower === 'undefined') return false;
+        return true;
+    }
+
+    function parseTrackingParams(source) {
+        var params = {};
+        var search = '';
+        if (typeof source === 'string' && source) {
+            try { search = new URL(source, window.location.href).search; }
+            catch (x) {
+                var q = source.indexOf('?');
+                search = q === -1 ? '' : source.slice(q).split('#')[0];
+            }
+        } else if (window.location && typeof window.location.search === 'string') {
+            search = window.location.search;
+        }
+        var query;
+        try { query = new URLSearchParams(search); } catch (x) { return params; }
+        for (var i = 0; i < TRACKING_PARAM_KEYS.length; i++) {
+            var key = TRACKING_PARAM_KEYS[i];
+            var value = query.get(key);
+            if (isValidTrackingValue(value)) params[key] = value.trim();
+        }
+        return params;
+    }
+
+    function readStoredAttribution() {
+        // 1) localStorage
+        try {
+            var raw = window.localStorage.getItem(ATTRIBUTION_STORAGE_KEY);
+            if (raw) return JSON.parse(raw);
+        } catch (x) { /* storage blocked: fall through */ }
+        // 2) first-party cookie fallback
+        var cookie = '';
+        try { cookie = getCookie(ATTRIBUTION_STORAGE_KEY); } catch (x) { /* ignore */ }
+        if (cookie) {
+            try { return JSON.parse(decodeURIComponent(cookie)); } catch (x) { /* ignore */ }
+        }
+        // 3) in-memory fallback (blocked storage still works for this page)
+        return memoryAttribution;
+    }
+
+    function writeStoredAttribution(attr) {
+        memoryAttribution = attr;
+        var raw = JSON.stringify(attr);
+        try {
+            window.localStorage.setItem(ATTRIBUTION_STORAGE_KEY, raw);
+            return;
+        } catch (x) { /* fall through to cookie */ }
+        try {
+            var expires = new Date(attr.expiresAt).toUTCString();
+            document.cookie = ATTRIBUTION_STORAGE_KEY + '=' + encodeURIComponent(raw) +
+                '; expires=' + expires + '; path=/; SameSite=Lax';
+        } catch (x) { /* memory only */ }
+    }
+
+    function clearStoredAttribution() {
+        memoryAttribution = null;
+        try { window.localStorage.removeItem(ATTRIBUTION_STORAGE_KEY); } catch (x) { /* ignore */ }
+        try {
+            document.cookie = ATTRIBUTION_STORAGE_KEY + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; SameSite=Lax';
+        } catch (x) { /* ignore */ }
+    }
+
+    // Returns the stored attribution, discarding it if expired or malformed.
+    function loadAttribution(now) {
+        now = typeof now === 'number' ? now : Date.now();
+        var attr = readStoredAttribution();
+        if (!attr || typeof attr !== 'object' || !attr.params || typeof attr.params !== 'object') return null;
+        if (typeof attr.expiresAt !== 'number' || attr.expiresAt <= now) {
+            clearStoredAttribution();
+            return null;
+        }
+        var params = {};
+        for (var i = 0; i < TRACKING_PARAM_KEYS.length; i++) {
+            var key = TRACKING_PARAM_KEYS[i];
+            if (isValidTrackingValue(attr.params[key])) params[key] = attr.params[key].trim();
+        }
+        return { params: params, capturedAt: attr.capturedAt || now, expiresAt: attr.expiresAt };
+    }
+
+    // Capture tracking params from a URL (default: current page) and persist
+    // them. Missing/empty/invalid values never overwrite stored ones. A
+    // conflicting ad identifier means a genuinely new ad visit, so the old
+    // attribution is replaced rather than combined with the new one.
+    function captureAttribution(source, now) {
+        now = typeof now === 'number' ? now : Date.now();
+        var incoming = parseTrackingParams(source);
+        var stored = loadAttribution(now);
+
+        var isNewVisit = false;
+        if (stored) {
+            for (var i = 0; i < ATTRIBUTION_ID_KEYS.length; i++) {
+                var idKey = ATTRIBUTION_ID_KEYS[i];
+                if (incoming[idKey] && stored.params[idKey] && incoming[idKey] !== stored.params[idKey]) {
+                    isNewVisit = true;
+                    break;
+                }
+            }
+        }
+
+        var params;
+        var capturedAt;
+        if (!stored || isNewVisit) {
+            params = {};
+            for (var j = 0; j < TRACKING_PARAM_KEYS.length; j++) {
+                var newKey = TRACKING_PARAM_KEYS[j];
+                if (incoming[newKey]) params[newKey] = incoming[newKey];
+            }
+            // Establish the original path_source using the existing slug
+            // implementation when the landing URL did not carry one.
+            if (!params.path_source) params.path_source = getPathSource();
+            capturedAt = now;
+        } else {
+            params = {};
+            for (var k = 0; k < TRACKING_PARAM_KEYS.length; k++) {
+                var keepKey = TRACKING_PARAM_KEYS[k];
+                if (stored.params[keepKey]) params[keepKey] = stored.params[keepKey];
+            }
+            var hasIncoming = false;
+            for (var m = 0; m < TRACKING_PARAM_KEYS.length; m++) {
+                var mergeKey = TRACKING_PARAM_KEYS[m];
+                if (incoming[mergeKey]) { params[mergeKey] = incoming[mergeKey]; hasIncoming = true; }
+            }
+            if (!params.path_source) params.path_source = getPathSource();
+            // Refresh the 30-day window only when new valid data arrived;
+            // plain navigation keeps the original capture time and expiry.
+            capturedAt = hasIncoming ? now : stored.capturedAt;
+            var merged = { params: params, capturedAt: capturedAt, expiresAt: hasIncoming ? now + ATTRIBUTION_TTL_MS : stored.expiresAt };
+            writeStoredAttribution(merged);
+            memoryAttribution = merged;
+            return merged;
+        }
+
+        var fresh = { params: params, capturedAt: capturedAt, expiresAt: now + ATTRIBUTION_TTL_MS };
+        writeStoredAttribution(fresh);
+        return fresh;
+    }
+
+    // Append every available, valid, unexpired persisted parameter to a
+    // main-domain URL. Existing destination params are preserved; tracking
+    // params already on the destination are updated, never duplicated.
+    // Encoding is handled by URL/URLSearchParams, so a stored path_source is
+    // encoded exactly once. Non-partner, mailto:, tel: and other non-HTTP
+    // links are returned untouched.
+    function withTrackingParams(url, now) {
+        if (!isPartnerUrl(url)) return url;
+        var attr = loadAttribution(now);
+        var params = attr ? attr.params : {};
+        var parsed;
+        try { parsed = new URL(url, window.location.href); } catch (x) { return url; }
+        for (var i = 0; i < TRACKING_PARAM_KEYS.length; i++) {
+            var key = TRACKING_PARAM_KEYS[i];
+            var value = params[key];
+            if (key === 'path_source' && !isValidTrackingValue(value)) value = getPathSource();
+            if (isValidTrackingValue(value)) parsed.searchParams.set(key, value);
+        }
+        return parsed.toString();
+    }
+
+    // Backwards-compatible helper: same as withTrackingParams (path_source
+    // is included); kept so existing call sites keep working unchanged.
+    function withPathSource(url) {
+        return withTrackingParams(url);
+    }
+
+    // Tag every partner anchor already in the DOM so the params show on
+    // hover / open-in-new-tab, not just after the click handler runs.
+    function tagPartnerLinks(root) {
+        var scope = root && root.querySelectorAll ? root : document;
+        var links = scope.querySelectorAll('a[href]');
+        for (var i = 0; i < links.length; i++) {
+            if (isPartnerUrl(links[i].getAttribute('href') || '')) {
+                links[i].href = withTrackingParams(links[i].href);
+            }
+        }
+        // The root itself may be a partner anchor added dynamically.
+        if (root && root.tagName === 'A' && root.getAttribute('href') && isPartnerUrl(root.getAttribute('href'))) {
+            root.href = withTrackingParams(root.href);
+        }
+    }
+
+    // Client-side navigation (history API): re-capture without overwriting
+    // the original attribution, then re-tag partner links.
+    function handleClientNavigation() {
+        captureAttribution();
+        tagPartnerLinks(document);
+    }
+
+    window.TBBTracking = {
+        keys: TRACKING_PARAM_KEYS.slice(),
+        storageKey: ATTRIBUTION_STORAGE_KEY,
+        ttlMs: ATTRIBUTION_TTL_MS,
+        getPathSource: getPathSource,
+        isPartnerUrl: isPartnerUrl,
+        isValidTrackingValue: isValidTrackingValue,
+        parseTrackingParams: parseTrackingParams,
+        capture: captureAttribution,
+        getAttribution: loadAttribution,
+        clear: clearStoredAttribution,
+        buildPartnerUrl: withTrackingParams,
+        withPathSource: withPathSource,
+        tagPartnerLinks: tagPartnerLinks,
+        handleClientNavigation: handleClientNavigation
+    };
+
+    // Capture on initial page load, before tagging any links.
+    captureAttribution();
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function () { tagPartnerLinks(document); });
+    } else {
+        tagPartnerLinks(document);
+    }
+    // Product cards / ads are injected after load, so keep tagging new nodes.
+    if (window.MutationObserver && document.body) {
+        new MutationObserver(function (mutations) {
+            for (var i = 0; i < mutations.length; i++) {
+                for (var j = 0; j < mutations[i].addedNodes.length; j++) {
+                    var node = mutations[i].addedNodes[j];
+                    if (node.nodeType === 1) tagPartnerLinks(node);
+                }
+            }
+        }).observe(document.body, { childList: true, subtree: true });
+    }
+    window.addEventListener('popstate', handleClientNavigation);
+    window.addEventListener('hashchange', handleClientNavigation);
+    if (window.history && typeof window.history.pushState === 'function') {
+        var originalPushState = window.history.pushState;
+        var originalReplaceState = window.history.replaceState;
+        window.history.pushState = function () {
+            var result = originalPushState.apply(this, arguments);
+            setTimeout(handleClientNavigation, 0);
+            return result;
+        };
+        window.history.replaceState = function () {
+            var result = originalReplaceState.apply(this, arguments);
+            setTimeout(handleClientNavigation, 0);
+            return result;
+        };
+    }
+
     // Forward Converge identity onto partner domains. Inserts before any hash
     // so links like /pages/science#clinical-trial stay intact.
     function appendCvgParams(url) {
+        url = withPathSource(url);
         var uid = getCookie('__cvg_uid');
         var sid = getCookie('__cvg_sid');
         var params = [];
