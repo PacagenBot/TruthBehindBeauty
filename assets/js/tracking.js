@@ -105,7 +105,9 @@ whop.track("page");
   // recomputed from every subsequent page. The standard UTM / campaign
   // parameters (utm_source, utm_medium, utm_campaign, utm_content,
   // utm_term, utm_id, campaign_id, ad_id) are captured, persisted, and
-  // transferred in exactly the same way.
+  // transferred in exactly the same way, except utm_source: incoming
+  // utm_source is persisted as-is but sent to the main domain as
+  // "channel", with utm_source itself configured as "tbb".
   // ---------------------------------------------------------------------
   var TRACKING_PARAM_KEYS = [
     "tw_source",
@@ -385,6 +387,11 @@ whop.track("page");
   // Encoding is handled by URL/URLSearchParams, so a stored path_source is
   // encoded exactly once. Non-partner, mailto:, tel: and other non-HTTP
   // links are returned untouched.
+  //
+  // utm_source is configured as "tbb" on main-domain CTAs: the utm_source
+  // captured from incoming traffic is not sent as utm_source, it is moved
+  // to a separate "channel" parameter (e.g. incoming utm_source=facebook
+  // goes out as utm_source=tbb&channel=facebook).
   function withTrackingParams(url, now) {
     if (!isPartnerUrl(url)) return url;
     var attr = loadAttribution(now);
@@ -398,6 +405,12 @@ whop.track("page");
     for (var i = 0; i < TRACKING_PARAM_KEYS.length; i++) {
       var key = TRACKING_PARAM_KEYS[i];
       var value = params[key];
+      if (key === "utm_source") {
+        parsed.searchParams.set("utm_source", "tbb");
+        if (isValidTrackingValue(value))
+          parsed.searchParams.set("channel", value);
+        continue;
+      }
       if (key === "path_source" && !isValidTrackingValue(value))
         value = getPathSource();
       if (isValidTrackingValue(value)) parsed.searchParams.set(key, value);
