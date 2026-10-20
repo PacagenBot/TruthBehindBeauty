@@ -102,7 +102,10 @@ whop.track("page");
   // What is new is persistence: the slug (or an explicit path_source
   // arriving on the landing URL) is captured once, stored with the Meta
   // parameters for 30 days, and reused on later WL pages instead of being
-  // recomputed from every subsequent page.
+  // recomputed from every subsequent page. The standard UTM / campaign
+  // parameters (utm_source, utm_medium, utm_campaign, utm_content,
+  // utm_term, utm_id, campaign_id, ad_id) are captured, persisted, and
+  // transferred in exactly the same way.
   // ---------------------------------------------------------------------
   var TRACKING_PARAM_KEYS = [
     "tw_source",
@@ -112,8 +115,24 @@ whop.track("page");
     "cvg_cid",
     "path_source",
     "fbclid",
+    "utm_source",
+    "utm_medium",
+    "utm_campaign",
+    "utm_content",
+    "utm_term",
+    "utm_id",
+    "campaign_id",
+    "ad_id",
   ];
-  var ATTRIBUTION_ID_KEYS = ["fbclid", "tw_adid", "cvg_adid", "cvg_cid"];
+  var ATTRIBUTION_ID_KEYS = [
+    "fbclid",
+    "tw_adid",
+    "cvg_adid",
+    "cvg_cid",
+    "utm_id",
+    "campaign_id",
+    "ad_id",
+  ];
   var ATTRIBUTION_STORAGE_KEY = "tbb_attribution_v1";
   var ATTRIBUTION_TTL_MS = 30 * 24 * 60 * 60 * 1000;
   var memoryAttribution = null;
