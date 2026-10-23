@@ -102,30 +102,15 @@ whop.track("page");
   // What is new is persistence: the slug (or an explicit path_source
   // arriving on the landing URL) is captured once, stored with the Meta
   // parameters for 30 days, and reused on later WL pages instead of being
-  // recomputed from every subsequent page. The standard UTM / campaign
-  // parameters (utm_source, utm_medium, utm_campaign, utm_content,
-  // utm_term, utm_id, campaign_id, ad_id) are captured, persisted, and
-  // transferred in exactly the same way, except utm_source: incoming
-  // utm_source is persisted as-is but sent to the main domain as
-  // "channel", with utm_source itself configured as "tbb".
+  // recomputed from every subsequent page. Every inbound query parameter
+  // is captured, persisted, and transferred to main-domain CTAs. Exceptions:
+  // - utm_source: persisted as-is, but sent as "channel"; outbound
+  //   utm_source is always this site's initials ("tbb").
+  // - Internal Converge identity keys (__cvg_*) are never persisted;
+  //   appendCvgParams still forwards live cookie values separately.
   // ---------------------------------------------------------------------
-  var TRACKING_PARAM_KEYS = [
-    "tw_source",
-    "tw_adid",
-    "cvg_source",
-    "cvg_adid",
-    "cvg_cid",
-    "path_source",
-    "fbclid",
-    "utm_source",
-    "utm_medium",
-    "utm_campaign",
-    "utm_content",
-    "utm_term",
-    "utm_id",
-    "campaign_id",
-    "ad_id",
-  ];
+  var SITE_SOURCE = "tbb";
+  // Keys used only to detect a genuinely new ad visit (replace vs merge).
   var ATTRIBUTION_ID_KEYS = [
     "fbclid",
     "tw_adid",
@@ -188,6 +173,15 @@ whop.track("page");
     return true;
   }
 
+  // Skip internal / identity params that must not be persisted from the
+  // landing URL (Converge cookies are re-attached live on click).
+  function shouldCaptureParam(key) {
+    if (!key) return false;
+    if (key.indexOf("__cvg_") === 0) return false;
+    return true;
+  }
+
+  // Capture every valid query parameter from a URL (default: current page).
   function parseTrackingParams(source) {
     var params = {};
     var search = "";
@@ -207,12 +201,21 @@ whop.track("page");
     } catch (x) {
       return params;
     }
-    for (var i = 0; i < TRACKING_PARAM_KEYS.length; i++) {
-      var key = TRACKING_PARAM_KEYS[i];
-      var value = query.get(key);
+    query.forEach(function (value, key) {
+      if (!shouldCaptureParam(key)) return;
       if (isValidTrackingValue(value)) params[key] = value.trim();
-    }
+    });
     return params;
+  }
+
+  function copyValidParams(from) {
+    var out = {};
+    if (!from || typeof from !== "object") return out;
+    Object.keys(from).forEach(function (key) {
+      if (!shouldCaptureParam(key)) return;
+      if (isValidTrackingValue(from[key])) out[key] = String(from[key]).trim();
+    });
+    return out;
   }
 
   function readStoredAttribution() {
@@ -295,23 +298,17 @@ whop.track("page");
       clearStoredAttribution();
       return null;
     }
-    var params = {};
-    for (var i = 0; i < TRACKING_PARAM_KEYS.length; i++) {
-      var key = TRACKING_PARAM_KEYS[i];
-      if (isValidTrackingValue(attr.params[key]))
-        params[key] = attr.params[key].trim();
-    }
     return {
-      params: params,
+      params: copyValidParams(attr.params),
       capturedAt: attr.capturedAt || now,
       expiresAt: attr.expiresAt,
     };
   }
 
-  // Capture tracking params from a URL (default: current page) and persist
-  // them. Missing/empty/invalid values never overwrite stored ones. A
-  // conflicting ad identifier means a genuinely new ad visit, so the old
-  // attribution is replaced rather than combined with the new one.
+  // Capture every inbound query param from a URL (default: current page)
+  // and persist them. Missing/empty/invalid values never overwrite stored
+  // ones. A conflicting ad identifier means a genuinely new ad visit, so
+  // the old attribution is replaced rather than combined with the new one.
   function captureAttribution(source, now) {
     now = typeof now === "number" ? now : Date.now();
     var incoming = parseTrackingParams(source);
@@ -335,29 +332,18 @@ whop.track("page");
     var params;
     var capturedAt;
     if (!stored || isNewVisit) {
-      params = {};
-      for (var j = 0; j < TRACKING_PARAM_KEYS.length; j++) {
-        var newKey = TRACKING_PARAM_KEYS[j];
-        if (incoming[newKey]) params[newKey] = incoming[newKey];
-      }
+      params = copyValidParams(incoming);
       // Establish the original path_source using the existing slug
       // implementation when the landing URL did not carry one.
       if (!params.path_source) params.path_source = getPathSource();
       capturedAt = now;
     } else {
-      params = {};
-      for (var k = 0; k < TRACKING_PARAM_KEYS.length; k++) {
-        var keepKey = TRACKING_PARAM_KEYS[k];
-        if (stored.params[keepKey]) params[keepKey] = stored.params[keepKey];
-      }
+      params = copyValidParams(stored.params);
       var hasIncoming = false;
-      for (var m = 0; m < TRACKING_PARAM_KEYS.length; m++) {
-        var mergeKey = TRACKING_PARAM_KEYS[m];
-        if (incoming[mergeKey]) {
-          params[mergeKey] = incoming[mergeKey];
-          hasIncoming = true;
-        }
-      }
+      Object.keys(incoming).forEach(function (mergeKey) {
+        params[mergeKey] = incoming[mergeKey];
+        hasIncoming = true;
+      });
       if (!params.path_source) params.path_source = getPathSource();
       // Refresh the 30-day window only when new valid data arrived;
       // plain navigation keeps the original capture time and expiry.
@@ -388,10 +374,10 @@ whop.track("page");
   // encoded exactly once. Non-partner, mailto:, tel: and other non-HTTP
   // links are returned untouched.
   //
-  // utm_source is configured as "tbb" on main-domain CTAs: the utm_source
-  // captured from incoming traffic is not sent as utm_source, it is moved
-  // to a separate "channel" parameter (e.g. incoming utm_source=facebook
-  // goes out as utm_source=tbb&channel=facebook).
+  // utm_source is ALWAYS set to this site's initials ("tbb") on main-domain
+  // CTAs. The utm_source captured from incoming traffic is moved to
+  // "channel" (e.g. incoming utm_source=facebook goes out as
+  // utm_source=tbb&channel=facebook).
   function withTrackingParams(url, now) {
     if (!isPartnerUrl(url)) return url;
     var attr = loadAttribution(now);
@@ -402,18 +388,21 @@ whop.track("page");
     } catch (x) {
       return url;
     }
-    for (var i = 0; i < TRACKING_PARAM_KEYS.length; i++) {
-      var key = TRACKING_PARAM_KEYS[i];
+    Object.keys(params).forEach(function (key) {
+      // utm_source / channel are applied below with site-source rules.
+      if (key === "utm_source" || key === "channel") return;
       var value = params[key];
-      if (key === "utm_source") {
-        parsed.searchParams.set("utm_source", "tbb");
-        if (isValidTrackingValue(value))
-          parsed.searchParams.set("channel", value);
-        continue;
-      }
-      if (key === "path_source" && !isValidTrackingValue(value))
-        value = getPathSource();
       if (isValidTrackingValue(value)) parsed.searchParams.set(key, value);
+    });
+    // Always stamp this WL site as the source on every main-domain CTA.
+    parsed.searchParams.set("utm_source", SITE_SOURCE);
+    if (isValidTrackingValue(params.utm_source)) {
+      parsed.searchParams.set("channel", params.utm_source);
+    } else if (isValidTrackingValue(params.channel)) {
+      parsed.searchParams.set("channel", params.channel);
+    }
+    if (!isValidTrackingValue(parsed.searchParams.get("path_source"))) {
+      parsed.searchParams.set("path_source", getPathSource());
     }
     return parsed.toString();
   }
@@ -453,7 +442,7 @@ whop.track("page");
   }
 
   window.TBBTracking = {
-    keys: TRACKING_PARAM_KEYS.slice(),
+    siteSource: SITE_SOURCE,
     storageKey: ATTRIBUTION_STORAGE_KEY,
     ttlMs: ATTRIBUTION_TTL_MS,
     getPathSource: getPathSource,
