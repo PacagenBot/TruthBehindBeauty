@@ -1,0 +1,75 @@
+@font-face{font-family:Buvera;src:url('../buvera-sans-serif-family-2026-04-07-06-16-02-utc/Web-TT/Buvera-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:Buvera;src:url('../buvera-sans-serif-family-2026-04-07-06-16-02-utc/Web-TT/Buvera-Bold.woff2') format('woff2');font-weight:700;font-display:swap}
+html{scroll-behavior:smooth}
+body{font-family:Georgia,serif!important}
+.article-shell{width:60%;max-width:920px;margin:2rem auto;color:#222}
+.article-header-block{text-align:center}
+.category-badge{display:inline-block;background:#c62828;color:#fff;font:700 .72rem/1.5 Buvera,sans-serif;padding:.2rem .75rem;border-radius:999px;letter-spacing:.04em}
+.section-divider{height:2px;background:#ccc;margin:14px auto 24px;width:80%}
+.blog-title{font:700 clamp(2rem,4.4vw,2.8rem)/1.12 'Oswald',Buvera,sans-serif;text-transform:uppercase;color:#111;letter-spacing:.01em;margin:0 0 1.1rem}
+.blog-dek{font:italic 1.06rem/1.7 Georgia,serif;max-width:660px;margin:0 auto 1.4rem;color:#555}
+.author-section{display:flex;align-items:center;justify-content:center;gap:10px;font:400 .95rem/1.5 Buvera,sans-serif}
+.author-initials{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:#b51216;color:white;font-size:.75rem;font-weight:700}
+.article-meta{display:flex;justify-content:space-between;align-items:center;gap:1rem;font:400 .8rem/1.4 Buvera,sans-serif;margin:1.5rem 0;color:#666}
+.article-share{display:flex;align-items:center;gap:.8rem}
+.article-share a{color:#222;font-size:1.1rem}
+.hero-banner{margin:0 0 2rem}
+.hero-banner img{display:block;width:100%;height:auto}
+.blog-contents p{font-size:1.06rem;line-height:1.85;margin-bottom:1.2rem;color:#222}
+.blog-contents a{color:#b51216;font-weight:700;text-decoration-color:#b5121666;text-underline-offset:3px}
+.blog-contents a:hover{color:#7d0e11}
+.section-heading{font:700 clamp(1.5rem,3.4vw,2.1rem)/1.2 'Oswald',Buvera,sans-serif;text-transform:uppercase;color:#111;margin:2.8rem 0 1.1rem;scroll-margin-top:130px}
+.subheading{font:700 1.25rem/1.4 'Oswald',Buvera,sans-serif;margin:2rem 0 1rem;color:#111}
+.diagram{margin:1.8rem auto 2rem;text-align:center}
+.diagram img{display:block;width:100%;max-width:760px;height:auto;margin:auto}
+.diagram.ingredients img{max-width:560px}
+.diagram figcaption,.follicle-figure>figcaption{font:italic .92rem/1.65 Georgia,serif;color:#555;margin:.8rem auto 0;max-width:760px}
+.follicle-figure{margin:2rem 0;padding:1.25rem;border:1px solid #e2dada;background:#fff}
+.follicle-row+.follicle-row{margin-top:1.2rem}
+.blog-contents .follicle-label{font:700 .85rem/1.4 Buvera,sans-serif;margin:0 0 .5rem}
+.follicle-row:nth-child(2) .follicle-label{color:#b51216}
+.follicle-panels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.5rem}
+.follicle-panel{position:relative;overflow:hidden;background:#eee}
+.follicle-panel img{position:absolute;display:block;max-width:none;height:auto}
+.blog-contents .follicle-day{font:400 .72rem/1.4 Buvera,sans-serif;text-align:center;margin:.4rem 0 0;color:#555}
+.assay-comparison{margin:2.5rem 0;border:1px solid #e3d6d6;border-top:4px solid #b51216;background:#fff}
+.chart-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));background:#f7eeee;gap:1px;border-bottom:1px solid #e3d6d6}
+.chart-tabs[hidden]{display:none}
+.chart-tab{appearance:none;border:0;border-bottom:3px solid transparent;background:transparent;padding:1rem .6rem;font:700 .84rem/1.3 Buvera,sans-serif;color:#6a4444;cursor:pointer}
+.chart-tab[aria-selected=true]{border-bottom-color:#b51216;background:#fff;color:#b51216}
+.chart-tab:hover{background:#fff5f5}
+.chart-tab:focus-visible{outline:2px solid #b51216;outline-offset:-5px}
+.assay-chart{margin:0;padding:1.6rem 1.5rem 1.4rem}
+.assay-chart[hidden]{display:none}
+.assay-chart+.assay-chart{border-top:1px solid #e3d6d6}
+.blog-contents .chart-eyebrow{font:700 .66rem/1.4 Buvera,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#b51216;margin:0 0 .65rem}
+.chart-title{font:700 clamp(1.2rem,2.5vw,1.5rem)/1.3 'Oswald',Buvera,sans-serif;color:#111;margin:0 0 .4rem;text-transform:none}
+.blog-contents .chart-description{font:400 .88rem/1.6 Buvera,sans-serif;color:#666;margin:0 0 1.6rem}
+.chart-rows{padding:0;margin:0;list-style:none;display:grid;gap:1rem;font-family:Buvera,sans-serif}
+.chart-row{display:grid;grid-template-columns:102px minmax(0,1fr) 58px;align-items:center;gap:.65rem}
+.chart-label{font-size:.83rem;line-height:1.4;color:#333}
+.chart-row.featured .chart-label,.chart-row.featured .chart-value{font-weight:700;color:#b51216}
+.chart-track{position:relative;min-width:0;height:24px;background:repeating-linear-gradient(to right,#f2eded 0,#f2eded 1px,transparent 1px,transparent 25%),#faf8f8;border-left:1px solid #d4c8c8}
+.chart-bar{display:block;height:100%;background:#c3b1b1}
+.featured .chart-bar{background:#b51216}
+.chart-value{font-size:.83rem;font-weight:700;font-variant-numeric:tabular-nums;color:#333}
+.chart-value.no-effect{font-size:.72rem;font-weight:400;font-style:italic;color:#777}
+.chart-axis{display:flex;justify-content:space-between;margin:.8rem calc(58px + .65rem) 0 calc(102px + .65rem);font:400 .67rem/1.5 Buvera,sans-serif;color:#777}
+.clinical-section{border-top:3px solid #b51216;background:#faf4f4;padding:1.6rem 1.75rem;margin:2.8rem 0}
+.clinical-section .section-heading{margin-top:0}
+.clinical-section p:last-child{margin-bottom:0}
+.clinical-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;border-top:1px solid #dfcccc;margin:1.5rem 0 0;padding-top:1.4rem;font-family:Buvera,sans-serif;text-align:center}
+.clinical-stats strong{display:block;font:700 clamp(2rem,5vw,3rem)/1.2 'Oswald',Buvera,sans-serif;color:#b51216}
+.clinical-stats span{display:block;font-size:.83rem;line-height:1.5;margin-top:.5rem}
+.clinical-stats small{display:block;font-size:.7rem;color:#777;margin-top:.25rem}
+.related-articles{border-top:2px solid #eee;margin-top:3rem;padding-top:1.5rem}
+.related-articles .section-heading{margin-top:0}
+.blog-rec-inline{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem}
+.related-articles a{text-decoration:none;color:#111}
+.related-articles img{width:100%;aspect-ratio:85/54;object-fit:cover}
+.related-articles h3{font:600 1.05rem/1.4 'Oswald',Buvera,sans-serif;margin-top:.75rem}
+.ad-side-wrap{position:fixed;top:1.5rem;width:160px;z-index:2}
+@media(max-width:1100px){.article-shell{width:84%}}
+@media(max-width:768px){.article-shell{width:90%;margin:1.5rem auto}.ad-side-wrap{display:none}.blog-rec-inline{grid-template-columns:1fr}.blog-contents p{font-size:1rem;line-height:1.8}.clinical-section{padding:1.3rem}.assay-chart{padding:1.3rem 1rem}.chart-row{grid-template-columns:88px minmax(0,1fr) 50px;gap:.45rem}.chart-axis{margin-right:calc(50px + .45rem);margin-left:calc(88px + .45rem)}.chart-value,.chart-label{font-size:.77rem}.chart-value.no-effect{font-size:.65rem}.chart-tab{font-size:.75rem;padding:.9rem .3rem}.follicle-figure{padding:.8rem}.blog-dek{font-size:1rem}.blog-title{font-size:clamp(1.8rem,5.6vw,2.8rem)}}
+@media(max-width:480px){.clinical-stats{grid-template-columns:1fr;text-align:left;gap:1rem}.clinical-stats>div{display:grid;grid-template-columns:5rem 1fr;align-items:center;gap:.7rem}.clinical-stats span{margin-top:0}.clinical-stats small{font-size:.7rem}.chart-row{grid-template-columns:76px minmax(0,1fr) 46px}.chart-axis{margin-left:calc(76px + .45rem);margin-right:calc(46px + .45rem)}.chart-title{font-size:1.2rem}.article-meta{font-size:.72rem}.article-share{gap:.6rem}.follicle-panels{gap:.3rem}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
