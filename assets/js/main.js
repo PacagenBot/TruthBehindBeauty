@@ -1,6 +1,46 @@
 // Main JavaScript file for Truth Behind Beauty
 
 const GOOGLE_TAG_ID = 'AW-18234380755';
+const TATARI_ID = 'fb283fc1-ce88-40e6-b631-ee8c04215da7';
+
+function insertTatariTag() {
+    if (window.tatari && window.tatari.version) return;
+    if (document.querySelector('script[src*="d2hrivdxn8ekm8.cloudfront.net/tag-manager/"]')) return;
+
+    try {
+        var e = window.tatari || [];
+        window.tatari = e;
+        e.init = function(t, i) {
+            var a = function(t, i) {
+                e[i] = function() {
+                    t.push([i].concat(Array.prototype.slice.call(arguments, 0)));
+                };
+            };
+            'track pageview identify addToCart purchase checkoutStarted searchSubmitted signUp leadSubmitted productViewed'.split(' ').forEach(function(t) {
+                a(e, t);
+            });
+            e._i = t;
+            e.config = i;
+            e.pageview();
+        };
+        e.version = '1.2.18';
+
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.async = true;
+        script.src = 'https://d2hrivdxn8ekm8.cloudfront.net/tag-manager/' + TATARI_ID + '-latest.js';
+        var first = document.getElementsByTagName('script')[0];
+        if (first && first.parentNode) {
+            first.parentNode.insertBefore(script, first);
+        } else {
+            document.head.appendChild(script);
+        }
+
+        e.init(TATARI_ID);
+    } catch (err) {
+        console.log(err);
+    }
+}
 
 function insertGoogleTag() {
     window.dataLayer = window.dataLayer || [];
@@ -22,6 +62,7 @@ function insertGoogleTag() {
 // Head Component - Insert favicon and stylesheets
 function insertHeadElements(pageType = 'root') {
     insertGoogleTag();
+    insertTatariTag();
 
     // Determine the correct path based on page type
     const assetPath = pageType === 'blog' ? '../assets' : 'assets';
