@@ -58,6 +58,9 @@
       .article-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
+    /* Keep selected reviews off the listing without removing their article pages. */
+    .article-card[hidden] { display: none; }
+
     .article-card {
       text-decoration: none;
       color: inherit;
@@ -118,6 +121,7 @@
   </div>
 
   <div class="container my-5">
+    <!-- Manually curated: do not auto-add new articles. See AGENTS.md. -->
     <div class="article-grid">
 
       <a class="article-card" href="skipping-haircuts-hiding-my-part.html">
@@ -126,37 +130,37 @@
         <h2>I Was 47, Skipping Haircuts, and Hiding My Part. I Thought I Was Never Getting My Hair Back.</h2>
       </a>
 
-      <a class="article-card" href="why-most-hair-products-dont-work-menopause.html">
+      <a class="article-card" hidden href="why-most-hair-products-dont-work-menopause.html">
         <div class="article-card-img"><img src="../assets/images/why-hair-product-menopause.png" alt="Why Most Hair Products Don't Work During Menopause"></div>
         <span class="tag">Reviews</span>
         <h2>Why Most Hair Products Don't Work During Menopause</h2>
       </a>
 
-      <a class="article-card" href="5-myths-hair-loss-after-40.html">
+      <a class="article-card" hidden href="5-myths-hair-loss-after-40.html">
         <div class="article-card-img"><img src="../assets/images/5-myth-hero.jpg" alt="5 Myths About Hair Loss After 40 This Princeton-Trained Scientist Wants to Debunk"></div>
         <span class="tag">Reviews</span>
         <h2>5 Myths About Hair Loss After 40 This Princeton-Trained Scientist Wants to Debunk</h2>
       </a>
 
-      <a class="article-card" href="how-to-know-if-hair-serum-works.html">
+      <a class="article-card" hidden href="how-to-know-if-hair-serum-works.html">
         <div class="article-card-img"><img src="../assets/images/hair-serum-hero.png" alt="How to Know If Your Hair Thinning Serum Will Actually Work for You"></div>
         <span class="tag">Reviews</span>
         <h2>How to Know If Your Hair Thinning Serum Will Actually Work for You</h2>
       </a>
 
-      <a class="article-card" href="glp1-hair-loss.html">
+      <a class="article-card" hidden href="glp1-hair-loss.html">
         <div class="article-card-img"><img src="../assets/images/glp-shedding.png" alt="My Hair Started Shedding After GLP-1 Weight Loss"></div>
         <span class="tag">Reviews</span>
         <h2>My Hair Started Shedding After GLP-1 Weight Loss. Here’s What I Did to Support Recovery</h2>
       </a>
 
-      <a class="article-card" href="menopause-hair-thinning-products.html">
+      <a class="article-card" hidden href="menopause-hair-thinning-products.html">
         <div class="article-card-img"><img src="../assets/images/menopause-hair-lp-hero.png" alt="I Tried 4 Popular Products for Menopause Hair Thinning"></div>
         <span class="tag">Reviews</span>
         <h2>I Tried 4 Popular Products for Menopause Hair Thinning. Here’s What I Found</h2>
       </a>
 
-      <a class="article-card" href="why-people-quit-hair-serums.html">
+      <a class="article-card" hidden href="why-people-quit-hair-serums.html">
         <div class="article-card-img"><img src="../assets/images/greasy-lp-hero.png" alt="The greasy truth behind popular hair serums"></div>
         <span class="tag">Reviews</span>
         <h2>The Top Reasons People Quit Hair Serums, and How to Pick One You Won't</h2>
@@ -212,7 +216,7 @@
       </a>
 
       <!-- Article: NOVOGRO -->
-      <a class="article-card" href="novogro-minoxidil.html">
+      <a class="article-card" hidden href="novogro-minoxidil.html">
         <div class="article-card-img"><img src="../assets/images/mino-cover.png" alt="NOVOGRO vs Minoxidil"></div>
         <span class="tag">Reviews</span>
         <h2>After Minoxidil, Everyone Wants a Better Answer. Is NOVOGRO the One?</h2>
@@ -240,21 +244,21 @@
       </a>
 
       <!-- Article: Hair Growth Gummies -->
-      <a class="article-card" href="hair-growth-gummies-formulator.html">
+      <a class="article-card" hidden href="hair-growth-gummies-formulator.html">
         <div class="article-card-img"><img src="../assets/images/tbb-hair-gummies-cover.png" alt="I Formulated Hair Growth Gummies. Almost None of Them Can Work."></div>
         <span class="tag">Reviews</span>
         <h2>I Formulated Hair Growth Gummies. Almost None of Them Can Work.</h2>
       </a>
 
       <!-- Article: PP405 vs NOVOGRO -->
-      <a class="article-card" href="pp405-vs-novogro.html">
+      <a class="article-card" hidden href="pp405-vs-novogro.html">
         <div class="article-card-img"><img src="../assets/images/pp405vsnovogro.png" alt="PP405 vs NOVOGRO hair-loss science"></div>
         <span class="tag">Reviews</span>
         <h2>PP405 vs. NOVOGRO™: Why the Hair-Loss "Breakthrough" Story May Be Too Simple</h2>
       </a>
 
       <!-- Article: Finasteride & Hormones -->
-      <a class="article-card" href="finasteride-novogro.html">
+      <a class="article-card" hidden href="finasteride-novogro.html">
         <div class="article-card-img"><img src="../assets/images/finas-cover.png" alt="What No One Says Publicly About Finasteride and Hormones"></div>
         <span class="tag">Reviews</span>
         <h2>What No One Says Publicly About Finasteride and Hormones</h2>
