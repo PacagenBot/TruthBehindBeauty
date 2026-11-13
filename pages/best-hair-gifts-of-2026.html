@@ -79,7 +79,9 @@ body{visibility:hidden;opacity:0;transition:opacity 0.3s ease;font-family:Georgi
 .blog-contents .picks a{display:block;color:#111;text-decoration:none;font-weight:400;margin:0 0 1.45rem;line-height:1.4;font-size:1.02rem}
 .blog-contents .picks a:last-child{margin-bottom:0}
 .blog-contents .picks a strong{display:block;font-weight:700;color:#111}
-.blog-contents .picks a:hover,.blog-contents .picks a:hover strong{color:#c8102e}
+.blog-contents .picks a span{text-decoration:underline;text-decoration-color:currentColor;text-underline-offset:2px}
+.blog-contents .picks a::after{content:" →"}
+.blog-contents .picks a:hover span,.blog-contents .picks a:hover::after{color:#c8102e}
 .gift-card{display:grid;grid-template-columns:1fr 1fr;border:1px solid #1c1c1c;background:#fff;margin:0.2rem 0 0.15rem}
 .gift-copy{display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;padding:1.25rem 1.35rem 1.3rem 1.35rem}
 .blog-contents .gift-kicker{display:inline-block;align-self:flex-start;margin:0 0 0.75rem;background:#c8102e;color:#fff;font-family:'Oswald',Buvera,sans-serif;font-weight:600;font-size:0.72rem;letter-spacing:0.06em;text-transform:uppercase;line-height:1;padding:0.42rem 0.55rem}
@@ -249,7 +251,7 @@ body{visibility:hidden;opacity:0;transition:opacity 0.3s ease;font-family:Georgi
       </article>
 
       <aside class="best-for">
-        <p><strong>Best for:</strong> anyone who wakes up to frizz, tangles or bedhead.</p>
+        <p><strong>Best for:</strong> Anyone who wakes up to frizz, tangles or bedhead.</p>
       </aside>
 
       <p>Silk pillowcases have been getting a lot of love in the hair world because silk’s smooth surface creates far less friction than cotton. That means less tugging, tangling, and less breakage overnight when you’re tossing and turning. And in the morning you’re waking up to less frizz, and less bedhead.</p>
