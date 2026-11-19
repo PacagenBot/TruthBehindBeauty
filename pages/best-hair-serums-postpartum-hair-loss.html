@@ -135,7 +135,8 @@ body{visibility:hidden;opacity:0;transition:opacity 0.3s ease;font-family:Georgi
 @media(min-width:769px){.ad-side-mobile-wrap{display:none}}
 
 .chose-box{background:#f9f5f5;border-left:4px solid #c62828;padding:1.05rem 1.25rem 0.35rem;margin:1.6rem 0 1.8rem}
-.chose-box h2{font-family:Georgia,serif;font-size:1.35rem;font-weight:700;margin:0 0 0.75rem;color:#111;text-transform:none;letter-spacing:0}
+.chose-box h2{font-family:Georgia,serif;font-size:1.35rem;font-weight:700;margin:0 0 0.45rem;color:#111;text-transform:none;letter-spacing:0}
+.chose-box p{margin:0 0 0.75rem!important;font-size:0.95rem;line-height:1.6;color:#333}
 .chose-box ul{margin:0;padding:0 0 0.6rem 1.15rem}
 .chose-box li{margin-bottom:0.55rem;line-height:1.6;color:#222}
 
@@ -148,12 +149,19 @@ body{visibility:hidden;opacity:0;transition:opacity 0.3s ease;font-family:Georgi
 .quick-look a:hover{color:#aa1313}
 .quick-look a:hover img{border-color:#c62828}
 .quick-look .why{display:block;font-weight:400;color:#666;font-size:0.92rem;margin-top:0.1rem}
+.quick-look a > span:not(.score){flex:1;min-width:0}
+.quick-look .score{margin-left:auto;flex:none;font-family:'Oswald',Buvera,sans-serif;font-weight:700;font-size:1.05rem;color:#111;letter-spacing:0.02em;white-space:nowrap;line-height:1}
+.quick-look .score small{font-weight:600;font-size:0.62rem;color:#777;letter-spacing:0.04em;margin-left:0.08rem}
 
 .serum-card{border:1px solid #111;background:#fff;margin:2.25rem 0 0;scroll-margin-top:120px}
 .serum-kicker{display:flex;align-items:center;gap:0.65rem;flex-wrap:wrap;padding:1rem 1.15rem 0}
 .serum-num{font-family:'Oswald',Buvera,sans-serif;font-weight:700;letter-spacing:0.04em;color:#111}
 .product-pick-badge{display:inline-block;background:#111;color:#fff;font-family:'Oswald',Buvera,sans-serif;font-size:0.68rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:0.35rem 0.7rem}
 .serum-card.is-top .product-pick-badge{background:#c62828}
+.serum-score{margin-left:auto;display:flex;align-items:baseline;gap:0.12rem;font-family:'Oswald',Buvera,sans-serif;line-height:1;color:#111}
+.serum-score strong{font-size:1.45rem;font-weight:700;letter-spacing:0.01em}
+.serum-score span{font-size:0.72rem;font-weight:700;letter-spacing:0.04em;color:#777}
+.serum-card.is-top .serum-score strong{color:#c62828}
 .serum-title{font-family:Georgia,serif;font-size:clamp(1.35rem,3vw,1.85rem);font-weight:700;margin:0.65rem 1.15rem 1rem;color:#111;line-height:1.2;text-transform:none;letter-spacing:0}
 .serum-split{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #111;border-bottom:1px solid #111}
 .serum-media{border-right:1px solid #111;background:#fff;min-height:0;display:flex;align-items:center}
@@ -306,8 +314,8 @@ html.faq-moving{overflow-anchor:none}
       <p>At first, I thought it was normal. Everyone tells you postpartum hair loss happens, right? But then I started pulling actual clumps of hair out in the shower. Every time I brushed my hair, there was more.</p>
       <p>The worst part was my hairline. I had these little bald-looking patches around my temples, and my part was getting wider.</p>
       <div class="hairline-photos">
-        <img src="../assets/images/hair-bald-spot.png" alt="Thinning at my temple, with a bald-looking patch along the hairline">
-        <img src="../assets/images/hair-wide-part.png" alt="A wider part showing thinning at the crown">
+        <img src="../assets/images/hair-baldspot.png" alt="Thinning at my temple, with a bald-looking patch along the hairline">
+        <img src="../assets/images/hair-widepart.png" alt="A wider part showing thinning at the crown">
       </div>
       <p>I know it sounds dramatic, but I genuinely didn’t feel like myself anymore. I was already exhausted, barely sleeping, and trying to figure out how to be a mom. And now I didn’t even recognize myself in the mirror.</p>
       <p>I tried switching shampoos, taking vitamins, and using different scalp oils. Nothing seemed to make a difference.</p>
@@ -320,6 +328,7 @@ html.faq-moving{overflow-anchor:none}
 
       <div class="chose-box">
         <h2>How I Ranked These</h2>
+        <p>Each serum is scored out of 10 on these points.</p>
         <ul>
           <li><strong>Nursing compatibility:</strong> What the brand says, plus what’s known about the key ingredients during breastfeeding</li>
           <li><strong>Evidence:</strong> Is there a clinical study, and how solid is it?</li>
@@ -331,18 +340,19 @@ html.faq-moving{overflow-anchor:none}
 
       <h2 class="section-heading">Quick Look</h2>
       <ol class="quick-look">
-        <li><a href="#reyou"><img src="../assets/images/adv-glp-reyou-product.png" alt=""><span>RE:YOU Dual-Path Hair Revival Serum<span class="why">Best Overall (Editor’s Pick)</span></span></a></li>
-        <li><a href="#vegamour"><img src="../assets/images/vegamour-GRO-plus-advanced-serum.png" alt=""><span>Vegamour GRO+ Advanced Hair Serum<span class="why">Best Plant-Based Pick</span></span></a></li>
-        <li><a href="#nutrafol"><img src="../assets/images/nutrafol-hair-serum.png" alt=""><span>Nutrafol Hair Serum (Growth Activator)<span class="why">Best to Pair With a Postpartum Supplement</span></span></a></li>
-        <li><a href="#cecred"><img src="../assets/images/cecred-hair-serum.png" alt=""><span>Cécred Restoring Hair &amp; Edge Drops<span class="why">Best for Edges &amp; Hairline</span></span></a></li>
-        <li><a href="#the-ordinary"><img src="../assets/images/ordinary-hair-serum.png" alt=""><span>The Ordinary Multi-Peptide Serum for Hair Density<span class="why">Budget Pick</span></span></a></li>
-        <li><a href="#rogaine"><img src="../assets/images/rogaine-serum.png" alt=""><span>Women’s Rogaine 2% Minoxidil Topical Solution<span class="why">Best After You Wean</span></span></a></li>
+        <li><a href="#reyou"><img src="../assets/images/adv-glp-reyou-product.png" alt=""><span>RE:YOU Dual-Path Hair Revival Serum<span class="why">Best Overall (Editor’s Pick)</span></span><span class="score">9.2<small>/10</small></span></a></li>
+        <li><a href="#vegamour"><img src="../assets/images/vegamour-GRO-plus-advanced-serum.png" alt=""><span>Vegamour GRO+ Advanced Hair Serum<span class="why">Best Plant-Based Pick</span></span><span class="score">7.1<small>/10</small></span></a></li>
+        <li><a href="#nutrafol"><img src="../assets/images/nutrafol-hair-serum.png" alt=""><span>Nutrafol Hair Serum (Growth Activator)<span class="why">Best to Pair With a Postpartum Supplement</span></span><span class="score">6.4<small>/10</small></span></a></li>
+        <li><a href="#cecred"><img src="../assets/images/cecred-hair-serum.png" alt=""><span>Cécred Restoring Hair &amp; Edge Drops<span class="why">Best for Edges &amp; Hairline</span></span><span class="score">5.8<small>/10</small></span></a></li>
+        <li><a href="#the-ordinary"><img src="../assets/images/ordinary-hair-serum.png" alt=""><span>The Ordinary Multi-Peptide Serum for Hair Density<span class="why">Budget Pick</span></span><span class="score">5.2<small>/10</small></span></a></li>
+        <li><a href="#rogaine"><img src="../assets/images/rogaine-serum.png" alt=""><span>Women’s Rogaine 2% Minoxidil Topical Solution<span class="why">Best After You Wean</span></span><span class="score">4.6<small>/10</small></span></a></li>
       </ol>
 
       <article class="serum-card is-top" id="reyou">
         <div class="serum-kicker">
           <span class="serum-num">#1</span>
           <span class="product-pick-badge">Editor’s Pick · Best Overall</span>
+          <span class="serum-score" aria-label="9.2 out of 10"><strong>9.2</strong><span>/10</span></span>
         </div>
         <h2 class="serum-title">RE:YOU Dual-Path Hair Revival Serum</h2>
         <div class="serum-split">
@@ -461,6 +471,7 @@ html.faq-moving{overflow-anchor:none}
         <div class="serum-kicker">
           <span class="serum-num">#2</span>
           <span class="product-pick-badge">Best Plant-Based Pick</span>
+          <span class="serum-score" aria-label="7.1 out of 10"><strong>7.1</strong><span>/10</span></span>
         </div>
         <h2 class="serum-title">Vegamour GRO+ Advanced Hair Serum</h2>
         <div class="serum-split">
@@ -526,6 +537,7 @@ html.faq-moving{overflow-anchor:none}
         <div class="serum-kicker">
           <span class="serum-num">#3</span>
           <span class="product-pick-badge">Best to Pair With a Supplement</span>
+          <span class="serum-score" aria-label="6.4 out of 10"><strong>6.4</strong><span>/10</span></span>
         </div>
         <h2 class="serum-title">Nutrafol Hair Serum (Growth Activator)</h2>
         <div class="serum-split">
@@ -593,6 +605,7 @@ html.faq-moving{overflow-anchor:none}
         <div class="serum-kicker">
           <span class="serum-num">#4</span>
           <span class="product-pick-badge">Best for Edges &amp; Hairline</span>
+          <span class="serum-score" aria-label="5.8 out of 10"><strong>5.8</strong><span>/10</span></span>
         </div>
         <h2 class="serum-title">Cécred Restoring Hair &amp; Edge Drops</h2>
         <div class="serum-split">
@@ -658,6 +671,7 @@ html.faq-moving{overflow-anchor:none}
         <div class="serum-kicker">
           <span class="serum-num">#5</span>
           <span class="product-pick-badge">Budget Pick</span>
+          <span class="serum-score" aria-label="5.2 out of 10"><strong>5.2</strong><span>/10</span></span>
         </div>
         <h2 class="serum-title">The Ordinary Multi-Peptide Serum for Hair Density</h2>
         <div class="serum-split">
@@ -723,6 +737,7 @@ html.faq-moving{overflow-anchor:none}
         <div class="serum-kicker">
           <span class="serum-num">#6</span>
           <span class="product-pick-badge">Best After You Wean</span>
+          <span class="serum-score" aria-label="4.6 out of 10"><strong>4.6</strong><span>/10</span></span>
         </div>
         <h2 class="serum-title">Women’s Rogaine 2% Minoxidil Topical Solution for Thin Hair</h2>
         <div class="serum-split">
